@@ -8,11 +8,11 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
-	public FacilitationManagerDashboardOperations ClickFetchDataButton() throws DriverNotInitializedException, Throwable {
+	/*public FacilitationManagerDashboardOperations ClickFetchDataButton() throws DriverNotInitializedException, Throwable {
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData()
 		;
 		return this;	
-	}
+	}*/
 	
 	public FacilitationManagerDashboardOperations SmokeTest(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
@@ -24,7 +24,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations verifyDeleteSubmissionButton(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().clickOnDeleteSubmissionButton()
 		;
 		return this;	
@@ -34,20 +34,15 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		
-		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().clickOnFetchData()
-		
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
-		
 		.openAssigmentsLink(createBackupData,3)
-		
-		
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded().verifyGradedUngradedFilters();
 		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigment3(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink( createBackupData,2)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded()
 		;
@@ -55,9 +50,9 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigment2(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
-		.openAssigmentsLink2().clickOnFetchData().selectAssignmentStatus(createBackupData.getStatus()).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded()
+		.openAssigmentsLink2().selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded()
 		;
 		
 		return this;	
@@ -68,11 +63,11 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
-	public FacilitationManagerDashboardOperations getFetchDataDashboardPerformance() throws DriverNotInitializedException, Throwable {
+	/*public FacilitationManagerDashboardOperations getFetchDataDashboardPerformance() throws DriverNotInitializedException, Throwable {
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).getDashboardFetchDataTimeStamp()
 		;
 		return this;	
-	}
+	}*/
 	
 	public FacilitationManagerDashboardOperations getGradedFilterDashboardPerformance(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
@@ -86,8 +81,8 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations signOff(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatus())
-		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded().clickOnSignOffButton().clickOnFetchData().selectAssignmentStatus(createBackupData.getStatus())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatus())
+		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded().clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()//.verifyUserSignedOff()
 		;
 		return this;	
@@ -100,7 +95,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations verifyResubmittedAssignment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent().clickOnFetchData()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent()
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
 		.verifyResubmitedAssignment();
 		
@@ -109,27 +104,27 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	
 	public FacilitationManagerDashboardOperations verifyDateGradedFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().selectDateGraded()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateGraded()
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton();
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyAssignmentIsGraded(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
 		.verifyAssignmentIsGraded(createBackupData.getUserName4());
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyGrader(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().enterCourseCode(createBackupData.getCourseShortName())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton()
 		.verifyGrader(createBackupData.getUserName4(), createBackupData.getUserName5());
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyOriginalGraderFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().selectAssignmentStatus(createBackupData.getStatusAll())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatusAll())
 		.enterOriginalGraderName(createBackupData.getUserName3()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyOriginalGraderFilter(createBackupData.getStatus())
 		.verifyGradedUngradedFilters();
@@ -137,20 +132,21 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations verifyCourseCodeFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().clickResetButton().enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll())
 		.clickFilterButton().verifyTableIspresent().verifyCourseCodeValidations()
 		;
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyDashboardaAssignmentsCount(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).getDashboardAssignmentCount()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
+		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().getDashboardAssignmentCount()
 		;
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyRubricGrades(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData().clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusAll()).enterStudentName(createBackupData.getUserName1())
 		.clickFilterButton().verifyTableIspresent()
 		
@@ -160,7 +156,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations verifyApostopheFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		
 		.enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyTableIspresent().clickResetButton()
@@ -182,7 +178,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	}
 	
 	public FacilitationManagerDashboardOperations verifyApostopheFilters2(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.enterCourseName(createBackupData.getCourseName2()).enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyTableIspresent().clickResetButton()
 		;
@@ -191,7 +187,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	public FacilitationManagerDashboardOperations verifyFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickOnFetchData()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		
 		.enterFacilitatorName(createBackupData.getFacilitatorName()).enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
 		.verifyTableIspresent().verifyFacilitatorIsEnrolled().clickResetButton()

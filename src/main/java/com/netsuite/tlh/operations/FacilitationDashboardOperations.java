@@ -9,7 +9,7 @@ public class FacilitationDashboardOperations extends BaseOperations {
 	
 	public FacilitationDashboardOperations verifyFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		
-		NetsuiteTLHPageFactory.getPage(FacilitationDashboardPage.class).clickOnFetchData()
+		NetsuiteTLHPageFactory.getPage(FacilitationDashboardPage.class)
 		
 		.enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
 		.verifyTableIspresent().clickResetButton()

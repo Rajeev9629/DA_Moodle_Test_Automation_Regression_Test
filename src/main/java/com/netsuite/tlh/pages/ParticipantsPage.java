@@ -125,7 +125,7 @@ public class ParticipantsPage extends BasePage {
 		waitForElementToBeVisibile(participantsTable);
 		waitForElementToBeClickable(participantsTable);
 		WebElement ele=BrowserFactory.getDriver().findElement
-		(By.xpath("(//td//span//*[contains(text(),'" + Role + "') and @class='quickeditlink']//ancestor::tr//td//a//img)[" + count + "]"));
+		(By.xpath("(//td//span//*[contains(text(),'"+ Role +"') and @class='quickeditlink']//ancestor::tr//td//a//img)["+ count +"]"));
 		ele.click();
 		return this;
 	}

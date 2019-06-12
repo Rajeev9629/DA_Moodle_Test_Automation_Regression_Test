@@ -70,12 +70,12 @@ public class FacilitationDashboardPage extends MenuBarPage {
 	@FindBy(name = "signOffStatus")
 	private WebElement SignOffStatusDropdown;
 	
-	@FindBy(id = "fecthData")
-	private WebElement fetchDataButton;
+	/*@FindBy(id = "fecthData")
+	private WebElement fetchDataButton;*/
 
 	
 	
-	public FacilitationDashboardPage clickOnFetchData() throws Throwable {
+	/*public FacilitationDashboardPage clickOnFetchData() throws Throwable {
 		waitForElementToBeVisibile(fetchDataButton);
 		waitForElementToBeClickable(fetchDataButton);
 		fetchDataButton.click();
@@ -88,7 +88,7 @@ public class FacilitationDashboardPage extends MenuBarPage {
             WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
             wait.until(expectation);
 		return this;
-	}
+	}*/
 		
 	public FacilitationDashboardPage clickFilterButton() throws Throwable {
 		waitForElementToBeVisibile(filterButton);

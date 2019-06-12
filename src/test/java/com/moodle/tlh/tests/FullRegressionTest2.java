@@ -40,20 +40,20 @@ public class FullRegressionTest2 extends BaseTest{
 		System.out.println("TCS 3");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
-		rightNavOperations.getEnrollParticipantsOnlyPage();
-		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole3(),"2");
+		rightNavOperations.getEnrollParticipantsPage();
+		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole3(),"3");
 		rightNavOperations.getFacilitationManagerDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyDashboardaAssignmentsCount(createBackupData);
-		menuBarOperations.doLogOut();	
+		/*menuBarOperations.doLogOut();	
 		loginOperations.doSecondLogin(userName, passWord);
 		rightNavOperations.getApostopheCoursesPage();
 		rightNavOperations.getEnrollParticipantsOnlyPage();
-		Navigator.GetParticipationOperationsPage().UnenrollUser(createBackupData.getPerformanceUserName());
+		Navigator.GetParticipationOperationsPage().UnenrollUser(createBackupData.getPerformanceUserName());*/
 		
 		
 	}
 	
-	@Test(priority=4,description = "Sample-3 ::Complete the assignment, Change Course Name", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=4,description = "Sample-3 ::Complete the assignment, Change Course Name", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void LoginAsStudentAndCompleteAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		System.out.println("TCS 4");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
@@ -79,7 +79,7 @@ public class FullRegressionTest2 extends BaseTest{
 			
 	}
 	
-	@Test(priority=5,description = "MFD-290 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=5,description = "MFD-290 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyDashboardViewsFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
 			System.out.println("TCS 5");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
@@ -104,7 +104,7 @@ public class FullRegressionTest2 extends BaseTest{
 			
 		}	
 	
-	@Test(priority=6,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=6,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		System.out.println("TCS 6");
 		rightNavOperations.clickHome();

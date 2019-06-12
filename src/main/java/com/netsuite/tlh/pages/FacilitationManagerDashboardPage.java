@@ -137,8 +137,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "td[class='resubmitted']")
 	private WebElement resubmitedAssignment;
 	
-	@FindBy(id = "fecthData")
-	private WebElement fetchDataButton;
+	/*@FindBy(id = "fecthData")
+	private WebElement fetchDataButton;*/
+	
 	
 	@FindBy(id = "deleteSubmissionId")
 	private WebElement deleteSubmissionButton;
@@ -199,14 +200,15 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage getDashboardAssignmentCount() throws Throwable {
 		
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"); }};
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+        public Boolean apply(WebDriver driver) {return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"); }};
+        WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+        
 		int count=0;
 		
 		List<WebElement> ele3= BrowserFactory.getDriver().findElements(By.xpath("//ul[@class='pagination']//li"));
 		
-		for(int i=0;i<=ele3.size();i++){
+		for(int i=1;i<=ele3.size()+1;i++){
+			
 			List<WebElement> Page= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr"));
 			System.out.println("Count at page: "+i+" "+Page.size());
 			count=count+Page.size();
@@ -220,6 +222,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			
 			if(ele.equals(ele2)){
 				List<WebElement> PageLast= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr"));
+				System.out.println("Count at Last page: "+PageLast.size());
 				count=count+PageLast.size();
 				break;
 			}	
@@ -249,7 +252,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
-	public FacilitationManagerDashboardPage clickOnFetchData() throws Throwable {
+	/*public FacilitationManagerDashboardPage clickOnFetchData() throws Throwable {
 		waitForElementToBeVisibile(fetchDataButton);
 		waitForElementToBeClickable(fetchDataButton);
 		fetchDataButton.click();
@@ -262,7 +265,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
             WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
             wait.until(expectation);
 		return this;
-	}
+	}*/
 	
 	public FacilitationManagerDashboardPage verifyAssignmentIsGraded(String Username) throws Throwable {
 		waitForElementToBeVisibile(filterButton);
@@ -386,8 +389,10 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		dateSubmittedInput.click();
 		waitForElementToBeVisibile(todaysDate);
 		todaysDate.click();
+		Thread.sleep(3000);
 		waitForElementToBeClickable(todaysDate2);
 		todaysDate2.click();
+		Thread.sleep(3000);
 		return this;
 	}
 	
@@ -428,7 +433,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
-	public FacilitationManagerDashboardPage getDashboardFetchDataTimeStamp() throws Throwable {
+	/*public FacilitationManagerDashboardPage getDashboardFetchDataTimeStamp() throws Throwable {
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
@@ -442,7 +447,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		long totalTime=finish- start;
 		System.out.println("TotalTime taken for Dashboard after fetch Button is clicked  = "+ totalTime +" milli Second");
 		return this;
-	}
+	}*/
 	
 	public FacilitationManagerDashboardPage getDashboardRefreshTimeStamp() throws Throwable {
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
@@ -527,11 +532,11 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 				BrowserFactory.getDriver().switchTo().window(currentWindow);
 		  }
 			wait.until(expectation);
-		  gradeAssignment()
-		  .clickOnFetchData()
+		  gradeAssignment().refreshPage();
+		  /*.clickOnFetchData()
 		  .selectDateSubmitted()
 		  .enterCourseCode(createBackupData.getCourseShortName())
-		  .clickFilterButton();
+		  .clickFilterButton();*/
 		 
 	  }   
 	   return this;
@@ -707,10 +712,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		  
 		  waitForElementToBeVisibile(gradedText);
 		  BrowserFactory.getDriver().close();
-	     
-	
-					 
-			
+	   	
 		return this;
 	}
 	
@@ -729,11 +731,11 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeClickable(By.cssSelector("tr[role='radiogroup']"));
 		List <WebElement> elements=BrowserFactory.getDriver().findElements(By.cssSelector("tr[role='radiogroup']"));
 		for(int i=1;i<=elements.size();i++){	
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			waitForElementToBePresent(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
 			waitForElementToBeClickable(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
 			BrowserFactory.getDriver().findElement(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]")).click();	
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		}	
 		return this;
 	}
