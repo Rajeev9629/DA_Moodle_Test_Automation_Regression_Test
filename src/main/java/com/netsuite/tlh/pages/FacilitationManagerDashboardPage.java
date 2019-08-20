@@ -3,10 +3,11 @@ package com.netsuite.tlh.pages;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 
 import java.text.DateFormat;
 
@@ -16,16 +17,15 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
-import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
+import com.moodle.tlh.tests.FullRegressionTest;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FacilitationManagerDashboardPage extends MenuBarPage {
@@ -33,7 +33,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage() throws DriverNotInitializedException {
 		super();
 	}
-	
+	ExtentTest logger=FullRegressionTest.logger;
 
 	@FindBy(css = "input[name='dateSubmitted']")
 	private WebElement dateSubmittedInput;
@@ -158,7 +158,65 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	@FindBy(xpath = "//td[text()='Final Project Submission']")
 	private WebElement finalProjectSubmision;
+	
+	@FindBy(id = "cgraded")
+	private WebElement gradedAssignmentCount;
+	
+	@FindBy(id = "cungraded")
+	private WebElement UnGradedAssignmentCount;
+	
 	Boolean stat= true;
+	static int count;
+	
+	
+	public FacilitationManagerDashboardPage verifyCreatedUpdatedDate() throws Throwable {
+		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-2]"));
+		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-1]"));
+		String createdNew = created.getText().substring(0, created.getText().length()-9);
+		System.out.println(createdNew);
+		String updatedNew = updated.getText().substring(0, updated.getText().length()-9);
+		System.out.println(updatedNew);
+		
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date date = new Date();
+		String dt= dateFormat.format(date);
+		System.out.println("Created "+createdNew);
+		System.out.println("Updated "+updatedNew);
+		System.out.println("Date "+dt);
+		
+		//Assert.assertEquals(createdNew, dt);
+		Assert.assertEquals(updatedNew, dt);
+		
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage getGradedAssignmentCount() throws Throwable {
+		waitForElementToBeVisibile(gradedAssignmentCount);
+		waitForElementToBeEnabled(gradedAssignmentCount);
+		String countr= gradedAssignmentCount.getText();
+		int i=Integer.parseInt(countr); 
+		if(i==count) {
+			System.out.println("Graded Pass");
+		}
+		else
+			Assert.assertEquals(false, true);
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage getUnGradedAssignmentCount() throws Throwable {
+		waitForElementToBeVisibile(UnGradedAssignmentCount);
+		waitForElementToBeEnabled(UnGradedAssignmentCount);
+		String countr= UnGradedAssignmentCount.getText();
+		int i=Integer.parseInt(countr); 
+		if(i==count) {
+			System.out.println("UnGraded Pass");
+		}
+		else
+			Assert.assertEquals(false, true);
+		
+		logger.pass("UnGraded Assignment Count "+i);
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage verifyRubricGradingMain() throws Throwable {
 		waitForElementToBeVisibile(previoudGrades);
@@ -203,7 +261,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
         public Boolean apply(WebDriver driver) {return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"); }};
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
         
-		int count=0;
+		 count=0;
 		
 		List<WebElement> ele3= BrowserFactory.getDriver().findElements(By.xpath("//ul[@class='pagination']//li"));
 		
@@ -228,6 +286,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			}	
 		}
 		System.out.println("Count "+count);
+		logger.pass("Graded Assignment Count "+count);
             
 		return this;
 	}
@@ -479,6 +538,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		long finish=System.currentTimeMillis();
 		long totalTime=finish- start;
 		System.out.println("TotalTime taken for Graded Filter Dashboard = "+ totalTime +" milli Second");
+		logger.pass("TotalTime taken for Graded Filter Dashboard = "+ totalTime +" milli Second");
 		return this;
 	}
 	
@@ -503,6 +563,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		long finish=System.currentTimeMillis();
 		long totalTime=finish- start;
 		System.out.println("TotalTime taken for dashboard to load = "+ totalTime +" milli Second");
+		logger.pass("TotalTime taken for dashboard to load = "+ totalTime +" milli Second");
 		return this;
 	}
 	
@@ -512,11 +573,12 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
         return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
             }};
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+        wait.until(expectation);
 		waitForElementToBeVisibile(table);
 		waitForElementToBeClickable(table);
 		Thread.sleep(1000);
 	  for(int i=1;i<=Count;i++){
-		  
+		  wait.until(expectation);
 		  WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//td[@class='text-danger bold']/ancestor::tr//td[3]//a"));
 		  waitForElementToBeClickable(element);
 		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
@@ -734,7 +796,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			Thread.sleep(3000);
 			waitForElementToBePresent(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
 			waitForElementToBeClickable(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
-			BrowserFactory.getDriver().findElement(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]")).click();	
+			BrowserFactory.getDriver().findElement(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]")).sendKeys(Keys.ENTER);
 			Thread.sleep(3000);
 		}	
 		return this;
@@ -744,7 +806,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		
 		waitForElementToBeVisibile(saveChangesButton);
 		waitForElementToBeClickable(saveChangesButton);
-		saveChangesButton.click();
+		JavascriptExecutor js = (JavascriptExecutor) BrowserFactory.getDriver(); 
+		 js.executeScript("arguments[0].click();", saveChangesButton);
+		 Thread.sleep(1000);
 		return this;
 	}
 	
@@ -752,7 +816,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		
 		waitForElementToBeVisibile(saveandShowNextButton);
 		waitForElementToBeClickable(saveandShowNextButton);
-		saveandShowNextButton.click();
+		JavascriptExecutor js = (JavascriptExecutor) BrowserFactory.getDriver(); 
+		 js.executeScript("arguments[0].click();", saveandShowNextButton);
+		 Thread.sleep(1000);
 		return this;
 	}
 	

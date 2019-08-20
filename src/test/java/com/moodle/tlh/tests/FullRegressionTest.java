@@ -9,33 +9,54 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FullRegressionTest extends BaseTest{
 	
-	@Test(priority=1,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
-	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
+	
+	@Test(priority=1,description = "MFD-357 ::MFD-358 ::Moodle facilitator manager report feature", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	public void MoodleFacilitatorManagerReportFeature(LinkedHashMap<String, ?> testData) throws Throwable {
+		logger=extent.createTest("1.MFD-357 ::MFD-358 ::Moodle facilitator manager report feature");
 		System.out.println("FullRegressionTest1");
 		System.out.println("TCS 1");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.acceptSitePolicyAgreement();
-		rightNavOperations.getRestoreCoursePage();
-		Navigator.doRestore(createBackupData);	
+		
+		rightNavOperations.getFacilitationManagerReportPage();
+		Navigator.FacilitationManagerReportOperations().verifyFilters(createBackupData);
+		rightNavOperations.clickHome();
+		logger.info("MFD-357 ::MFD-358 ::Moodle facilitator manager report feature Passed" );
 		
 	}
 	
-	@Test(priority=2,description = "MFD-223 ::MFD-264 ::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
-	public void EnrollingTheUsers(LinkedHashMap<String, ?> testData) throws Throwable {
+	@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
+		logger=extent.createTest("2.MFD-221 ::MFD-222 ::Create a backup and Restore for the course");
 		System.out.println("TCS 2");
+		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		
+		rightNavOperations.getRestoreCoursePage();
+		Navigator.doRestore(createBackupData);	
+		logger.pass("Course has been created succesfully");
+		logger.info("MFD-221 ::MFD-222 ::Create a backup and Restore for the course Passed" );
+		
+	}
+	
+	@Test(priority=3,description = "MFD-223 ::MFD-264 ::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	public void EnrollingTheUsers(LinkedHashMap<String, ?> testData) throws Throwable {
+		logger=extent.createTest("3.MFD-223 ::MFD-264 ::Enrolling the Users");
+		System.out.println("TCS 3");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().enrollStudent(createBackupData,createBackupData.getUserName1())
 		.enrollFacilitator(createBackupData,createBackupData.getUserName2())
 		.enrollFacilitator(createBackupData,createBackupData.getUserName5())
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName3())
-		.enrollFacilitationManager(createBackupData,createBackupData.getUserName6()).clickOnRespectiveCourseFromLeftNav(createBackupData);
-		
+		.enrollFacilitationManager(createBackupData,createBackupData.getUserName6())
+		.clickOnRespectiveCourseFromLeftNav(createBackupData);	
+		logger.info("MFD-223 ::MFD-264 ::Enrolling the Users Passed" );
 	}
 	
-	@Test(priority=3,description = "MFD-266 ::Activity completion settings for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=4,description = "MFD-266 ::Activity completion settings for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void ActivityCompletionSettingsforCourse(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 3");
+		logger=extent.createTest("4.MFD-266 ::Activity completion settings for the course");
+		System.out.println("TCS 4");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		Navigator.GetCoursePageOperations().clickTurnEditingOn().
@@ -45,13 +66,15 @@ public class FullRegressionTest extends BaseTest{
 		.doParticipationAcknowledgement(createBackupData.getParticipationAcknowledgement(),createBackupData);
 		rightNavOperations.clickCourseCompletion();
 		Navigator.GetCoursePageOperations().doCourseCompletion(createBackupData).clickTurnEditingOff();
+		logger.info("MFD-266 ::Activity completion settings for the course has been Completed" );
 		
 	}
 	
 	
-	@Test(priority=4,description = "MFD-224 ::Login as student and Complete the assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=5,description = "MFD-224 ::Login as student and Complete the assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void LoginAsStudentAndCompleteAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 4");
+		logger=extent.createTest("5.MFD-224 ::Login as student and Complete the assignment");
+		System.out.println("TCS 5");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
@@ -60,22 +83,26 @@ public class FullRegressionTest extends BaseTest{
 		rightNavOperations.getCoursePage(createBackupData);
 		menuBarOperations.doLogOut();
 		loginOperations.doSecondLogin(userName, passWord);
+		logger.info("MFD-224 ::Login as student and Complete the assignment Passed" );
 		
 	}
 	
-	@Test(priority=5,description = "MFD-225 ::MFD-245::MFD-267::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=6,description = "MFD-225 ::MFD-245::MFD-267::MFD-356 ::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters,verifyCreatedAndUpdatedDate", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void FacilitationDashboardGradingTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 5");
+		logger=extent.createTest("6.MFD-357 ::MFD-358 ::Moodle facilitator manager report feature");
+		System.out.println("TCS 6");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		rightNavOperations.getFacilitationManagerDashboard();
-		Navigator.FacilitationManagerDashboardOperations().gradeAssigment(createBackupData);	
+		Navigator.FacilitationManagerDashboardOperations().gradeAssigment(createBackupData).verifyCreatedAndUpdatedDate();	
+		logger.info("MFD-225 ::MFD-245::MFD-267::MFD-356 ::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters,verifyCreatedAndUpdatedDate Passed" );
 		
 	}
 	
-	@Test(priority=6,description = "MFD-268 :: CourseCheckpointsAlongWithFilters", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=7,description = "MFD-268 :: CourseCheckpointsAlongWithFilters", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CourseCheckpointsAlongWithFilters(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 6");
+		logger=extent.createTest("7.MFD-268 :: CourseCheckpointsAlongWithFilters");
+		System.out.println("TCS 7");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
@@ -95,13 +122,14 @@ public class FullRegressionTest extends BaseTest{
 		Navigator.GetParticipationOperationsPage().getStudentName(createBackupData);
 		rightNavOperations.getFacilitationManagerDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyOriginalGraderFilter(createBackupData)
-		.verifyCourseCodeFilter(createBackupData)
-		;	
+		.verifyCourseCodeFilter(createBackupData);
+		logger.info("MFD-268 :: CourseCheckpointsAlongWithFilters Passed" );
 	}
 	
-	@Test(priority=7,description = "MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=8,description = "MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyDashboardViewsFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
-			System.out.println("TCS 7");
+		logger=extent.createTest("8.MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias");	
+		System.out.println("TCS 8");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			
 			//Login as Facilitator
@@ -120,11 +148,13 @@ public class FullRegressionTest extends BaseTest{
 			Navigator.FacilitationManagerDashboardOperations().verifyDateGradedFilter(createBackupData).verifyFilters(createBackupData);
 			menuBarOperations.doLogOut();
 			loginOperations.doSecondLogin(userName, passWord);
+			logger.info("MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias Passed" );
 		}	
 		
-	@Test(priority=8,description = "MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=9,description = "MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void  StudentFacilitatorAndFacilitationManagerFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 8");
+		logger=extent.createTest("9.MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality");
+		System.out.println("TCS 9");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		
@@ -151,12 +181,14 @@ public class FullRegressionTest extends BaseTest{
 		loginOperations.doSecondLogin(userName, passWord);
 		rightNavOperations.getFacilitationManagerDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyDateGradedFilter(createBackupData).verifyGrader(createBackupData);
+		logger.info("MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality Passed" );
 			
 	}
 		
-		@Test(priority=9,description = "MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment, Verify the Sign Off Button,sign-off button and process", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		@Test(priority=10,description = "MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment, Verify the Sign Off Button,sign-off button and process", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void FacilitationDashboardSignOffTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
-			System.out.println("TCS 9");
+			logger=extent.createTest("10.MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment, Verify the Sign Off Button,sign-off button and process");
+			System.out.println("TCS 10");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			
 			Navigator.FacilitationManagerDashboardOperations().verifySignOffFunctionality();
@@ -168,12 +200,15 @@ public class FullRegressionTest extends BaseTest{
 			menuBarOperations.doLogOut();
 			loginOperations.doSecondLogin(userName, passWord);
 			rightNavOperations.getFacilitationManagerDashboard();
-			Navigator.FacilitationManagerDashboardOperations().signOff(createBackupData);		
+			Navigator.FacilitationManagerDashboardOperations()
+			.signOff(createBackupData);//sign off commented due to defect
+			logger.info("MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment Passed" );
 		}
 		
-		@Test(priority=10,description = "MFD-319::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		@Test(priority=11,description = "MFD-319::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyRubricView(LinkedHashMap<String, ?> testData) throws Throwable {
-			System.out.println("TCS 10");
+			logger=extent.createTest("11.MFD-319::VerifyRubricView");
+			System.out.println("TCS 11");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			//Facilitation Manager
 			Navigator.FacilitationManagerDashboardOperations().verifyRubricGrades(createBackupData);
@@ -185,39 +220,45 @@ public class FullRegressionTest extends BaseTest{
 			menuBarOperations.doLogOut();
 			loginOperations.doSecondLogin(userName, passWord);
 			//Student
-			rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
-			Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(), createBackupData.getUserName1());
-			rightNavOperations.getAssignmentsPage();
-			Navigator.GetAssignmentsOperations().verifyStudentRubricView();
-			menuBarOperations.doLogOut();
-			loginOperations.doSecondLogin(userName, passWord);
+			//rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
+			//Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(), createBackupData.getUserName1());
+			//rightNavOperations.getAssignmentsPage();
+			//Navigator.GetAssignmentsOperations().verifyStudentRubricView();(functionality removed)
+			//menuBarOperations.doLogOut();
+			//loginOperations.doSecondLogin(userName, passWord);
+			logger.info("MFD-319::VerifyRubricView Passed" );
 				
 		}	
 	
-	@Test(priority=11,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=12,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 11");
+		logger=extent.createTest("12.MFD-227 :: Deleting the respective course");
+		System.out.println("TCS 12");
 		rightNavOperations.clickHome();
 		rightNavOperations.clickAllCoursesLink();
-		Navigator.GetCoursePageOperations().deleteRespectiveCourse();	
+		Navigator.GetCoursePageOperations().deleteRespectiveCourse();
+		logger.info("MFD-227 :: Deleting the respective course Passed" );
 	}
 	
 	
 	//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	
-	@Test(priority=12,description = "Sample-1 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=13,description = "Sample-1 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void BackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
+		logger=extent.createTest("13.Sample-1 ::Create a backup and Restore for the course");
 		System.out.println("FullRegressionTest2");
-		System.out.println("TCS 12");
+		System.out.println("TCS 13");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.acceptSitePolicyAgreement();
 		rightNavOperations.getRestoreCoursePage();
 		Navigator.doRestore(createBackupData);	
+		logger.info("Sample-1 ::Create a backup and Restore for the course Passed" );
 	}
 	
-	@Test(priority=13,description = "Sample-2::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=14,description = "Sample-2::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void EnrollTheUsers(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 13");
+		logger=extent.createTest("14.Sample-2::Enrolling the Users");
+		System.out.println("TCS 14");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage()
@@ -228,12 +269,14 @@ public class FullRegressionTest extends BaseTest{
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName3())
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName6())
 		.enrollFacilitationManager(createBackupData,createBackupData.getPerformanceUserName());
-		rightNavOperations.getApostopheCoursesPage();	
+		rightNavOperations.getApostopheCoursesPage();
+		logger.info("Sample-2::Enrolling the Users Passed" );
 	}
 	
-	@Test(priority=14,description = "MFD-316 ::VerifyAssignmentCountsOnDashboard", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=15,description = "MFD-316 ::VerifyAssignmentCountsOnDashboard", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyAssignmentCountsOnDashboard(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 14");
+		logger=extent.createTest("15.MFD-316 ::VerifyAssignmentCountsOnDashboard");
+		System.out.println("TCS 15");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole3(),"3");
@@ -244,12 +287,14 @@ public class FullRegressionTest extends BaseTest{
 		rightNavOperations.getApostopheCoursesPage();
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().UnenrollUser(createBackupData.getPerformanceUserName());
+		logger.info("MFD-316 ::VerifyAssignmentCountsOnDashboard Passed" );
 				
 	}
 	
-	@Test(priority=15,description = "Sample-3 ::Complete the assignment, Change Course Name", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=16,description = "Sample-3 ::Complete the assignment, Change Course Name", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void LoginAsStudentCompleteAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 15");
+		logger=extent.createTest("16.Sample-3 ::Complete the assignment, Change Course Name");
+		System.out.println("TCS 16");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole1(),"1");
@@ -261,7 +306,6 @@ public class FullRegressionTest extends BaseTest{
 		
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole1(),"2");
-
 		
 		rightNavOperations.getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
@@ -270,12 +314,14 @@ public class FullRegressionTest extends BaseTest{
 		Navigator.GetCoursePageOperations().clickTurnEditingOn().changeAssignmentName(createBackupData.getModule2(),createBackupData.getModule2Newname())
 		.changeAssignmentName(createBackupData.getModule3(),createBackupData.getModule3NewName());
 		Navigator.GetCoursePageOperations().clickTurnEditingOff();
+		logger.info("Sample-3 ::Complete the assignment, Change Course Name Passed" );
 			
 	}
 	
-	@Test(priority=16,description = "MFD-290 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=17,description = "MFD-289 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyDashboardFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
-			System.out.println("TCS 16");
+		logger=extent.createTest("17.MFD-289 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment");	
+		System.out.println("TCS 17");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			rightNavOperations.getEnrollParticipantsPage();
 			Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
@@ -295,17 +341,20 @@ public class FullRegressionTest extends BaseTest{
 			loginOperations.doSecondLogin(userName, passWord);
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().verifyDeleteSubmissionButton(createBackupData);
+			logger.info("MFD-289 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment Passed" );
 			
 		}	
 	
-	@Test(priority=17,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=18,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
-		System.out.println("TCS 17");
+		logger=extent.createTest("18.MFD-227 :: Deleting the respective course");
+		System.out.println("TCS 18");
 		rightNavOperations.clickHome();
 		rightNavOperations.clickAllCoursesLink();
 		Navigator.GetCoursePageOperations().deleteRespectiveApostophieCourse();
 		
 		menuBarOperations.doLogOut();
+		logger.info("MFD-227 :: Deleting the respective course Passed" );
 		
 	}
 

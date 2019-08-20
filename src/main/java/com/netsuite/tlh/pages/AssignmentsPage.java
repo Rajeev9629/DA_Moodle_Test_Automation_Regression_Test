@@ -137,8 +137,11 @@ public class AssignmentsPage extends MenuBarPage {
 			     clickAddSubmissionButton();
 			     clickDragAndDropButton();
 			     uploadFile();
+			     wait.until(expectation);
 			     clickuploadThisFileButton();
+			     wait.until(expectation);
 			     clicksaveChangesButton();
+			     wait.until(expectation);
 			     verifySubmission();
 			     BrowserFactory.getDriver().close();
 			     break;

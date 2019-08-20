@@ -1,14 +1,19 @@
 package com.netsuite.tlh.operations;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.framework.exceptions.DriverNotInitializedException;
+import com.moodle.tlh.tests.FullRegressionTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
+import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.pages.FacilitationDashboardPage;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FacilitationDashboardOperations extends BaseOperations {
 	
+	ExtentTest logger=FullRegressionTest.logger;
+	
 	public FacilitationDashboardOperations verifyFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilters");
 		NetsuiteTLHPageFactory.getPage(FacilitationDashboardPage.class)
 		
 		.enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
@@ -40,7 +45,7 @@ public class FacilitationDashboardOperations extends BaseOperations {
 		.expectedCompletionDateInput().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyTableIspresent().clickResetButton()
 		
 		;
-		
+		logger.pass("Facilitation Dashboard Operations Filter has been verified");
 		return this;	
 	}
 	

@@ -22,7 +22,13 @@
 			"CourseShortName": "moodlecourse",
 			"facilitatorName": "Test",
 			"originalGraderName":"Martha",
-			"performanceUserName": "Kelly Witt"
+			"performanceUserName": "Kelly Witt",
+			
+			"courseId":"117",
+			"facilitator":"Hilary Bresnahan",
+			"courseTitle":" Better Teaching and Learning with Formative Assessment TX",
+			"clientInstitution":"",
+		    "categoryName":"TX"
 			
 		}
 	}

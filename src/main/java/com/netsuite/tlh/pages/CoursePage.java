@@ -272,6 +272,12 @@ public class CoursePage extends MenuBarPage {
 	}
 	
 	public CoursePage clickSaveChangesButton() throws Throwable {
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+            	}};
+            	WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+            	wait.until(expectation);
 		waitForElementToBeVisibile(saveChangesButton);
 		saveChangesButton.click();
 		return this;

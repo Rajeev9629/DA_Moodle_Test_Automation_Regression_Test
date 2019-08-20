@@ -1,6 +1,7 @@
 package com.framework.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
@@ -14,8 +15,13 @@ import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.search.SubjectTerm;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
 import com.framework.dataprovider.ITestData;
 import com.google.gson.Gson;
+
 
 public class Utility {
 
@@ -129,4 +135,6 @@ public class Utility {
 
 		return isMailFound;
 	}
+	
+	
 }

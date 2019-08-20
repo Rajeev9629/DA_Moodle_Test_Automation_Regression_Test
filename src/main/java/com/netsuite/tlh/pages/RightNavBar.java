@@ -78,6 +78,15 @@ public class RightNavBar extends BasePage {
 	@FindBy(css = "button[type='Submit']")
 	private WebElement sitePolicuyYesButton;
 	
+	@FindBy(xpath = "//a[text()='Facilitation Manager Report']")
+	private WebElement facilitationManagerReportLink;
+	
+	public RightNavBar clickOnFacilitationManagerReportLink() throws Throwable {
+		waitForElementToBeVisibile(facilitationManagerReportLink);
+		facilitationManagerReportLink.click();
+		return this;
+	}
+	
 	
 	public RightNavBar acceptSitePolicyAgreement() throws Throwable {
 		

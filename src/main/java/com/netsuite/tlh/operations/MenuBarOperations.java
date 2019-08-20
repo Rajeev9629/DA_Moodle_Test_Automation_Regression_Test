@@ -9,7 +9,7 @@ import com.netsuite.tlh.pages.MenuBarPage;
 public class MenuBarOperations extends BaseOperations {
 
 	public MenuBarOperations doLogOut() throws DriverNotInitializedException, Throwable {
-		
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogOut");
 		NetsuiteTLHPageFactory.getPage(MenuBarPage.class).clickmenuBarDropDown().clicklogOut();
 		
 		return OperationFactory.getOperation(MenuBarOperations.class);
