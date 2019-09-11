@@ -21,10 +21,13 @@ public class FullRegressionTest extends BaseTest{
 		rightNavOperations.getFacilitationManagerReportPage();
 		Navigator.FacilitationManagerReportOperations().verifyFilters(createBackupData);
 		rightNavOperations.clickHome();
+		//download csv code
+		
+		
 		logger.info("MFD-357 ::MFD-358 ::Moodle facilitator manager report feature Passed" );
 		
 	}
-	
+	/*
 	@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("2.MFD-221 ::MFD-222 ::Create a backup and Restore for the course");
@@ -50,6 +53,8 @@ public class FullRegressionTest extends BaseTest{
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName3())
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName6())
 		.clickOnRespectiveCourseFromLeftNav(createBackupData);	
+		
+		rightNavOperations.getFacilitationManagerReportPage();
 		logger.info("MFD-223 ::MFD-264 ::Enrolling the Users Passed" );
 	}
 	
@@ -78,11 +83,16 @@ public class FullRegressionTest extends BaseTest{
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
+		rightNavOperations.acceptSitePolicyAgreement();
+		rightNavOperations.getCoursePage(createBackupData);
+		
+		
 		rightNavOperations.getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		rightNavOperations.getCoursePage(createBackupData);
 		menuBarOperations.doLogOut();
 		loginOperations.doSecondLogin(userName, passWord);
+		
 		logger.info("MFD-224 ::Login as student and Complete the assignment Passed" );
 		
 	}
@@ -219,11 +229,11 @@ public class FullRegressionTest extends BaseTest{
 			Navigator.FacilitationManagerDashboardOperations().verifyRubricGrades(createBackupData);
 			menuBarOperations.doLogOut();
 			loginOperations.doSecondLogin(userName, passWord);
-			//Student
+			//Student (functionality removed)
 			//rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 			//Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(), createBackupData.getUserName1());
 			//rightNavOperations.getAssignmentsPage();
-			//Navigator.GetAssignmentsOperations().verifyStudentRubricView();(functionality removed)
+			//Navigator.GetAssignmentsOperations().verifyStudentRubricView();
 			//menuBarOperations.doLogOut();
 			//loginOperations.doSecondLogin(userName, passWord);
 			logger.info("MFD-319::VerifyRubricView Passed" );
@@ -356,6 +366,6 @@ public class FullRegressionTest extends BaseTest{
 		menuBarOperations.doLogOut();
 		logger.info("MFD-227 :: Deleting the respective course Passed" );
 		
-	}
+	}*/
 
 }

@@ -13,9 +13,12 @@ public class FacilitationManagerReportOperations extends BaseOperations {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyFilters");
 		
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerReportPage.class).verifyFiltersName().verifyTableHeadings()
-		.enterCourseIdFilter(createBackupData.getCourseId()).clickFilterButton().verifyCourseIdFilter(createBackupData.getCourseId()).clickResetButton()
+		.enterCourseIdFilter(createBackupData.getCourseId()).clickFilterButton().verifyCourseIdFilter(createBackupData.getCourseId())
+		.verifyingCSVData().clickResetButton()
 		.enterFacilitatorNameFilter(createBackupData.getFacilitator()).clickFilterButton().verifyFacilitatorNameFilter(createBackupData.getFacilitator()).clickResetButton()
+		
 		.enterfacilitatorTitleFilter(createBackupData.getCourseTitle()).clickFilterButton().verifyfacilitatorTitleFilter(createBackupData.getCourseTitle()).clickResetButton()
+		
 		.entercategoryNameFilter(createBackupData.getCategoryName()).clickFilterButton().verifycategoryNameFilter(createBackupData.getCategoryName()).clickResetButton()
 		;
 		

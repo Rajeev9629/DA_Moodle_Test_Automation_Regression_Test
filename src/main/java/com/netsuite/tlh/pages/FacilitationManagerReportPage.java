@@ -3,6 +3,11 @@ package com.netsuite.tlh.pages;
 
 import org.testng.Assert;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebElement;
@@ -13,6 +18,7 @@ import org.openqa.selenium.support.FindBy;
 import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
+import com.framework.utils.FileUtils;
 import com.moodle.tlh.tests.FullRegressionTest;
 
 
@@ -93,6 +99,33 @@ public class FacilitationManagerReportPage extends MenuBarPage {
 	
 	@FindBy(name = "courseName")
 	private WebElement facilitatorTitleInputBox;
+	
+	@FindBy(css = "table[class=table]>tbody>tr>td")
+	private WebElement tableDataCsv;
+	
+	public FacilitationManagerReportPage verifyingCSVData() throws Throwable {
+		waitForElementToBeVisibile(resetButton);
+		waitForElementToBeEnabled(resetButton);
+		List<WebElement> ele=BrowserFactory.getDriver().findElements(By.cssSelector("table[class=table]>tbody>tr>td"));
+		String []webText =new String[ele.size()];
+		int i=0;
+		//Storing List elements text into String array
+		for(WebElement a: ele)
+		{
+			webText[i]=a.getText().replaceAll("\\s", "");
+		   i++;}
+		String []fileText = FileUtils.ReadCsvFile();
+		//traversing webtext
+		System.out.println(Arrays.toString(webText));
+		//traversing fileText
+		System.out.println(Arrays.toString(fileText));
+		
+		if (Arrays.equals(webText, fileText)) {
+			System.out.println("Excel Sheet Data has been verified");
+		}
+		
+		return this;
+	}
 	
 	
 	public FacilitationManagerReportPage entercategoryNameFilter(String categoryName) throws Throwable {

@@ -81,6 +81,17 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "//a[text()='Facilitation Manager Report']")
 	private WebElement facilitationManagerReportLink;
 	
+	@FindBy(css = "span[class='sr-only']")
+	private WebElement HamburgerItem;
+	
+	
+public RightNavBar clickOnHamburgerItem() throws Throwable {
+		
+		waitForElementToBeVisibile(HamburgerItem);
+		waitForElementToBeClickable(HamburgerItem);
+		HamburgerItem.click();
+		return this;
+	}
 	public RightNavBar clickOnFacilitationManagerReportLink() throws Throwable {
 		waitForElementToBeVisibile(facilitationManagerReportLink);
 		facilitationManagerReportLink.click();

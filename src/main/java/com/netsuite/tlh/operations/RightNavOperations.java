@@ -105,6 +105,13 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public RightNavOperations clickHamburgerItem() throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("clickHamburgerItem");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnHamburgerItem()
+		;
+		return this;	
+	}
+	
 	public RightNavOperations acceptSitePolicyAgreement() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("acceptSitePolicyAgreement");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).acceptSitePolicyAgreement()

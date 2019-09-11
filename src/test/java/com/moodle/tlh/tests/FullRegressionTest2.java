@@ -46,6 +46,7 @@ public class FullRegressionTest2 extends BaseTest{
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole3(),"3");
+		
 		rightNavOperations.getFacilitationManagerDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyDashboardaAssignmentsCount(createBackupData);
 		menuBarOperations.doLogOut();	
@@ -62,8 +63,13 @@ public class FullRegressionTest2 extends BaseTest{
 		logger=extent.createTest("16.Sample-3 ::Complete the assignment, Change Course Name");
 		System.out.println("TCS 16");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		
+		menuBarOperations.doLogOut();	
+		loginOperations.doSecondLogin(userName, passWord);
+		rightNavOperations.getApostopheCoursesPage();
+		rightNavOperations.getEnrollParticipantsOnlyPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole1(),"1");
+		//rightNavOperations.acceptSitePolicyAgreement();
+		rightNavOperations.getApostopheCoursesPage();
 		rightNavOperations.getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		
@@ -72,7 +78,8 @@ public class FullRegressionTest2 extends BaseTest{
 		
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole1(),"2");
-		
+		rightNavOperations.acceptSitePolicyAgreement();
+		rightNavOperations.getApostopheCoursesPage();
 		rightNavOperations.getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		menuBarOperations.doLogOut();	
@@ -91,6 +98,8 @@ public class FullRegressionTest2 extends BaseTest{
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			rightNavOperations.getEnrollParticipantsPage();
 			Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
+			rightNavOperations.acceptSitePolicyAgreement();
+			rightNavOperations.getApostopheCoursesPage();
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().verifyApostopheFilters(createBackupData);
 			
@@ -100,6 +109,8 @@ public class FullRegressionTest2 extends BaseTest{
 			Navigator.GetCoursePageOperations().changeCourseName( createBackupData);
 			rightNavOperations.getEnrollParticipantsPage();
 			Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
+			rightNavOperations.acceptSitePolicyAgreement();
+			rightNavOperations.getApostopheCoursesPage();
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().verifyApostopheFilters2(createBackupData);
 			

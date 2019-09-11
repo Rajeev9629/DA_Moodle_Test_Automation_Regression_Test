@@ -165,6 +165,15 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(id = "cungraded")
 	private WebElement UnGradedAssignmentCount;
 	
+	@FindBy(xpath = "//th[text()='Assignment']")
+	private WebElement assignmentHeading;
+	
+	@FindBy(xpath = "//th[text()='Grade']")
+	private WebElement gradeHeading;
+	
+	@FindBy(xpath = "//th[text()='Graded By']")
+	private WebElement gradedByHeading;
+	
 	Boolean stat= true;
 	static int count;
 	
@@ -184,7 +193,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		System.out.println("Updated "+updatedNew);
 		System.out.println("Date "+dt);
 		
-		//Assert.assertEquals(createdNew, dt);
+		Assert.assertEquals(createdNew, dt);
 		Assert.assertEquals(updatedNew, dt);
 		
 		return this;
@@ -437,6 +446,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage verifyRubricView() throws Throwable {
 		waitForElementToBeVisibile(previoudGrades);
 		waitForElementToBeVisibile(previoudGradesTable);
+		waitForElementToBeVisibile(assignmentHeading);
+		waitForElementToBeVisibile(gradeHeading);
+		waitForElementToBeVisibile(gradedByHeading);
 		
 		return this;
 	}

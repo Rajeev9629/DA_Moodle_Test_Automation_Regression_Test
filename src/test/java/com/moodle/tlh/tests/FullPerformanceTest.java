@@ -62,7 +62,7 @@ public class FullPerformanceTest extends BaseTest{
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance");
 		System.out.println("5");
-		rightNavOperations.clickHome();
+		rightNavOperations.clickHamburgerItem().clickHome();
 		rightNavOperations.clickAllCoursesLink();
 		Navigator.GetCoursePageOperations().deleteRespectiveCourse();
 		logger.info("MFD-227 :: Deleting the respective course passed");

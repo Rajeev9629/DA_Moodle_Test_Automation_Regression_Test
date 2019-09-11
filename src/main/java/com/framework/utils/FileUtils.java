@@ -1,10 +1,12 @@
 package com.framework.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -127,24 +129,41 @@ public class FileUtils {
 						newData[j] = data[j];
 					}
 					newData[4] = contactIdToUpdate;
-					csvWriter.writeNext(newData);
-				}
-	        }
-			
+					csvWriter.writeNext(newData);}}	
 			csvReader.close();
 			csvWriter.close();
 			File oldFile = new File("src/test/resources/testdata/course_upload.csv");
 			File newFile = new File("src/test/resources/testdata/course_upload_temp.csv");
 			oldFile.delete();
-			newFile.renameTo(oldFile);
-			
+			newFile.renameTo(oldFile);	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		return newData;
-		
+		return newData;	
 	}
 
+	public static String[] ReadCsvFile() throws IOException {
+		String []newData = null;
+		CSVReader csvReader = new CSVReader(new FileReader("C:/Users/farheen.ahmad/Downloads/Facilitator Manager Report - 20190906.csv"));
+		List<String[]> allRows = csvReader.readAll();
+	      //Read CSV line by line and use the string array as you want
+	     /*for(String[] row : allRows){
+	        System.out.println(Arrays.toString(row));
+	     }*/
+		
+		for(int i=0; i<allRows.size(); i++){
+			String [] data = allRows.get(i);
+			if(i==0){//header
+			}else{
+				//updating contact id
+				newData = new String[data.length];
+				for(int j=0; j<data.length; j++){
+					newData[j] = data[j].replaceAll("\\s", "");
+				}
+				//System.out.println(Arrays.toString(newData));
+		}	
+		csvReader.close();
+	}
+		return newData;
 
-}
+	}}
