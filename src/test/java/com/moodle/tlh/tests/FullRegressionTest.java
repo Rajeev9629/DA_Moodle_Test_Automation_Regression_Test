@@ -27,7 +27,7 @@ public class FullRegressionTest extends BaseTest{
 		logger.info("MFD-357 ::MFD-358 ::Moodle facilitator manager report feature Passed" );
 		
 	}
-	/*
+	
 	@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("2.MFD-221 ::MFD-222 ::Create a backup and Restore for the course");
@@ -54,7 +54,7 @@ public class FullRegressionTest extends BaseTest{
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName6())
 		.clickOnRespectiveCourseFromLeftNav(createBackupData);	
 		
-		rightNavOperations.getFacilitationManagerReportPage();
+		//rightNavOperations.getFacilitationManagerReportPage();
 		logger.info("MFD-223 ::MFD-264 ::Enrolling the Users Passed" );
 	}
 	
@@ -366,6 +366,6 @@ public class FullRegressionTest extends BaseTest{
 		menuBarOperations.doLogOut();
 		logger.info("MFD-227 :: Deleting the respective course Passed" );
 		
-	}*/
+	}
 
 }
