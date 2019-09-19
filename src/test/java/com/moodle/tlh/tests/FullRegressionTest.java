@@ -20,7 +20,7 @@ public class FullRegressionTest extends BaseTest{
 		
 		rightNavOperations.getFacilitationManagerReportPage();
 		Navigator.FacilitationManagerReportOperations().verifyFilters(createBackupData);
-		rightNavOperations.clickHome();
+		//rightNavOperations.clickHome();
 		//download csv code
 		
 		
@@ -28,7 +28,7 @@ public class FullRegressionTest extends BaseTest{
 		
 	}
 	
-	@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	/*@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("2.MFD-221 ::MFD-222 ::Create a backup and Restore for the course");
 		System.out.println("TCS 2");
@@ -366,6 +366,6 @@ public class FullRegressionTest extends BaseTest{
 		menuBarOperations.doLogOut();
 		logger.info("MFD-227 :: Deleting the respective course Passed" );
 		
-	}
+	}*/
 
 }

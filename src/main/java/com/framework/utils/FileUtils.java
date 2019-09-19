@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
@@ -143,13 +145,12 @@ public class FileUtils {
 	}
 
 	public static String[] ReadCsvFile() throws IOException {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+		   LocalDateTime now = LocalDateTime.now();
+		   String date=dtf.format(now);
 		String []newData = null;
-		CSVReader csvReader = new CSVReader(new FileReader("C:/Users/farheen.ahmad/Downloads/Facilitator Manager Report - 20190906.csv"));
+		CSVReader csvReader = new CSVReader(new FileReader("C:/Users/farheen.ahmad/Facilitation_Report/Facilitator Manager Report - "+date+".csv"));
 		List<String[]> allRows = csvReader.readAll();
-	      //Read CSV line by line and use the string array as you want
-	     /*for(String[] row : allRows){
-	        System.out.println(Arrays.toString(row));
-	     }*/
 		
 		for(int i=0; i<allRows.size(); i++){
 			String [] data = allRows.get(i);

@@ -59,8 +59,6 @@ public class BrowserFactory {
 			   // caps.setCapability("name", "Bstack-[Java] Sample Test");  class name was JavaSample
 			    Driver = new RemoteWebDriver(new java.net.URL(URL), caps);
 			    ((RemoteWebDriver) Driver).setFileDetector(new LocalFileDetector());*/
-			    
-			    
 				break;
 			}
 

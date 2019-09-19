@@ -5,16 +5,24 @@ import org.testng.Assert;
 
 import static org.testng.Assert.assertEquals;
 
+import java.awt.Dimension;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.oro.text.regex.Pattern;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
-
-
+import org.sikuli.script.Screen;
+import org.sikuli.script.*;
 import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
@@ -103,6 +111,9 @@ public class FacilitationManagerReportPage extends MenuBarPage {
 	@FindBy(css = "table[class=table]>tbody>tr>td")
 	private WebElement tableDataCsv;
 	
+	@FindBy(id = "downloadCsv")
+	private WebElement downloadCsvButton;
+	
 	public FacilitationManagerReportPage verifyingCSVData() throws Throwable {
 		waitForElementToBeVisibile(resetButton);
 		waitForElementToBeEnabled(resetButton);
@@ -111,18 +122,45 @@ public class FacilitationManagerReportPage extends MenuBarPage {
 		int i=0;
 		//Storing List elements text into String array
 		for(WebElement a: ele)
-		{
-			webText[i]=a.getText().replaceAll("\\s", "");
+		{webText[i]=a.getText().replaceAll("\\s", "");
 		   i++;}
-		String []fileText = FileUtils.ReadCsvFile();
 		//traversing webtext
 		System.out.println(Arrays.toString(webText));
+		//Download CSV File
+		waitForElementToBeVisibile(downloadCsvButton);
+		waitForElementToBeClickable(downloadCsvButton);
+		downloadCsvButton.click();
+		//Download File
+		String download_folder = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata";
+		System.out.println(download_folder);
+		Screen s = new Screen();
+		
+		org.sikuli.script.Pattern fileInputTextBox =  new org.sikuli.script.Pattern(download_folder+"\\FilePathImage.png");
+		org.sikuli.script.Pattern SaveButton = new org.sikuli.script.Pattern(download_folder+"\\SaveButtonImage.png");
+		org.sikuli.script.Pattern YesButton = new org.sikuli.script.Pattern(download_folder+"\\YesButtonImage.png");
+		
+		s.wait(fileInputTextBox, 20);
+		 s.click(fileInputTextBox);
+
+		 s.type("a", KeyModifier.CTRL);
+
+		 s.type(Key.BACKSPACE) ;
+
+		
+        s.type(download_folder+"\\Report.csv");
+        s.click(SaveButton);
+        s.wait(YesButton, 20);
+        s.click(YesButton);
+		/*String download_folder = "src/test/resources";
+		Runtime.getRuntime().exec(System.getProperty("user.dir") + "/" + download_folder+"/FileDownload.exe");
+		
+		String []fileText = FileUtils.ReadCsvFile();
 		//traversing fileText
 		System.out.println(Arrays.toString(fileText));
 		
 		if (Arrays.equals(webText, fileText)) {
 			System.out.println("Excel Sheet Data has been verified");
-		}
+		}*/
 		
 		return this;
 	}
