@@ -149,7 +149,8 @@ public class FileUtils {
 		   LocalDateTime now = LocalDateTime.now();
 		   String date=dtf.format(now);
 		String []newData = null;
-		CSVReader csvReader = new CSVReader(new FileReader("C:/Users/farheen.ahmad/Facilitation_Report/Facilitator Manager Report - "+date+".csv"));
+		String download_folder = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata";
+		CSVReader csvReader = new CSVReader(new FileReader(download_folder+"\\Report.csv"));
 		List<String[]> allRows = csvReader.readAll();
 		
 		for(int i=0; i<allRows.size(); i++){

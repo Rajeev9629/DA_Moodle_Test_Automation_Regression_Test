@@ -16,13 +16,13 @@ public class FacilitationManagerReportOperations extends BaseOperations {
 		.enterCourseIdFilter(createBackupData.getCourseId()).clickFilterButton().verifyCourseIdFilter(createBackupData.getCourseId())
 		.verifyingCSVData()
 		
-		/*.clickResetButton()
+		.clickResetButton()
 		.enterFacilitatorNameFilter(createBackupData.getFacilitator()).clickFilterButton().verifyFacilitatorNameFilter(createBackupData.getFacilitator()).clickResetButton()
 		
 		.enterfacilitatorTitleFilter(createBackupData.getCourseTitle()).clickFilterButton().verifyfacilitatorTitleFilter(createBackupData.getCourseTitle()).clickResetButton()
 		
 		.entercategoryNameFilter(createBackupData.getCategoryName()).clickFilterButton().verifycategoryNameFilter(createBackupData.getCategoryName()).clickResetButton()
-		*/;
+		;
 		
 		return this;	
 	}

@@ -134,33 +134,23 @@ public class FacilitationManagerReportPage extends MenuBarPage {
 		String download_folder = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata";
 		System.out.println(download_folder);
 		Screen s = new Screen();
-		
 		org.sikuli.script.Pattern fileInputTextBox =  new org.sikuli.script.Pattern(download_folder+"\\FilePathImage.png");
 		org.sikuli.script.Pattern SaveButton = new org.sikuli.script.Pattern(download_folder+"\\SaveButtonImage.png");
 		org.sikuli.script.Pattern YesButton = new org.sikuli.script.Pattern(download_folder+"\\YesButtonImage.png");
-		
 		s.wait(fileInputTextBox, 20);
-		 s.click(fileInputTextBox);
-
-		 s.type("a", KeyModifier.CTRL);
-
-		 s.type(Key.BACKSPACE) ;
-
-		
+		s.click(fileInputTextBox);
+		s.type("a", KeyModifier.CTRL);
+		s.type(Key.BACKSPACE) ;
         s.type(download_folder+"\\Report.csv");
         s.click(SaveButton);
         s.wait(YesButton, 20);
         s.click(YesButton);
-		/*String download_folder = "src/test/resources";
-		Runtime.getRuntime().exec(System.getProperty("user.dir") + "/" + download_folder+"/FileDownload.exe");
-		
+      //traversing fileText
 		String []fileText = FileUtils.ReadCsvFile();
-		//traversing fileText
 		System.out.println(Arrays.toString(fileText));
-		
 		if (Arrays.equals(webText, fileText)) {
 			System.out.println("Excel Sheet Data has been verified");
-		}*/
+		}
 		
 		return this;
 	}
