@@ -20,6 +20,17 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationManagerDashboardOperations VerificationOfUnenrolledFacilitatorNameFunctionality(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerificationOfUnenrolledFacilitatorNameFunctionality");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterFacilitatorName(createBackupData.getUserName7())
+		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus()).selectDateSubmitted()
+		.clickFilterButton().verifyTableIspresent().verifyFacilitatorDetails(createBackupData.getUserName7())
+		;
+		logger.pass("VerificationOfUnenrolledFacilitatorNameFunctionality has been verified");
+		
+		return this;	
+	}
+	
 	public FacilitationManagerDashboardOperations SmokeTest(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("SmokeTest");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
@@ -37,6 +48,8 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		logger.pass("DeleteSubmissionButton has been verified");
 		return this;	
 	}
+	
+	
 	
 	public FacilitationManagerDashboardOperations gradeAssigment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment");
@@ -76,11 +89,6 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
-	/*public FacilitationManagerDashboardOperations getFetchDataDashboardPerformance() throws DriverNotInitializedException, Throwable {
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).getDashboardFetchDataTimeStamp()
-		;
-		return this;	
-	}*/
 	
 	public FacilitationManagerDashboardOperations getGradedFilterDashboardPerformance(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getGradedFilterDashboardPerformance");
@@ -119,7 +127,8 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyResubmittedAssignment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent()
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
-		.verifyResubmitedAssignment();
+		//.verifyResubmitedAssignment()
+		;
 		logger.pass("ResubmittedAssignment has been verified");
 		
 		return this;	

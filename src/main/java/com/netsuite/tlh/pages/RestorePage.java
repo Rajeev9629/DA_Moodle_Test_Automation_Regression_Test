@@ -1,9 +1,13 @@
 package com.netsuite.tlh.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
 import com.framework.base.BrowserFactory;
@@ -61,9 +65,21 @@ public class RestorePage extends BasePage {
 	@FindBy(css = "input[id='id_setting_root_users']")
 	private WebElement enrolledUserCheckBox;
 	
+	@FindBy(css = "div[class='fp-content-center']>i")
+	private WebElement loadingSign;
+	
 	public RestorePage clickOnRestoreButton() throws Throwable {
-		waitForElementToBeClickable(restoreButton);
+		waitForElementToBeVisibile(loadingSign);
+		waitForElementToBeInVisibile(loadingSign);
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+        public Boolean apply(WebDriver driver) {
+         return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+            }};
+            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+    		wait.until(expectation);
 		waitForElementToBeVisibile(restoreButton);
+		waitForElementToBeClickable(restoreButton);
+		
 		restoreButton.click();
 		return this;
 	}

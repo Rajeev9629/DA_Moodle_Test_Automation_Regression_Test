@@ -10,7 +10,7 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 public class FullRegressionTest extends BaseTest{
 	
 	
-	@Test(priority=1,description = "MFD-357 ::MFD-358 ::Moodle facilitator manager report feature", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=1,description = "MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void MoodleFacilitatorManagerReportFeature(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("1.MFD-357 ::MFD-358 ::Moodle facilitator manager report feature");
 		System.out.println("FullRegressionTest1");
@@ -85,8 +85,6 @@ public class FullRegressionTest extends BaseTest{
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
 		rightNavOperations.acceptSitePolicyAgreement();
 		rightNavOperations.getCoursePage(createBackupData);
-		
-		
 		rightNavOperations.getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		rightNavOperations.getCoursePage(createBackupData);
@@ -146,7 +144,7 @@ public class FullRegressionTest extends BaseTest{
 			rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 			Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
 			rightNavOperations.getFacilitationDashboard();
-			//add course code tomorrow
+			
 			Navigator.FacilitationDashboardOperations().verifyFilters(createBackupData);
 			menuBarOperations.doLogOut();
 			loginOperations.doSecondLogin(userName, passWord);

@@ -32,7 +32,39 @@ public class CreateBackupData implements ITestData {
 	private String courseTitle;
 	private String clientInstitution;
 	private String categoryName;
+	private String studentName;
+	private String facilitatorNameStud;
+	private String userName2Short;
+	private String userName7;
 	
+	
+	
+	
+	
+	public String getUserName7() {
+		return userName7;
+	}
+	public void setUserName7(String userName7) {
+		this.userName7 = userName7;
+	}
+	public String getUserName2Short() {
+		return userName2Short;
+	}
+	public void setUserName2Short(String userName2Short) {
+		this.userName2Short = userName2Short;
+	}
+	public String getFacilitatorNameStud() {
+		return facilitatorNameStud;
+	}
+	public void setFacilitatorNameStud(String facilitatorNameStud) {
+		this.facilitatorNameStud = facilitatorNameStud;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
 	public String getCategoryName() {
 		return categoryName;
 	}

@@ -81,6 +81,9 @@ public class AssignmentsPage extends MenuBarPage {
 	@FindBy(xpath = "//td[text()='Final Project Submission']")
 	private WebElement finalProjectSubmision;
 	
+	@FindBy(css = "div[class='fp-content']")
+	private WebElement pageLoadingIcon;
+	
 	public AssignmentsPage verifyStudentRubricView() throws Throwable {
 		waitForElementToBeVisibile(Module2Link);
 		Module2Link.click();
@@ -123,7 +126,7 @@ public class AssignmentsPage extends MenuBarPage {
 	}
 	
 	public AssignmentsPage completeAssignment() throws Throwable {
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		String currentWindow = BrowserFactory.getDriver().getWindowHandle();
 		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
 			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().equalsIgnoreCase("Assignment")) {
@@ -131,18 +134,19 @@ public class AssignmentsPage extends MenuBarPage {
 			            public Boolean apply(WebDriver driver) {
 			                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
 			            }};
-			            
 			            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
 			            wait.until(expectation);
 			     clickAddSubmissionButton();
 			     clickDragAndDropButton();
 			     uploadFile();
 			     wait.until(expectation);
+			     Thread.sleep(2000);
 			     clickuploadThisFileButton();
 			     wait.until(expectation);
 			     clicksaveChangesButton();
 			     wait.until(expectation);
 			     verifySubmission();
+			     wait.until(expectation);
 			     BrowserFactory.getDriver().close();
 			     break;
 			   } 
@@ -187,13 +191,17 @@ public class AssignmentsPage extends MenuBarPage {
 	}
 	
 	public AssignmentsPage clicksaveChangesButton() throws Throwable {
+		//waitforloadingbuttontogo
+		waitForElementToBeVisibile(pageLoadingIcon);
+		waitForElementToBeClickable(pageLoadingIcon);
+		Thread.sleep(2000);
 		waitForElementToBeVisibile(saveChangesButton);
 		saveChangesButton.click();
 	   return this;
 	}
 	
 	public AssignmentsPage verifySubmission() throws Throwable {
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		waitForElementToBeVisibile(submittedForGradingText);
 		
 	   return this;

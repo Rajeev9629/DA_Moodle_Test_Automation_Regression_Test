@@ -52,7 +52,9 @@ public class ParticipantsPage extends BasePage {
 	public ParticipantsPage clickOnUnEnrolUsers(String UserName) throws Throwable {
 		waitForElementToBeVisibile(participantsTable);
 		waitForElementToBeClickable(participantsTable);
-		BrowserFactory.getDriver().findElement(By.xpath("//a[text()='" + UserName + "']/ancestor::tr//td//div//a[@title='Unenrol']")).click();
+		BrowserFactory.getDriver().findElement(By.xpath("//a[contains(text(),'" + UserName + "')]/ancestor::tr//td//div//a[@title='Unenrol']")).click();
+		
+		
 		waitForElementToBeVisibile(unEnrollButton);
 		waitForElementToBeClickable(unEnrollButton);
 		unEnrollButton.click();
@@ -87,11 +89,13 @@ public class ParticipantsPage extends BasePage {
 	public ParticipantsPage selectRoles(String Role) throws Throwable {
 		waitForElementToBeVisibile(roleBox);
 		waitForElementToBeClickable(roleBox);
+		Thread.sleep(2000);
 		Select sel= new Select(roleBox);
 		sel.selectByVisibleText(Role);
 		/*Student
 		Facilitator
 		Facilitation Manager*/
+		Thread.sleep(1000);
 		usersInputBox.sendKeys(Keys.ENTER);
 		return this;
 	}

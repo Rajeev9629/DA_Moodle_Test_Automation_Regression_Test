@@ -32,6 +32,7 @@ public class MenuBarPage extends BasePage {
             }};
             WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
             wait.until(expectation);
+            Thread.sleep(3000);
 		waitForElementToBeVisibile(menuBarDropdown);
 		menuBarDropdown.click();
 		return this;

@@ -86,7 +86,7 @@ public class CoursePageOperations extends BaseOperations {
 	public CoursePageOperations doCourseCompletion(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doCourseCompletion");
 		NetsuiteTLHPageFactory.getPage(CoursePage.class).selectCompletionRequirements(createBackupData.getCompletionRequirement())
-		.clickActivityCompletionHeader2().clickSelectAll().clickSaveChangesButton()
+		.clickActivityCompletionHeader2().clickSelectAll().clickSaveChangesButton1()
 		;
 		return this;	
 	}

@@ -39,7 +39,7 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "(//span[text()='Participants'])[2]")
 	private WebElement participantsLink;
 	
-	@FindBy(xpath = "//span[text()='Participants' and @class='media-body ']")
+	@FindBy(xpath = "//span[text()='Participants' and @class='media-body font-weight-bold']")
 	private WebElement participantsLinkOnly;
 	
 	@FindBy(xpath = "//p//a[text()='Courses']")

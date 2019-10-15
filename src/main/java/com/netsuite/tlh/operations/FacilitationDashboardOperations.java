@@ -6,6 +6,7 @@ import com.moodle.tlh.tests.FullRegressionTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.pages.FacilitationDashboardPage;
+import com.netsuite.tlh.pages.FacilitationManagerDashboardPage;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FacilitationDashboardOperations extends BaseOperations {
@@ -50,5 +51,15 @@ public class FacilitationDashboardOperations extends BaseOperations {
 	}
 	
 	
+	public FacilitationDashboardOperations filterStundentCourse(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("filterStundentCourse");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
+		.enterStudentName(createBackupData.getUserName7()).selectAssignmentStatus(createBackupData.getStatusUngraded())
+		.clickFilterButton().openAssigmentsLink(createBackupData,3)
+		
+		;
+		logger.pass("filterStundentCourse has been verified");
+		return this;	
+	}
 	
 }

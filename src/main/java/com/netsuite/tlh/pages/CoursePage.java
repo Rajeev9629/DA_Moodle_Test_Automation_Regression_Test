@@ -140,6 +140,11 @@ public class CoursePage extends MenuBarPage {
 	@FindBy(id = "expandable_branch_0_courses")
 	private WebElement CoursesLink;
 	
+	@FindBy(css = "div[class='fp-content']")
+	private WebElement fileSubmissionBox;
+	
+	
+	
 	public CoursePage clickCoursesLink() throws Throwable {
 		waitForElementToBeVisibile(CoursesLink);
 		waitForElementToBeClickable(CoursesLink);
@@ -278,6 +283,25 @@ public class CoursePage extends MenuBarPage {
             	}};
             	WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
             	wait.until(expectation);
+            	
+            	waitForElementToBeVisibile(fileSubmissionBox);  	
+            	waitForElementToBeClickable(fileSubmissionBox);
+            	
+		waitForElementToBeVisibile(saveChangesButton);
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor)BrowserFactory.getDriver();
+		executor.executeScript("arguments[0].click();", saveChangesButton);
+		return this;
+	}
+	
+	public CoursePage clickSaveChangesButton1() throws Throwable {
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+            	}};
+            	WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+            	wait.until(expectation);
+          
 		waitForElementToBeVisibile(saveChangesButton);
 		saveChangesButton.click();
 		return this;
