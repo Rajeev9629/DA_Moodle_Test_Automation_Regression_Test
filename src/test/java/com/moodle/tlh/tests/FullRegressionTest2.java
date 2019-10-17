@@ -22,7 +22,7 @@ public class FullRegressionTest2 extends BaseTest{
 		logger.info("Sample-1 ::Create a backup and Restore for the course Passed" );
 	}
 	
-	@Test(priority=14,description = "Sample-2::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+@Test(priority=14,description = "Sample-2::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void EnrollTheUsers(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("14.Sample-2::Enrolling the Users");
 		System.out.println("TCS 14");
@@ -162,7 +162,7 @@ public class FullRegressionTest2 extends BaseTest{
 		}
 
 	
-	//@Test(priority=19,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=19,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("19.MFD-227 :: Deleting the respective course");
 		System.out.println("TCS 19");

@@ -89,10 +89,10 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[contains(text(),'Signed-off')]")
 	private WebElement signedOffText;
 	
-	@FindBy(xpath = "//span[contains(text(),'Choose Facilitator...')]")
-	private WebElement facilitatorNameDropDown;
+	/*@FindBy(xpath = "//span[contains(text(),'Choose Facilitator...')]")
+	private WebElement facilitatorNameDropDown;*/
 	
-	@FindBy(css = "input[class='chosen-search-input']")
+	@FindBy(name = "facilitatorName")
 	private WebElement facilitatortextBox;
 	
 	@FindBy(id = "resetButton")
@@ -176,6 +176,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "div[class='fp-content']")
 	private WebElement submissionBox;
 	
+	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[6]")
+	private WebElement gradedDateField;
 	
 	Boolean stat= true;
 	static int count;
@@ -357,6 +359,22 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
+	public FacilitationManagerDashboardPage verifyDateGraded() throws Throwable {
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+		waitForElementToBeVisibile(gradedDateField);
+		String Actual= gradedDateField.getText();
+		String ActualNew = Actual.substring(0, Actual.length()-9);
+		
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date date = new Date();
+		String Expected=dateFormat.format(date);
+		
+		Assert.assertEquals(ActualNew, Expected);
+
+		return this;
+	}
+	
 	public FacilitationManagerDashboardPage verifyGrader(String Student, String Facilitator) throws Throwable {
 		waitForElementToBeVisibile(filterButton);
 		waitForElementToBeClickable(filterButton);
@@ -443,6 +461,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 		
 	public FacilitationManagerDashboardPage clickResetButton() throws Throwable {
+		Thread.sleep(4000);
 		waitForElementToBeVisibile(resetButton);
 		waitForElementToBeClickable(resetButton);
 		resetButton.click();
@@ -450,14 +469,14 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage enterFacilitatorName(String facilitatorname) throws Throwable {
-		waitForElementToBeVisibile(facilitatorNameDropDown);
+		/*waitForElementToBeVisibile(facilitatorNameDropDown);
 		waitForElementToBeClickable(facilitatorNameDropDown);
 		facilitatorNameDropDown.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000);*/
 		waitForElementToBeVisibile(facilitatortextBox);
 		waitForElementToBeClickable(facilitatortextBox);
 		facilitatortextBox.sendKeys(facilitatorname);
-		facilitatortextBox.sendKeys(Keys.ENTER);
+		
 		return this;
 	}
 
@@ -511,7 +530,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		for(int i=1;i<ele.size();i++){
 			String res=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr[" + i + "]//td[5]")).getText();
 			if(!res.equalsIgnoreCase(Status)){
-				//Assert.assertEquals("False", "True");
+				Assert.assertEquals("False", "True");
 			}
 		}		
 		return this;
@@ -573,8 +592,12 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage waitforPageLoad() throws Throwable {
-		
-		
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+            }};
+            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+            wait.until(expectation);
 		return this;
 	}
 	
@@ -625,10 +648,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		  }
 			wait.until(expectation);
 		  gradeAssignment().refreshPage();
-		  /*.clickOnFetchData()
-		  .selectDateSubmitted()
-		  .enterCourseCode(createBackupData.getCourseShortName())
-		  .clickFilterButton();*/
 		 
 	  }   
 	   return this;
@@ -663,7 +682,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		String dt= dateFormat.format(date);
 		waitForElementToBePresent(By.xpath("//td[contains(text(),'Graded')]/preceding-sibling::td[contains(text(),'" + dt + "')]"));
 		waitForElementToBePresent(By.xpath("//td[contains(text(),'Graded')]/following-sibling::td[contains(text(),'" + dt + "')]"));
-		//waitForElementToBePresent(By.xpath("//td[contains(text(),'Admin User')]"));
+		waitForElementToBePresent(By.xpath("//td[contains(text(),'Admin User')]"));
 		
 		
 		return this;
@@ -749,6 +768,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 
 			WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
 					wait.until(expectation);
+					Thread.sleep(3000);
 				  clickOneOfTheGrade();
 				  clicksaveChangesButton();
 				  Thread.sleep(3000);
@@ -868,15 +888,16 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeVisibile(gradedTextEndPage);
 		waitForElementToBeClickable(gradedTextEndPage);
 		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])[2]"));
-		//waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])[3]"));
+		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])[3]"));
 		return this;
 	}
 	
 	public FacilitationManagerDashboardPage clickOnSignOffButton() throws Throwable {
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(signOffButton);
 		waitForElementToBeClickable(signOffButton);
 		signOffButton.click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Alert alert = BrowserFactory.getDriver().switchTo().alert();
 		Thread.sleep(1000);
 		alert.accept();
@@ -891,6 +912,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
             
             WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
     		wait.until(expectation);
+    		Thread.sleep(4000);
+    		
 		waitForElementToBeVisibile(signedOffText);
 		waitForElementToBeClickable(signedOffText);
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");

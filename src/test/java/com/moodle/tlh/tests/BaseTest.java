@@ -33,7 +33,8 @@ public class BaseTest {
 	protected LoginOperations loginOperations;
 	protected RightNavOperations rightNavOperations;
 	private LinkedHashMap<String, ?> loginDataMap;
-	protected String userName, passWord;
+	public static String userName;
+	public static String passWord;
 	ExtentReports extent;
 	public static ExtentTest logger;
 	

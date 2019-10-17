@@ -108,9 +108,12 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	public FacilitationManagerDashboardOperations signOff(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("signOff");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatus())
-		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded();
-		//.clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
-		//.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()//.verifyUserSignedOff()
+		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded()
+		.clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
+		.enterStudentName(createBackupData.getUserName1())
+		
+		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
+		;
 		logger.pass("User has been signed Off");
 		;
 		return this;	
@@ -127,7 +130,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyResubmittedAssignment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent()
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
-		//.verifyResubmitedAssignment()
+		.verifyResubmitedAssignment()
 		;
 		logger.pass("ResubmittedAssignment has been verified");
 		
@@ -138,7 +141,9 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	public FacilitationManagerDashboardOperations verifyDateGradedFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDateGradedFilter");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateGraded()
-		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton();
+		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton()
+		.verifyDateGraded()
+		;
 		logger.pass("DateGradedFilter has been verified");
 		return this;	
 	}

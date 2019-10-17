@@ -112,7 +112,7 @@ public RightNavBar clickOnHamburgerItem() throws Throwable {
 	}
 	
 	public RightNavBar clickOnHomeLink() throws Throwable {
-		
+		Thread.sleep(2000);
 		waitForElementToBeVisibile(HomeLink);
 		waitForElementToBeClickable(HomeLink);
 		HomeLink.click();
