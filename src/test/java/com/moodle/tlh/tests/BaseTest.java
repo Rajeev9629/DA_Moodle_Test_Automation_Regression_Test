@@ -7,6 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -35,7 +36,7 @@ public class BaseTest {
 	private LinkedHashMap<String, ?> loginDataMap;
 	public static String userName;
 	public static String passWord;
-	ExtentReports extent;
+	public static ExtentReports extent;
 	public static ExtentTest logger;
 	
 
@@ -63,9 +64,14 @@ public class BaseTest {
 		loginOperations.doLogin(userName, passWord).verifyUserLoggedInSuccessfully();
 		
 	}
+	
+	
 	@AfterMethod
 	public void tearDown(ITestResult result) throws IOException, InstantiationException, IllegalAccessException
 	{
+		logger.pass(result.getMethod().getMethodName()+" done succesfully");
+		logger.info(result.getMethod().getMethodName()+" Passed");
+		
 		if(result.getStatus()==ITestResult.FAILURE)
 		{
 			String MethodName=OperationFactory.getOperation(MethodNameReportingOprations.class).getMethodName();
@@ -75,8 +81,15 @@ public class BaseTest {
 			
 	}
 	@AfterClass
-	public void tearDown() {
-		BrowserFactory.quitDriver();
+	public void tearDown() throws DriverNotInitializedException, Throwable {
+		menuBarOperations.doLogOut();
+		//BrowserFactory.quitDriver();
+	}
+	
+
+	static public void loggingStartReport(String testName) {
+		logger=extent.createTest(testName);
+		
 	}
 
 }

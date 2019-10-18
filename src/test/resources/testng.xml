@@ -9,7 +9,9 @@
 
 	<test name="Moodle_TLH_Automation_Test">
 		<classes>
-			<class name="com.moodle.tlh.tests.FullRegressionTest"></class>
+			<class name="com.moodle.modularisedTestCases.CreateNormalNameCourse"></class>
+			<class name="com.moodle.modularisedTestCases.Regression_TCS1"></class>
+			<class name="com.moodle.modularisedTestCases.Regression_TCS2"></class>
 		</classes>
 	</test>
 </suite>

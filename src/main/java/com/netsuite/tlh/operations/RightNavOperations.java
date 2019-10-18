@@ -25,6 +25,12 @@ public class RightNavOperations extends BaseOperations {
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnBackupLink().verifyUserIsOnBackupCoursePage();
 		return this;	
 	}
+	public RightNavOperations searchAndGetCoursePage(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("searchAndGetCoursePage");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnCourses().searchAndGoToCourse(createBackupData.getCourseName())
+		;
+		return this;	
+	}
 	
 	public RightNavOperations getEnrollParticipantsPage() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsPage");

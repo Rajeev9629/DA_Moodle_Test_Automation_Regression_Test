@@ -84,8 +84,30 @@ public class RightNavBar extends BasePage {
 	@FindBy(css = "span[class='sr-only']")
 	private WebElement HamburgerItem;
 	
+	@FindBy(id = "coursesearchbox")
+	private WebElement searchCoursesInput;
 	
-public RightNavBar clickOnHamburgerItem() throws Throwable {
+	@FindBy(xpath = "//button[text()='Go']")
+	private WebElement goButton;
+	
+	
+	
+	public RightNavBar searchAndGoToCourse(String courseName) throws Throwable {
+		
+		waitForElementToBeVisibile(searchCoursesInput);
+		waitForElementToBeClickable(searchCoursesInput);
+		searchCoursesInput.sendKeys(courseName);
+		waitForElementToBeVisibile(goButton);
+		waitForElementToBeClickable(goButton);
+		goButton.click();
+		waitForElementToBePresent(By.xpath("//span[contains(text(),'" + courseName + "')]"));
+		waitForElementToBeClickable(By.xpath("//span[contains(text(),'" + courseName + "')]"));
+		BrowserFactory.getDriver().findElement(By.xpath("//span[contains(text(),'" + courseName + "')]")).click();
+		return this;
+	}
+	
+	
+	public RightNavBar clickOnHamburgerItem() throws Throwable {
 		
 		waitForElementToBeVisibile(HamburgerItem);
 		waitForElementToBeClickable(HamburgerItem);

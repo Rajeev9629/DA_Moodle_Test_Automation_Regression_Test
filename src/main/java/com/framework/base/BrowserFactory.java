@@ -85,9 +85,9 @@ public class BrowserFactory {
 	}
 
 	public static void quitDriver() {
-		//if (Driver != null) {
-			//Driver.quit();
-			//log.info("Driver shut down.. All Browsers closed...");
-		//}
+		if (Driver != null) {
+			Driver.quit();
+			log.info("Driver shut down.. All Browsers closed...");
+		}
 	}
 }
