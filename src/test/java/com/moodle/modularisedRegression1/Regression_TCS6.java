@@ -1,4 +1,4 @@
-package com.moodle.modularisedTestCases;
+package com.moodle.modularisedRegression1;
 
 import java.util.LinkedHashMap;
 
@@ -16,20 +16,18 @@ public class Regression_TCS6 extends BaseTest{
 		loggingStartReport("MFD-268 :: CourseCheckpointsAlongWithFilters");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
-		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage();
-		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
+		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
 		Navigator.GetCoursePageOperations().verifyCheckPoints();
 		menuBarOperations.doLogOutAndLogin();
-		rightNavOperations.getEnrollParticipantsPage();
-		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
+		rightNavOperations.getEnrollParticipantsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyResubmittedAssignment(createBackupData).gradeAssigment2(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		
-		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage();
-		Navigator.GetParticipationOperationsPage().getStudentName(createBackupData);
-		rightNavOperations.getFacilitationManagerDashboard();
-		Navigator.FacilitationManagerDashboardOperations().verifyOriginalGraderFilter(createBackupData)
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
+		.getStudentName(createBackupData);
+		rightNavOperations.getFacilitationManagerDashboard().verifyOriginalGraderFilter(createBackupData)
 		.verifyCourseCodeFilter(createBackupData);
 		
 	}

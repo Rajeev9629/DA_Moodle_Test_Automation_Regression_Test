@@ -1,4 +1,4 @@
-package com.moodle.modularisedTestCases;
+package com.moodle.modularisedRegression1;
 
 import java.util.LinkedHashMap;
 
@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import com.framework.utils.Utility;
 import com.moodle.tlh.tests.BaseTest;
-import com.netsuite.tlh.operations.Navigator;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class Regression_TCS5 extends BaseTest{
@@ -16,8 +15,8 @@ public class Regression_TCS5 extends BaseTest{
 		loggingStartReport("MFD-225 ::MFD-245::MFD-267::MFD-356");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
-		rightNavOperations.getFacilitationManagerDashboard();
-		Navigator.FacilitationManagerDashboardOperations().gradeAssigment(createBackupData).verifyCreatedAndUpdatedDate();	
+		rightNavOperations.getFacilitationManagerDashboard()
+		.gradeAssigment(createBackupData).verifyCreatedAndUpdatedDate();	
 		
 	}
 }

@@ -1,4 +1,4 @@
-package com.moodle.modularisedTestCases;
+package com.moodle.modularisedRegression1;
 
 import java.util.LinkedHashMap;
 

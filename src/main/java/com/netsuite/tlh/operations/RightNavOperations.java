@@ -8,10 +8,10 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class RightNavOperations extends BaseOperations {
 
-	public RightNavOperations getFacilitationManagerReportPage() throws DriverNotInitializedException, Throwable {
+	public FacilitationManagerReportOperations getFacilitationManagerReportPage() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getFacilitationManagerReportPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnFacilitationManagerReportLink();
-		return this;	
+		return OperationFactory.getOperation(FacilitationManagerReportOperations.class);	
 	}
 	
 	public RightNavOperations getFitnessPovCoursePage() throws DriverNotInitializedException, Throwable {
@@ -32,10 +32,10 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
-	public RightNavOperations getEnrollParticipantsPage() throws DriverNotInitializedException, Throwable {
+	public ParticipantsPageOperations getEnrollParticipantsPage() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnParticipants();
-		return this;	
+		return OperationFactory.getOperation(ParticipantsPageOperations.class);	
 	}
 	
 	public RightNavOperations getEnrollParticipantsOnlyPage() throws DriverNotInitializedException, Throwable {
@@ -75,10 +75,10 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
-	public RightNavOperations getAssignmentsPage() throws DriverNotInitializedException, Throwable {
+	public AssignmentsOperations getAssignmentsPage() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getAssignmentsPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnAssignments();
-		return this;	
+		return OperationFactory.getOperation(AssignmentsOperations.class);	
 	}
 	
 	public RightNavOperations getQuizzesPage() throws DriverNotInitializedException, Throwable {
@@ -87,10 +87,10 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
-	public RightNavOperations getFacilitationManagerDashboard() throws DriverNotInitializedException, Throwable {
+	public FacilitationManagerDashboardOperations getFacilitationManagerDashboard() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getFacilitationManagerDashboard");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnFacilitationManagerDashboardLink();
-		return this;	
+		return OperationFactory.getOperation(FacilitationManagerDashboardOperations.class);	
 	}
 	
 	public RightNavOperations getFacilitationDashboard() throws DriverNotInitializedException, Throwable {
