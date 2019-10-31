@@ -1,7 +1,15 @@
 package com.moodle.tlh.tests;
 
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
+
+import javax.imageio.ImageIO;
 
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -67,7 +75,7 @@ public class BaseTest {
 	
 	
 	@AfterMethod
-	public void tearDown(ITestResult result) throws IOException, InstantiationException, IllegalAccessException
+	public void tearDown(ITestResult result) throws IOException, InstantiationException, IllegalAccessException, AWTException
 	{
 		logger.pass(result.getMethod().getMethodName()+" done succesfully");
 		logger.info(result.getMethod().getMethodName()+" Passed");
@@ -76,6 +84,16 @@ public class BaseTest {
 		{
 			String MethodName=OperationFactory.getOperation(MethodNameReportingOprations.class).getMethodName();
 			logger.fail( MethodName+" Failed, Reason: "+result.getThrowable().getMessage());
+			Robot r = new Robot(); 
+			String path = "./Reports/Shot.jpg";
+			Rectangle capture =  
+			new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()); 
+			BufferedImage Image = r.createScreenCapture(capture); 
+			ImageIO.write(Image, "jpg", new File(path)); 
+			String dest = System.getProperty("user.dir") + "/Reports/Shot.jpg";
+			System.out.println(dest);
+			logger.addScreenCaptureFromPath(dest);
+
 		}
 		extent.flush();
 			
