@@ -162,7 +162,7 @@ public class FullRegressionTest2 extends BaseTest{
 		}
 
 	
-	@Test(priority=19,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=19,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("19.MFD-227 :: Deleting the respective course");
 		System.out.println("TCS 19");

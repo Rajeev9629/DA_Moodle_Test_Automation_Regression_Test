@@ -10,7 +10,7 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 public class FullRegressionTest extends BaseTest{
 	
 	
-	//@Test(priority=1,description = "MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=1,description = "MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void MoodleFacilitatorManagerReportFeature(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("1.MFD-357 ::MFD-358 ::Moodle facilitator manager report feature");
 		System.out.println("FullRegressionTest1");
@@ -28,7 +28,7 @@ public class FullRegressionTest extends BaseTest{
 		
 	}
 	
-	//@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=2,description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("2.MFD-221 ::MFD-222 ::Create a backup and Restore for the course");
 		System.out.println("TCS 2");
@@ -41,7 +41,7 @@ public class FullRegressionTest extends BaseTest{
 		
 	}
 	
-	//@Test(priority=3,description = "MFD-223 ::MFD-264 ::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=3,description = "MFD-223 ::MFD-264 ::Enrolling the Users", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void EnrollingTheUsers(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("3.MFD-223 ::MFD-264 ::Enrolling the Users");
 		System.out.println("TCS 3");
@@ -57,7 +57,7 @@ public class FullRegressionTest extends BaseTest{
 		logger.info("MFD-223 ::MFD-264 ::Enrolling the Users Passed" );
 	}
 	
-	//@Test(priority=4,description = "MFD-266 ::Activity completion settings for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=4,description = "MFD-266 ::Activity completion settings for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void ActivityCompletionSettingsforCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("4.MFD-266 ::Activity completion settings for the course");
 		System.out.println("TCS 4");
@@ -76,7 +76,7 @@ public class FullRegressionTest extends BaseTest{
 	}
 	
 	
-	//@Test(priority=5,description = "MFD-224 ::Login as student and Complete the assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=5,description = "MFD-224 ::Login as student and Complete the assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void LoginAsStudentAndCompleteAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("5.MFD-224 ::Login as student and Complete the assignment");
 		System.out.println("TCS 5");
@@ -92,7 +92,7 @@ public class FullRegressionTest extends BaseTest{
 		
 	}
 	
-	//@Test(priority=6,description = "MFD-225 ::MFD-245::MFD-267::MFD-356 ::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters,verifyCreatedAndUpdatedDate", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=6,description = "MFD-225 ::MFD-245::MFD-267::MFD-356 ::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters,verifyCreatedAndUpdatedDate", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void FacilitationDashboardGradingTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("6.MFD-357 ::MFD-358 ::Moodle facilitator manager report feature");
 		System.out.println("TCS 6");
@@ -105,7 +105,7 @@ public class FullRegressionTest extends BaseTest{
 	}
 	
 	
-	//@Test(priority=7,description = "MFD-268 :: CourseCheckpointsAlongWithFilters", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=7,description = "MFD-268 :: CourseCheckpointsAlongWithFilters", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CourseCheckpointsAlongWithFilters(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("7.MFD-268 :: CourseCheckpointsAlongWithFilters");
 		System.out.println("TCS 7");
@@ -130,7 +130,7 @@ public class FullRegressionTest extends BaseTest{
 		logger.info("MFD-268 :: CourseCheckpointsAlongWithFilters Passed" );
 	}
 	
-	//@Test(priority=8,description = "MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=8,description = "MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyDashboardViewsFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("8.MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias");	
 		System.out.println("TCS 8");
@@ -153,7 +153,7 @@ public class FullRegressionTest extends BaseTest{
 			logger.info("MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias Passed" );
 		}	
 		
-	//@Test(priority=9,description = "MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=9,description = "MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void  StudentFacilitatorAndFacilitationManagerFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("9.MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality");
 		System.out.println("TCS 9");
@@ -184,7 +184,7 @@ public class FullRegressionTest extends BaseTest{
 			
 	}
 		
-		//@Test(priority=10,description = "MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment, Verify the Sign Off Button,sign-off button and process", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		@Test(priority=10,description = "MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment, Verify the Sign Off Button,sign-off button and process", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void FacilitationDashboardSignOffTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 			logger=extent.createTest("10.MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment, Verify the Sign Off Button,sign-off button and process");
 			System.out.println("TCS 10");
@@ -203,7 +203,7 @@ public class FullRegressionTest extends BaseTest{
 			logger.info("MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment Passed" );
 		}
 		
-		//@Test(priority=11,description = "MFD-319::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		@Test(priority=11,description = "MFD-319::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyRubricView(LinkedHashMap<String, ?> testData) throws Throwable {
 			logger=extent.createTest("11.MFD-319::VerifyRubricView");
 			System.out.println("TCS 11");
@@ -223,7 +223,7 @@ public class FullRegressionTest extends BaseTest{
 				
 		}	
 	
-	//@Test(priority=12,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=12,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("12.MFD-227 :: Deleting the respective course");
 		System.out.println("TCS 12");
