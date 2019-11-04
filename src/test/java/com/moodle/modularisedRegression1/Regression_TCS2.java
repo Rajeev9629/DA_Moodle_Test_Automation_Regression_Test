@@ -14,6 +14,7 @@ public class Regression_TCS2  extends BaseTest{
 	public void EnrollingTheUsers(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-223 ::MFD-264 ::Enrolling the Users");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		System.out.println("2");
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.enrollStudent(createBackupData,createBackupData.getUserName1())

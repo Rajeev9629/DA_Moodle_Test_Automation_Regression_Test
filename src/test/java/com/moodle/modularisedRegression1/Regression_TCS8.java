@@ -15,7 +15,7 @@ public class Regression_TCS8 extends BaseTest {
 	public void  StudentFacilitatorAndFacilitationManagerFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-246 ::MFD-244::MFD-260");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		
+		System.out.println("8");
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.enrollStudent(createBackupData,createBackupData.getUserName4()).loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName4());

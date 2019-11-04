@@ -15,6 +15,7 @@ public class Regression_TCS10 extends BaseTest{
 	public void VerifyRubricView(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-319::VerifyRubricView");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		System.out.println("10");
 		//Facilitation Manager
 		rightNavOperations.getFacilitationManagerDashboard().verifyRubricGrades(createBackupData);
 		//Facilitator

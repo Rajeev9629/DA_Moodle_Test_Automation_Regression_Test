@@ -15,6 +15,7 @@ public class Regression_TCS7 extends BaseTest {
 	public void VerifyDashboardViewsFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-246 ::MFD-244::MFD-260");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		System.out.println("7");
 		
 		//Login as Facilitator
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()

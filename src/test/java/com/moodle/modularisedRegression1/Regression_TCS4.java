@@ -14,6 +14,7 @@ public class Regression_TCS4 extends BaseTest{
 	public void LoginAsStudentAndCompleteAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-224 ::Login as student and Complete the assignment");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		System.out.println("4");
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());

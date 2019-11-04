@@ -73,6 +73,8 @@ public class BaseTest {
 		
 	}
 	
+	@BeforeMethod
+	public void doMoodleLogin() {}
 	
 	@AfterMethod
 	public void tearDown(ITestResult result) throws IOException, InstantiationException, IllegalAccessException, AWTException
@@ -91,7 +93,6 @@ public class BaseTest {
 			BufferedImage Image = r.createScreenCapture(capture); 
 			ImageIO.write(Image, "jpg", new File(path)); 
 			String dest = System.getProperty("user.dir") + "/Reports/Shot.jpg";
-			System.out.println(dest);
 			logger.addScreenCaptureFromPath(dest);
 
 		}
@@ -100,7 +101,8 @@ public class BaseTest {
 	}
 	@AfterClass
 	public void tearDown() throws DriverNotInitializedException, Throwable {
-		menuBarOperations.doLogOut();
+		menuBarOperations.doLogOut().navigateToMainloginScreen();
+		
 		//BrowserFactory.quitDriver();
 	}
 	

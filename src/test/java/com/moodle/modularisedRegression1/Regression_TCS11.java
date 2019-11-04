@@ -12,6 +12,7 @@ public class Regression_TCS11 extends BaseTest{
 	@Test(description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-227 :: Deleting the respective course");
+		System.out.println("11");
 		
 		rightNavOperations.clickHome().clickAllCoursesLink();
 		Navigator.GetCoursePageOperations().deleteRespectiveCourse();

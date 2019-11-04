@@ -86,7 +86,7 @@ public class FullRegressionTest extends BaseTest{
 		rightNavOperations.acceptSitePolicyAgreement().getCoursePage(createBackupData).getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		rightNavOperations.getCoursePage(createBackupData);
-		menuBarOperations.doLogOutAndLogin();
+		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 		
 		logger.info("MFD-224 ::Login as student and Complete the assignment Passed" );
 		
@@ -114,12 +114,12 @@ public class FullRegressionTest extends BaseTest{
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
 		Navigator.GetCoursePageOperations().verifyCheckPoints();
-		menuBarOperations.doLogOutAndLogin();
+		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyResubmittedAssignment(createBackupData).gradeAssigment2(createBackupData);
-		menuBarOperations.doLogOutAndLogin();
+		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 		
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 		rightNavOperations.getEnrollParticipantsPage();
@@ -142,14 +142,14 @@ public class FullRegressionTest extends BaseTest{
 			rightNavOperations.getFacilitationDashboard();
 			
 			Navigator.FacilitationDashboardOperations().verifyFilters(createBackupData);
-			menuBarOperations.doLogOutAndLogin();
+			menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 			
 			//Login as Facilitation Manager
 			rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 			Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole3(),createBackupData.getUserName6());
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().verifyDateGradedFilter(createBackupData).verifyFilters(createBackupData);
-			menuBarOperations.doLogOutAndLogin();
+			menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 			logger.info("MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias Passed" );
 		}	
 		
@@ -165,19 +165,19 @@ public class FullRegressionTest extends BaseTest{
 		loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName4());
 		rightNavOperations.getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingmentModule2().completeAssingmentModule3();	
-		menuBarOperations.doLogOutAndLogin();
+		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 		
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName5());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().gradeAssigment3(createBackupData);
-		menuBarOperations.doLogOutAndLogin();
+		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().UnenrollUser(createBackupData.getUserName5())
 		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyAssignmentIsGraded(createBackupData);
-		menuBarOperations.doLogOutAndLogin();
+		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 		rightNavOperations.getFacilitationManagerDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyDateGradedFilter(createBackupData).verifyGrader(createBackupData);
 		logger.info("MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality Passed" );
@@ -196,7 +196,7 @@ public class FullRegressionTest extends BaseTest{
 			rightNavOperations.getQuizzesPage();
 			//to write from here
 			Navigator.GetCoursePageOperations().completeParticipationAcknowledgement2();
-			menuBarOperations.doLogOutAndLogin();
+			menuBarOperations.doLogOutAndLogin().acceptSitePolicy();
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations()
 			.signOff(createBackupData);//sign off commented due to defect
@@ -217,7 +217,8 @@ public class FullRegressionTest extends BaseTest{
 			Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole2(), createBackupData.getUserName2());
 			rightNavOperations.getFacilitationDashboard();
 			Navigator.FacilitationManagerDashboardOperations().verifyRubricGrades(createBackupData);
-			menuBarOperations.doLogOutAndLogin();
+			menuBarOperations.doLogOutAndLogin().acceptSitePolicy()
+			;
 			
 			logger.info("MFD-319::VerifyRubricView Passed" );
 				

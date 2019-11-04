@@ -24,6 +24,42 @@ public class MenuBarPage extends BasePage {
 	@FindBy(css = "i[title='Log out']")
 	private WebElement logOut;
 	
+	@FindBy(xpath = "//*[text()='Advancement Courses']")
+	private WebElement loginPage2Heading;
+	
+	@FindBy(css = "button[type='Submit']")
+	private WebElement sitePolicyYesButton;
+	
+	@FindBy(css = "button[data-action='toggle-drawer']")
+	private WebElement hamburgerIcon;
+	
+	
+	public MenuBarPage acceptSitePolicy() throws Throwable {
+		Thread.sleep(2000);
+		if(BrowserFactory.getDriver().getTitle().equalsIgnoreCase("Site policy agreement")) {
+			waitForElementToBeVisibile(sitePolicyYesButton);
+			waitForElementToBeClickable(sitePolicyYesButton);
+			sitePolicyYesButton.click();
+			waitForElementToBeVisibile(hamburgerIcon);
+			waitForElementToBeClickable(hamburgerIcon);
+			hamburgerIcon.click();
+		}
+		return this;
+	}
+	
+	
+	
+	public MenuBarPage checkLoginPage() throws Throwable {
+		Thread.sleep(2000);
+		if(BrowserFactory.getDriver().getTitle().equalsIgnoreCase("Advancement Courses: Log in to the site")) {
+			waitForElementToBeVisibile(loginPage2Heading);
+			System.out.println("XXXXXXXXX"+BrowserFactory.url);
+			BrowserFactory.getDriver().get(BrowserFactory.url);
+		}
+		return this;
+	}
+	
+	
 	
 	public MenuBarPage clickmenuBarDropDown() throws Throwable {
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {

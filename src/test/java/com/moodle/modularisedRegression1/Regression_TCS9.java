@@ -15,6 +15,7 @@ public class Regression_TCS9 extends BaseTest {
 	public void FacilitationDashboardSignOffTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-226 :: MFD-270::MFD-259::");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		System.out.println("9");
 		
 		rightNavOperations.getFacilitationManagerDashboard().verifySignOffFunctionality();
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()

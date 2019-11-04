@@ -20,6 +20,7 @@ import com.framework.exceptions.DriverNotInitializedException;
 public class BrowserFactory {
 	public static Logger log = Logger.getLogger(BrowserFactory.class);
 	private static WebDriver Driver;
+	public static String url;
 	  //public static final String USERNAME = "farheen8";
 	 // public static final String AUTOMATE_KEY = "oPxNSDVBm9MqYWbYyztD";
 	  //public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
@@ -61,7 +62,8 @@ public class BrowserFactory {
 			    ((RemoteWebDriver) Driver).setFileDetector(new LocalFileDetector());*/
 				break;
 			}
-
+			
+			url=appUrl;
 			Driver.manage().window().maximize();
 			Driver.get(appUrl);
 			

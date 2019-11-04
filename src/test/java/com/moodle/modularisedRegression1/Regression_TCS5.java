@@ -14,6 +14,7 @@ public class Regression_TCS5 extends BaseTest{
 	public void FacilitationDashboardGradingTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-225 ::MFD-245::MFD-267::MFD-356");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		System.out.println("5");
 		
 		rightNavOperations.getFacilitationManagerDashboard()
 		.gradeAssigment(createBackupData).verifyCreatedAndUpdatedDate();	
