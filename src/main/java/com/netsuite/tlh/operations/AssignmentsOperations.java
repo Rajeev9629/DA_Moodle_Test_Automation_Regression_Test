@@ -6,6 +6,7 @@ import com.moodle.tlh.tests.FullRegressionTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.pages.AssignmentsPage;
+import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class AssignmentsOperations extends BaseOperations {
 	ExtentTest logger=FullRegressionTest.logger;
@@ -38,5 +39,11 @@ public class AssignmentsOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public AssignmentsOperations verifyAssignment3Feedback(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyAssignment2Feedback");
+		NetsuiteTLHPageFactory.getPage(AssignmentsPage.class).verifyAssigment3Feedback( createBackupData.getFeedbackComment())
+		;
+		return this;	
+	}
 	
 }

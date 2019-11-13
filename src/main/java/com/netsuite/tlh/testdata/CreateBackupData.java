@@ -36,11 +36,16 @@ public class CreateBackupData implements ITestData {
 	private String facilitatorNameStud;
 	private String userName2Short;
 	private String userName7;
+	private String feedbackComment;
 	
 	
 	
-	
-	
+	public String getFeedbackComment() {
+		return feedbackComment;
+	}
+	public void setFeedbackComment(String feedbackComment) {
+		this.feedbackComment = feedbackComment;
+	}
 	public String getUserName7() {
 		return userName7;
 	}

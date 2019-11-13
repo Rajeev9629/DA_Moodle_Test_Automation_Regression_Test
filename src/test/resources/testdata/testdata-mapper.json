@@ -14,6 +14,8 @@
 	"MFD-268": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-319": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-000": "src/test/resources/testdata/enrollUsers.json",
+	"MFD-432":"src/test/resources/testdata/enrollUsers.json",
+	"MFD-433":"src/test/resources/testdata/enrollUsers.json",
 	
 	
 	

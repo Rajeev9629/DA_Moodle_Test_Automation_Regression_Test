@@ -132,4 +132,11 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationSignOffReportOperations getSignOffPage() throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getFacilitationManagerDashboard");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnFacilitationSignOffReportLink()
+		;
+		return OperationFactory.getOperation(FacilitationSignOffReportOperations.class);	
+	}
+	
 }

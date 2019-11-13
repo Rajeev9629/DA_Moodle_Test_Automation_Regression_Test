@@ -179,9 +179,19 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[6]")
 	private WebElement gradedDateField;
 	
+	@FindBy(id = "id_assignfeedbackcomments_editoreditable")
+	private WebElement feedBackTextBox;
+	
 	Boolean stat= true;
 	static int count;
 	
+	
+	public FacilitationManagerDashboardPage addFeedBack(String Feedback) throws Throwable {
+		waitForElementToBeVisibile(feedBackTextBox);
+		waitForElementToBeClickable(feedBackTextBox);
+		feedBackTextBox.sendKeys(Feedback);
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage verifyFacilitatorDetails(String user) throws Throwable {
 		waitForElementToBeVisibile(table);
@@ -490,6 +500,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
+	
+	
 	public FacilitationManagerDashboardPage selectDateSubmitted() throws Throwable {
 		
 		waitForElementToBeClickable(dateSubmittedInput);
@@ -642,7 +654,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 					   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
 						   wait.until(expectation);
 							Thread.sleep(4000);
-						   verifyRubricView();   	   
+						   verifyRubricView(); 
+						   addFeedBack(createBackupData.getFeedbackComment());
 					   }}  
 				BrowserFactory.getDriver().switchTo().window(currentWindow);
 		  }

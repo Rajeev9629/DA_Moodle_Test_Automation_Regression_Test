@@ -84,6 +84,50 @@ public class AssignmentsPage extends MenuBarPage {
 	@FindBy(css = "div[class='fp-content']")
 	private WebElement pageLoadingIcon;
 	
+	@FindBy(css = "i[title='View full']")
+	private WebElement expandFeedback;
+	
+	public AssignmentsPage verifyAssigment3Feedback(String feedBack) throws Throwable {
+		waitForElementToBeVisibile(table);
+		String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
+		Module3Link.sendKeys(selectLinkOpeninNewTab);
+		verifyFeedback(feedBack);
+		
+	   return this;
+	}
+	
+	public AssignmentsPage verifyFeedback(String feedBack) throws Throwable {
+		Thread.sleep(3000);
+		String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().equalsIgnoreCase("Assignment")) {
+				   		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+			            public Boolean apply(WebDriver driver) {
+			                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+			            }};
+			            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+			            wait.until(expectation);
+			     
+			    waitForElementToBeVisibile(expandFeedback);
+			     waitForElementToBeClickable(expandFeedback);
+			     expandFeedback.click();
+			     waitForElementToBePresent(By.xpath("//p[text()='" + feedBack + "']"));
+			     
+			     
+			     
+			     BrowserFactory.getDriver().close();
+			     break;
+			   } 
+			   else {
+				   BrowserFactory.getDriver().switchTo().window(currentWindow);
+			   } 
+	        
+			   BrowserFactory.getDriver().switchTo().window(currentWindow);
+	}
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+		return this;
+	}
+	
 	public AssignmentsPage verifyStudentRubricView() throws Throwable {
 		waitForElementToBeVisibile(Module2Link);
 		Module2Link.click();

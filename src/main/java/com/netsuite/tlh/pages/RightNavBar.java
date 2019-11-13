@@ -23,6 +23,8 @@ public class RightNavBar extends BasePage {
 	public RightNavBar() throws DriverNotInitializedException {
 		super();
 	}
+	
+	static String courseID;
 
 	@FindBy(css = "a[title='Understanding Our Universe: An Introduction to Astronomy']")
 	private WebElement fitnessPovCourse;
@@ -90,7 +92,17 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "//button[text()='Go']")
 	private WebElement goButton;
 	
+	@FindBy(xpath = "//a[text()='Facilitation Sign-off Report']")
+	private WebElement facilitationSgnOffReportLink;
 	
+	@FindBy(xpath = "//a[text()='General']")
+	private WebElement generalLink;
+	
+	public RightNavBar clickOnFacilitationSignOffReportLink() throws Throwable {
+		waitForElementToBeVisibile(facilitationSgnOffReportLink);
+		facilitationSgnOffReportLink.click();
+		return this;
+	}
 	
 	public RightNavBar searchAndGoToCourse(String courseName) throws Throwable {
 		
@@ -103,6 +115,11 @@ public class RightNavBar extends BasePage {
 		waitForElementToBePresent(By.xpath("//span[contains(text(),'" + courseName + "')]"));
 		waitForElementToBeClickable(By.xpath("//span[contains(text(),'" + courseName + "')]"));
 		BrowserFactory.getDriver().findElement(By.xpath("//span[contains(text(),'" + courseName + "')]")).click();
+		waitForElementToBeVisibile(generalLink);
+		String url=BrowserFactory.getDriver().getCurrentUrl();
+		String[] split = url.split("id=");
+		courseID = split[1];
+		
 		return this;
 	}
 	

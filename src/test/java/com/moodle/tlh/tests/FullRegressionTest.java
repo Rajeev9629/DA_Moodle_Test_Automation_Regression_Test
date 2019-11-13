@@ -92,7 +92,7 @@ public class FullRegressionTest extends BaseTest{
 		
 	}
 	
-	@Test(priority=6,description = "MFD-225 ::MFD-245::MFD-267::MFD-356 ::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters,verifyCreatedAndUpdatedDate", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	/*@Test(priority=6,description = "MFD-225 ::MFD-245::MFD-267::MFD-356 ::Facilitation Dashboard :Grading,Verify Rubic View, Grading Filters,verifyCreatedAndUpdatedDate", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void FacilitationDashboardGradingTheAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("6.MFD-357 ::MFD-358 ::Moodle facilitator manager report feature");
 		System.out.println("TCS 6");
@@ -234,5 +234,5 @@ public class FullRegressionTest extends BaseTest{
 		logger.info("MFD-227 :: Deleting the respective course Passed" );
 	}
 	
-
+*/
 }
