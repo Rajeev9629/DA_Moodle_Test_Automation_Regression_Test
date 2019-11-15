@@ -45,22 +45,22 @@ public class FacilitationSignOffReportPage extends MenuBarPage {
 	@FindBy(css = "label[for='courseName']")
 	private WebElement signOffDate;
 	
-	@FindBy(css = "//a[text()='Course ID']")
+	@FindBy(xpath = "//a[text()='Course ID']")
 	private WebElement courseIDTable;
 	
-	@FindBy(css = "//a[text()='Student ID']")
+	@FindBy(xpath = "//a[text()='Student ID']")
 	private WebElement studentIDTable;
 	
-	@FindBy(css = "//a[text()='Grade']")
+	@FindBy(xpath = "//a[text()='Grade']")
 	private WebElement gradeTable;
 	
-	@FindBy(css = "//a[text()='Facilitator ID']")
+	@FindBy(xpath = "//a[text()='Facilitator ID']")
 	private WebElement facilitatorIDTable;
 	
-	@FindBy(css = "//a[text()='Sign-off date']")
+	@FindBy(xpath = "//a[text()='Sign-off date']")
 	private WebElement signOffDateTable;
 	
-	@FindBy(css = "//a[text()='Created']")
+	@FindBy(xpath = "//a[text()='Created']")
 	private WebElement createdDateTable;
 	
 	@FindBy(name = "course_id")

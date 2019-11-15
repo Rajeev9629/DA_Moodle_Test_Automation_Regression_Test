@@ -24,7 +24,7 @@ public class Regression_TCS8 extends BaseTest {
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName5());
-		rightNavOperations.getFacilitationDashboard();
+		rightNavOperations.getFacilitationManagerDashboard();
 		Navigator.FacilitationManagerDashboardOperations().gradeAssigment3(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName5())

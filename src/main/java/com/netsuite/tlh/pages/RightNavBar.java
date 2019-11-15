@@ -100,6 +100,7 @@ public class RightNavBar extends BasePage {
 	
 	public RightNavBar clickOnFacilitationSignOffReportLink() throws Throwable {
 		waitForElementToBeVisibile(facilitationSgnOffReportLink);
+		waitForElementToBeClickable(facilitationSgnOffReportLink);
 		facilitationSgnOffReportLink.click();
 		return this;
 	}
