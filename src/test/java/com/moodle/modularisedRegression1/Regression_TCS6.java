@@ -13,7 +13,7 @@ public class Regression_TCS6 extends BaseTest{
 	
 	@Test(description = "MFD-268 :: CourseCheckpointsAlongWithFilters", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CourseCheckpointsAlongWithFilters(LinkedHashMap<String, ?> testData) throws Throwable {
-		loggingStartReport("MFD-268 :: CourseCheckpointsAlongWithFilters");
+		loggingStartReport("TCS6:MFD-268 :: CourseCheckpointsAlongWithFilters");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("6");
 		

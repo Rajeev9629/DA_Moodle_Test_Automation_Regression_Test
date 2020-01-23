@@ -35,22 +35,24 @@ public class FullRegressionTest2 extends BaseTest{
 		.enrollFacilitator(createBackupData,createBackupData.getUserName5())
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName3())
 		.enrollFacilitationManager(createBackupData,createBackupData.getUserName6())
-		.enrollFacilitationManager(createBackupData,createBackupData.getPerformanceUserName());
+		.enrollFacilitationManager(createBackupData,createBackupData.getPerformanceUserName())
+		;
 		rightNavOperations.getApostopheCoursesPage();
 		logger.info("Sample-2::Enrolling the Users Passed" );
 	}
 	
-	@Test(priority=15,description = "MFD-316 ::VerifyAssignmentCountsOnDashboard", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=16,description = "MFD-316 ::TLHMFD-442::VerifyAssignmentCountsOnDashboard", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyAssignmentCountsOnDashboard(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("15.MFD-316 ::VerifyAssignmentCountsOnDashboard");
 		System.out.println("TCS 15");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+		
+		//defect
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveApostopheUser(createBackupData.getRole3(),"3");
-
 		rightNavOperations.getFacilitationManagerDashboard();
-		//defect
-		//Navigator.FacilitationManagerDashboardOperations().verifyDashboardaAssignmentsCount(createBackupData);
+		Navigator.FacilitationManagerDashboardOperations().gradeOneAssigment(createBackupData)
+		.verifyDashboardaAssignmentsCount(createBackupData);
 		menuBarOperations.doLogOut();	
 		loginOperations.doSecondLogin(userName, passWord);
 		rightNavOperations.getApostopheCoursesPage();
@@ -60,7 +62,7 @@ public class FullRegressionTest2 extends BaseTest{
 				
 	}
 	
-	@Test(priority=16,description = "Sample-3 ::Complete the assignment, Change Course Name", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=15,description = "Sample-3 ::Complete the assignment, Change Course Name", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void LoginAsStudentCompleteAssignment(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("16.Sample-3 ::Complete the assignment, Change Course Name");
 		System.out.println("TCS 16");
@@ -94,7 +96,7 @@ public class FullRegressionTest2 extends BaseTest{
 			
 	}
 	
-	@Test(priority=17,description = "MFD-290 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=17,description = "MFD-290 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerifyDashboardFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("17.MFD-290 ::MFD-288::Apostrophe in Facilitation Dashboard filter criteria, verify deleting submitted assignment");	
 		System.out.println("TCS 17");
@@ -125,7 +127,7 @@ public class FullRegressionTest2 extends BaseTest{
 			
 		}	
 	//eric rodrigo as facilitator, june as student(defect) 
-	//@Test(priority=18,description = "MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+//	@Test(priority=18,description = "MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerificationOfUnenrolledFacilitatorNameFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
 			logger=extent.createTest("18.MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality");
 			System.out.println("TCS 18");

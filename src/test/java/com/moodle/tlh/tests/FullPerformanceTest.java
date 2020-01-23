@@ -53,12 +53,11 @@ public class FullPerformanceTest extends BaseTest{
 			.getLoadingDashboardPerformance()
 			.getRefreshDashboardPerformance()
 			.getGradedFilterDashboardPerformance(createBackupData)
-			//.getFetchDataDashboardPerformance()
 			;	
 			logger.info("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance passed");
 		}
 	
-	@Test(priority=5,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	//@Test(priority=5,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance");
 		System.out.println("5");

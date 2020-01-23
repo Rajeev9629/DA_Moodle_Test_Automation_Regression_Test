@@ -13,7 +13,7 @@ public class Regression_TCS10 extends BaseTest{
 	
 	@Test(description = "MFD-319::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyRubricView(LinkedHashMap<String, ?> testData) throws Throwable {
-		loggingStartReport("MFD-319::VerifyRubricView");
+		loggingStartReport("TCS10:MFD-319::VerifyRubricView");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("10");
 		//Facilitation Manager

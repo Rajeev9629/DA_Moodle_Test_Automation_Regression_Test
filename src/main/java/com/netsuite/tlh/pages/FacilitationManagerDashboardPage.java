@@ -182,9 +182,22 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(id = "id_assignfeedbackcomments_editoreditable")
 	private WebElement feedBackTextBox;
 	
+	@FindBy(css = "a[aria-label='Last']")
+	private WebElement lastButton;
+	
 	Boolean stat= true;
 	static int count;
 	
+	
+	public FacilitationManagerDashboardPage verifyDashboardErrorReading() throws Throwable {
+		waitForElementToBeVisibile(lastButton);
+		waitForElementToBeClickable(lastButton);
+		lastButton.click();
+		Thread.sleep(3000);
+		waitForElementToBeVisibile(lastButton);
+		waitForElementToBeClickable(lastButton);
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage addFeedBack(String Feedback) throws Throwable {
 		waitForElementToBeVisibile(feedBackTextBox);
@@ -295,31 +308,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
         public Boolean apply(WebDriver driver) {return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"); }};
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
-        
-		 count=0;
-		
-		List<WebElement> ele3= BrowserFactory.getDriver().findElements(By.xpath("//ul[@class='pagination']//li"));
-		
-		for(int i=1;i<=ele3.size()+1;i++){
-			
-			List<WebElement> Page= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr"));
-			System.out.println("Count at page: "+i+" "+Page.size());
-			count=count+Page.size();
-			waitForElementToBeClickable(dashboardNextButton);
-			dashboardNextButton.click();
-			wait.until(expectation);
-			
-			WebElement ele= BrowserFactory.getDriver().findElement(By.xpath("//ul[@class='pagination']//li[@class='active']"));
-			WebElement ele2= BrowserFactory.getDriver().findElement(By.xpath("(//ul[@class='pagination']//li)[last()-2]"));
-			
-			
-			if(ele.equals(ele2)){
-				List<WebElement> PageLast= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr"));
-				System.out.println("Count at Last page: "+PageLast.size());
-				count=count+PageLast.size();
-				break;
-			}	
-		}
+        count=0;
+		List<WebElement> Page= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr"));
+		count=Page.size();
 		System.out.println("Count "+count);
 		logger.pass("Graded Assignment Count "+count);
             

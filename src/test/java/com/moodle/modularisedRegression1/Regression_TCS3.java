@@ -13,7 +13,7 @@ public class Regression_TCS3 extends BaseTest{
 	
 	@Test(description = "MFD-266 ::Activity completion settings for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void ActivityCompletionSettingsforCourse(LinkedHashMap<String, ?> testData) throws Throwable {
-		loggingStartReport("MFD-266 ::Activity completion settings for the courses");
+		loggingStartReport("TCS3:MFD-266 ::Activity completion settings for the courses");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("3");
 		

@@ -13,7 +13,7 @@ public class Regression_TCS8 extends BaseTest {
 	
 	@Test(description = "MFD-269 ::Module 5: Student/FacilitatorAndFacilitationManagerFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void  StudentFacilitatorAndFacilitationManagerFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
-		loggingStartReport("MFD-246 ::MFD-244::MFD-260");
+		loggingStartReport("TCS8:Regression_TCS8:MFD-269");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("8");
 		
@@ -24,7 +24,7 @@ public class Regression_TCS8 extends BaseTest {
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName5());
-		rightNavOperations.getFacilitationManagerDashboard();
+		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().gradeAssigment3(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName5())

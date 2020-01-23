@@ -56,6 +56,9 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "//*[text()='Facilitation Manager Dashboard']")
 	private WebElement facilitationManagerDashboardLink;
 	
+	@FindBy(xpath = "//span[text()='Facilitation Manager Dashboard']")
+	private WebElement FMDLinkLeftNav;
+	
 	@FindBy(xpath = "//*[text()='Facilitation Dashboard']")
 	private WebElement facilitationDashboardLink;
 	
@@ -113,9 +116,13 @@ public class RightNavBar extends BasePage {
 		waitForElementToBeVisibile(goButton);
 		waitForElementToBeClickable(goButton);
 		goButton.click();
-		waitForElementToBePresent(By.xpath("//span[contains(text(),'" + courseName + "')]"));
+		/*waitForElementToBePresent(By.xpath("//span[contains(text(),'" + courseName + "')]"));
 		waitForElementToBeClickable(By.xpath("//span[contains(text(),'" + courseName + "')]"));
-		BrowserFactory.getDriver().findElement(By.xpath("//span[contains(text(),'" + courseName + "')]")).click();
+		BrowserFactory.getDriver().findElement(By.xpath("//span[contains(text(),'" + courseName + "')]")).click();*/
+		
+		waitForElementToBePresent(By.xpath("//a//*[contains(text(),'Automation')]"));
+		waitForElementToBeClickable(By.xpath("//a//*[contains(text(),'Automation')]"));
+		BrowserFactory.getDriver().findElement(By.xpath("//a//*[contains(text(),'Automation')]")).click();
 		waitForElementToBeVisibile(generalLink);
 		String url=BrowserFactory.getDriver().getCurrentUrl();
 		String[] split = url.split("id=");
@@ -292,6 +299,14 @@ public class RightNavBar extends BasePage {
 		waitForElementToBeVisibile(facilitationDashboardLink);
 		waitForElementToBeClickable(facilitationDashboardLink);
 		facilitationDashboardLink.click();
+		return this;
+	}
+	
+	public RightNavBar verifyFacilitationManagerDashboardLink() throws Throwable {
+		
+		waitForElementToBeVisibile(FMDLinkLeftNav);
+		waitForElementToBeClickable(FMDLinkLeftNav);
+		
 		return this;
 	}
 

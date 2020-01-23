@@ -11,12 +11,12 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class CreateNormalNameCourse  extends BaseTest{
 	
-	@Test(description = "MFD-221 ::MFD-222 ::Create a backup and Restore for the course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-221 ::MFD-222 ::TLHMFD-446::Create a backup and Restore for the course,Verify FM Dashboard Link", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void CreateABackupAndRestoreTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-221 ::MFD-222 ::Create a backup and Restore");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
-		rightNavOperations.getRestoreCoursePage();
+		rightNavOperations.verifyFacilitationManagerDashboard().getRestoreCoursePage();
 		Navigator.doRestore(createBackupData);
 		rightNavOperations.clickHome();
 		

@@ -99,6 +99,13 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public RightNavOperations verifyFacilitationManagerDashboard() throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFacilitationManagerDashboard");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).verifyFacilitationManagerDashboardLink()
+		;
+		return this;	
+	}
+	
 	public RightNavOperations getHome() throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getHome");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class);

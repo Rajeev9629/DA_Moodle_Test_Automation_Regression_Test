@@ -13,7 +13,7 @@ public class Regression_TCS7 extends BaseTest {
 	
 	@Test(description = "MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyDashboardViewsFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
-		loggingStartReport("MFD-246 ::MFD-244::MFD-260");
+		loggingStartReport("TCS7:MFD-246 ::MFD-244::MFD-260");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("7");
 		

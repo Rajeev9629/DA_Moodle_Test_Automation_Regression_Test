@@ -72,6 +72,16 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationManagerDashboardOperations gradeOneAssigment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
+		.openAssigmentsLink( createBackupData,2)
+		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton()
+		;
+		logger.pass("gradeAssigment3 has been verified");
+		return this;	
+	}
+	
 	public FacilitationManagerDashboardOperations gradeAssigment2(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment2");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
@@ -190,8 +200,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().getDashboardAssignmentCount().getGradedAssignmentCount()
 		.clickResetButton().selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().getDashboardAssignmentCount()
-		.getUnGradedAssignmentCount()
-		;
+		.getUnGradedAssignmentCount().verifyDashboardErrorReading();
 		logger.pass("Dashboard AssignmentsCount has been verified");
 		return this;	
 	}
