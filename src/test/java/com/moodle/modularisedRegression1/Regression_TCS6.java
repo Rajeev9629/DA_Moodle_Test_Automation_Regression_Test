@@ -26,8 +26,7 @@ public class Regression_TCS6 extends BaseTest{
 		Navigator.FacilitationManagerDashboardOperations().verifyResubmittedAssignment(createBackupData).gradeAssigment2(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		
-		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.getStudentName(createBackupData);
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().getStudentName(createBackupData);
 		rightNavOperations.getFacilitationManagerDashboard().verifyOriginalGraderFilter(createBackupData)
 		.verifyCourseCodeFilter(createBackupData);
 		

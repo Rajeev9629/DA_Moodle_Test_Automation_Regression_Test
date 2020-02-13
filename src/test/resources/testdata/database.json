@@ -1,0 +1,23 @@
+[
+	{
+		"Form": {
+			"hostName": "uat-advc-20200107-cluster-cluster.cluster-cjmvuggi5a3a.us-east-1.rds.amazonaws.com",
+			"port": "3306",
+			"databaseName": "advancementcourses_moodle",
+			"user": "advcourses",
+			"password": "6Re!u8evus",
+			"id1": "66",
+			"id2": "78",
+			"id3": "65",
+			"id4": "79",
+			"id5": "73",
+			"id6": "80",
+			"id7": "76",
+			"creditType1": "CE",
+			"creditType2": "P",
+			"creditType3": "GR"
+							
+			
+		}
+	}
+]

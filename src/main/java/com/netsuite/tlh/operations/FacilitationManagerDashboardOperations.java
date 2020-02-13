@@ -117,15 +117,31 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	public FacilitationManagerDashboardOperations signOff(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("signOff");
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatus())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded()
 		.clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
 		.enterStudentName(createBackupData.getUserName1())
-		
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
 		;
 		logger.pass("User has been signed Off");
 		;
+		return this;	
+	}
+	
+	public FacilitationManagerDashboardOperations verifySignOffBehaviour(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffBehaviour");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted()
+		
+		.selectAssignmentStatus(createBackupData.getStatus()).enterCourseCode(createBackupData.getCourseShortName())
+		.selectSignOffStatus(createBackupData.getSignOffStatusAwaiting()).clickFilterButton().verifySignOffButtonIsPresent()
+		
+		.clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
+		.selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().verifySignOffButtonIsNotPresent()
+		
+		.clickResetButton().enterCourseCode(createBackupData.getCourseShortName()).selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatus())
+		.selectSignOffStatus(createBackupData.getSignOffStatusAll()).clickFilterButton().verifySignOffButtonIsPresent()
+		;
+		logger.pass("verifySignOffBehaviour has been verified");
 		return this;	
 	}
 	

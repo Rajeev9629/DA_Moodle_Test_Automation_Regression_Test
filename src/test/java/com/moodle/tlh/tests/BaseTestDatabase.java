@@ -36,7 +36,7 @@ import com.netsuite.tlh.operations.MethodNameReportingOprations;
 import com.netsuite.tlh.operations.RightNavOperations;
 import com.netsuite.tlh.pages.RightNavBar;
 
-public class BaseTest {
+public class BaseTestDatabase {
 	private static final String LOGINDETAILS_FILENAME = "src/test/resources/testdata/login-data.json";
 	protected HomeOperations homeOperations;
 	protected MenuBarOperations menuBarOperations;
@@ -104,9 +104,9 @@ public class BaseTest {
 	}
 	@AfterClass
 	public void tearDown() throws DriverNotInitializedException, Throwable {
-		menuBarOperations.doLogOut().navigateToMainloginScreen();
 		
-		//BrowserFactory.quitDriver();
+		
+		BrowserFactory.quitDriver();
 	}
 	
 

@@ -92,7 +92,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	/*@FindBy(xpath = "//span[contains(text(),'Choose Facilitator...')]")
 	private WebElement facilitatorNameDropDown;*/
 	
-	@FindBy(name = "facilitatorName")
+	@FindBy(css = "input[class='select2-search__field']")
 	private WebElement facilitatortextBox;
 	
 	@FindBy(id = "resetButton")
@@ -185,6 +185,10 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "a[aria-label='Last']")
 	private WebElement lastButton;
 	
+	@FindBy(id = "select2-facilitatorName-container")
+	private WebElement facilitatorNameDropDown;
+	
+	
 	Boolean stat= true;
 	static int count;
 	
@@ -214,8 +218,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage verifyCreatedUpdatedDate() throws Throwable {
-		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-2]"));
-		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-1]"));
+		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-3]"));
+		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-2]"));
 		String createdNew = created.getText().substring(0, created.getText().length()-9);
 		System.out.println(createdNew);
 		String updatedNew = updated.getText().substring(0, updated.getText().length()-9);
@@ -337,6 +341,15 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
+	public FacilitationManagerDashboardPage verifySignOffButtonIsPresent() throws Throwable {
+		List<WebElement> dynamicElement= BrowserFactory.getDriver().findElements(By.cssSelector("a[class='btn btn-primary signoff-button']"));
+		if(dynamicElement.size() == 0)
+		Assert.assertEquals("False", "True");
+		else
+			Assert.assertEquals("True", "True");	
+		return this;
+	}
+	
 	/*public FacilitationManagerDashboardPage clickOnFetchData() throws Throwable {
 		waitForElementToBeVisibile(fetchDataButton);
 		waitForElementToBeClickable(fetchDataButton);
@@ -393,6 +406,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage selectCourseStartDate() throws Throwable {
 		waitForElementToBeVisibile(courseStartDateDropDown);
 		courseStartDateDropDown.click();
+		Thread.sleep(3000);
 		waitForElementToBeClickable(todaysDate3);
 		waitForElementToBeVisibile(todaysDate3);
 		todaysDate3.click();
@@ -470,14 +484,16 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage enterFacilitatorName(String facilitatorname) throws Throwable {
-		/*waitForElementToBeVisibile(facilitatorNameDropDown);
+		waitForElementToBeVisibile(facilitatorNameDropDown);
 		waitForElementToBeClickable(facilitatorNameDropDown);
 		facilitatorNameDropDown.click();
-		Thread.sleep(2000);*/
+		Thread.sleep(2000);
+		
 		waitForElementToBeVisibile(facilitatortextBox);
 		waitForElementToBeClickable(facilitatortextBox);
 		facilitatortextBox.sendKeys(facilitatorname);
-		
+		Thread.sleep(2000);
+		BrowserFactory.getDriver().findElement(By.xpath("//li[text()='" + facilitatorname + "']")).click();
 		return this;
 	}
 
@@ -498,6 +514,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeClickable(dateSubmittedInput);
 		waitForElementToBeVisibile(dateSubmittedInput);
 		dateSubmittedInput.click();
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(todaysDate);
 		todaysDate.click();
 		Thread.sleep(3000);
@@ -672,7 +689,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 
 			WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
 					wait.until(expectation);
-				   gradeAssignment2(); 	   
+				   gradeAssignment2();
+				   Thread.sleep(3000);
 			   }}  
 		BrowserFactory.getDriver().switchTo().window(currentWindow);
 	    
@@ -825,7 +843,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			  ele.click();
 			  
 		  }
-		  
+		  Thread.sleep(3000);
 		  waitForElementToBeVisibile(gradedText);
 		  BrowserFactory.getDriver().close();
 	   	

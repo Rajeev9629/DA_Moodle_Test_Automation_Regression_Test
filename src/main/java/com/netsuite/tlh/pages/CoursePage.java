@@ -227,6 +227,7 @@ public class CoursePage extends MenuBarPage {
 	
 	
 	public CoursePage clickModule2ProjectCheckpointLink() throws Throwable {
+		Thread.sleep(2000);
 		waitForElementToBeVisibile(Module2ProjectCheckpointLink);
 		Module2ProjectCheckpointLink.click();
 		return this;
@@ -362,6 +363,7 @@ public class CoursePage extends MenuBarPage {
 	}
 	
 	public CoursePage clickDeleteApostropheCourseButton() throws Throwable {
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(deleteApostropheCourseButton);
 		deleteApostropheCourseButton.click();
 		return this;

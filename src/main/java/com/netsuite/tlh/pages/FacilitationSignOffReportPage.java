@@ -122,6 +122,7 @@ public class FacilitationSignOffReportPage extends MenuBarPage {
 	public FacilitationSignOffReportPage verifycourseIDFilters() throws Throwable {
 		waitForElementToBeVisibile(courseIdInput);
 		waitForElementToBeClickable(courseIdInput);
+		System.out.println("Course id"+RightNavBar.courseID);
 		courseIdInput.sendKeys(RightNavBar.courseID);
 		clickFilterButton();
 		verifyCreatedDate();
