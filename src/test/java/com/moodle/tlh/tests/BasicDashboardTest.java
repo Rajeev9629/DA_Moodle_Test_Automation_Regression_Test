@@ -53,7 +53,7 @@ public class BasicDashboardTest extends BaseTest{
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		rightNavOperations.getEnrollParticipantsPage();
-		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
+		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
 		rightNavOperations.getQuizzesPage();
 		Navigator.GetCoursePageOperations().completeParticipationAcknowledgement2();
 		rightNavOperations.getCoursePage(createBackupData);

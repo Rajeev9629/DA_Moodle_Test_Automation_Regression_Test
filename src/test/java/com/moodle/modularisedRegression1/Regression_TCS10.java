@@ -20,7 +20,7 @@ public class Regression_TCS10 extends BaseTest{
 		rightNavOperations.getFacilitationManagerDashboard().verifyRubricGrades(createBackupData);
 		//Facilitator
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole2(), createBackupData.getUserName2());
+		.loginAsRespectiveUser(createBackupData.getRole2(), createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyRubricGrades(createBackupData);
 		

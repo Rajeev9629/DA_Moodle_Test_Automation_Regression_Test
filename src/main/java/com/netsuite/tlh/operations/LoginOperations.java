@@ -8,14 +8,22 @@ import com.netsuite.tlh.pages.LoginPage;
 public class LoginOperations implements IOperations {
 
 	public HomeOperations doLogin(String userName, String passWord) throws DriverNotInitializedException, Throwable {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogin");
-		NetsuiteTLHPageFactory.getPage(LoginPage.class).doLogIn(userName, passWord);
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogin");
+		NetsuiteTLHPageFactory.getPage(LoginPage.class).doLogIn(userName, passWord);}
+		catch(Exception e) {
+			System.out.println("doLogin failed");
+			e.printStackTrace();
+		}
 		return OperationFactory.getOperation(HomeOperations.class);
 	}
 	
 	public HomeOperations doSecondLogin(String userName, String passWord) throws DriverNotInitializedException, Throwable {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doSecondLogin");
-		NetsuiteTLHPageFactory.getPage(LoginPage.class).doSecondLogIn(userName, passWord);
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doSecondLogin");
+		NetsuiteTLHPageFactory.getPage(LoginPage.class).doSecondLogIn(userName, passWord);}
+		catch(Exception e) {
+			System.out.println("doSecondLogin failed");
+			e.printStackTrace();
+		}
 		return OperationFactory.getOperation(HomeOperations.class);
 	}
 

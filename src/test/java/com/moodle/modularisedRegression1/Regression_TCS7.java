@@ -11,7 +11,7 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class Regression_TCS7 extends BaseTest {
 	
-	@Test(description = "MFD-246 ::MFD-244::MFD-260::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-246 ::MFD-244::MFD-260::MFD-494::Verify dashboard views and functionality for different roles, Filter Criterias", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyDashboardViewsFunctionalityForDifferentRoles(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("TCS7:MFD-246 ::MFD-244::MFD-260");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
@@ -19,16 +19,18 @@ public class Regression_TCS7 extends BaseTest {
 		
 		//Login as Facilitator
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
+		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationDashboardOperations().verifyFilters(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		
 		//Login as Facilitation Manager
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole3(),createBackupData.getUserName6());
+		.loginAsRespectiveUser(createBackupData.getRole3(),createBackupData.getUserName6(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationManagerDashboard()
-		.verifyDateGradedFilter(createBackupData).verifyFilters(createBackupData);
+		.verifyDateGradedFilter(createBackupData).verifyFilters(createBackupData)
+		.verifyCaseSensitiveFilters(createBackupData)
+		;
 		}	
 
 }

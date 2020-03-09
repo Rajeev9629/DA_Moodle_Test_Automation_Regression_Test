@@ -10,24 +10,40 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 public class RestorePageOperations extends BaseOperations {
 
 	public RestorePageOperations DoTheRestore(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheRestore");
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheRestore");
 		NetsuiteTLHPageFactory.getPage(RestorePage.class).clickOnRestoreLink().clickOnBottomContinueButton()
 		.clickOnMiscellaneousOption().clickOnContinueButton().clickOnNextButton().enterCourseName(createBackupData.getCourseName())
 		.enterCourseShortName(createBackupData.getCourseShortName()).clickOnNextButton().clickOnPerformRestore().clickOnBottomContinueButton();
-		return this;
+		}
+		catch(Exception e) {
+			System.out.println("DoTheRestore failed");
+			e.printStackTrace();
+		}return this;
 		
 	}
 	
 	public RestorePageOperations DoTheRestore2(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheRestore2");
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheRestore2");
 		NetsuiteTLHPageFactory.getPage(RestorePage.class).clickOnchooseFileButton().uploadFile().clickOnUploadThisFileButton()
 		.clickOnRestoreButton().clickOnBottomContinueButton().clickOnMiscellaneousOption().clickOnContinueButton()
 		.removeEnrolledUser()
 		.clickOnNextButton().enterCourseName(createBackupData.getCourseName()).enterCourseShortName(createBackupData.getCourseShortName())
-		.clickOnNextButton().clickOnPerformRestore().clickOnBottomContinueButton();
-		return this;
+		.clickOnNextButton().clickOnPerformRestore().clickOnBottomContinueButton().verifyCourseIsNotEmpty()
+		;
+		
+		
+		
+		}
+		catch(Exception e) {
+			System.out.println("DoTheRestore2 failed");
+			e.printStackTrace();
+		}return this;
 		
 	}
+	
+	
+		
+	
 	
 	
 	

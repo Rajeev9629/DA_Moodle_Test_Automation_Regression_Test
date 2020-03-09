@@ -82,7 +82,7 @@ public class FullRegressionTest extends BaseTest{
 		System.out.println("TCS 5");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
-		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
+		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
 		rightNavOperations.acceptSitePolicyAgreement().getCoursePage(createBackupData).getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		rightNavOperations.getCoursePage(createBackupData);

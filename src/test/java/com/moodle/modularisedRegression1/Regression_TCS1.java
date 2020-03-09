@@ -12,7 +12,7 @@ public class Regression_TCS1 extends BaseTest  {
 	
 	@Test(description = "MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void MoodleFacilitatorManagerReportFeature(LinkedHashMap<String, ?> testData) throws Throwable {
-		loggingStartReport("Regression_TCS1:MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature");
+		loggingStartReport("TCS1:MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature");
 		System.out.println("1");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.acceptSitePolicyAgreement().getFacilitationManagerReportPage()

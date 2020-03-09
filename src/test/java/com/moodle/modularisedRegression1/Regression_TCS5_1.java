@@ -17,7 +17,7 @@ public class Regression_TCS5_1 extends BaseTest{
 		System.out.println("5_1");
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
+		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
 		rightNavOperations.acceptSitePolicyAgreement().searchAndGetCoursePage(createBackupData)
 		.getAssignmentsPage().verifyAssignment3Feedback(createBackupData);
 		

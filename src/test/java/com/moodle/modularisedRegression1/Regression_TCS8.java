@@ -18,17 +18,17 @@ public class Regression_TCS8 extends BaseTest {
 		System.out.println("8");
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.enrollStudent(createBackupData,createBackupData.getUserName4()).loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName4());
+		.enrollStudent(createBackupData,createBackupData.getUserName4()).loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName4(),createBackupData.getCourseShortName());
 		rightNavOperations.getAssignmentsPage().completeAssingmentModule2().completeAssingmentModule3();	
 		menuBarOperations.doLogOutAndLogin();
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName5());
+		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName5(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().gradeAssigment3(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName5())
-		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2());
+		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyAssignmentIsGraded(createBackupData);
 		menuBarOperations.doLogOutAndLogin();

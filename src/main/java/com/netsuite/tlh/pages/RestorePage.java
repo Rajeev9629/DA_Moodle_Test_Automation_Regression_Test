@@ -68,6 +68,16 @@ public class RestorePage extends BasePage {
 	@FindBy(css = "div[class='fp-content-center']>i")
 	private WebElement loadingSign;
 	
+	@FindBy(xpath = "//span[text()='Module 2 Project Checkpoint']")
+	private WebElement module2Checkpoint;
+	
+	public RestorePage verifyCourseIsNotEmpty() throws Throwable {
+		waitForElementToBeClickable(module2Checkpoint);
+		waitForElementToBeVisibile(module2Checkpoint);
+		
+		return this;
+	}
+	
 	public RestorePage clickOnRestoreButton() throws Throwable {
 		waitForElementToBeVisibile(loadingSign);
 		waitForElementToBeInVisibile(loadingSign);

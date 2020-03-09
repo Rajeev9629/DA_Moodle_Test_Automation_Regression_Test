@@ -63,6 +63,7 @@ public class ParticipantsPage extends BasePage {
 		
 	public ParticipantsPage clickOnEnrolUsers() throws Throwable {
 		BrowserFactory.getDriver().navigate().refresh();
+		Thread.sleep(3000);
 		waitForElementToBeClickable(enrollUsersButton);
 		waitForElementToBeVisibile(enrollUsersButton);
 		enrollUsersButton.click();

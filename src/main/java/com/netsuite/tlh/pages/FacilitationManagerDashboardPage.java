@@ -12,6 +12,7 @@ import org.testng.Assert;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -188,10 +189,59 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(id = "select2-facilitatorName-container")
 	private WebElement facilitatorNameDropDown;
 	
+	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[1]")
+	private WebElement studentColumn;
+	
+	@FindBy(name = "assignmentName")
+	private WebElement assignmentNameInput;
+	
+	@FindBy(xpath = "//a[text()='Final Project Submission']")
+	private WebElement finalProjectSubmisionLink;
+	
+	@FindBy(id = "cgraded")
+	private WebElement assignmentCount;
 	
 	Boolean stat= true;
 	static int count;
 	
+	
+	public FacilitationManagerDashboardPage verifyCourseName(String courseName) throws Throwable {
+		WebElement CourseDashboard=BrowserFactory.getDriver().findElement(By.xpath("//td[text()='" + courseName + "']"));
+		waitForElementToBeVisibile(CourseDashboard);
+		waitForElementToBeClickable(CourseDashboard);
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyFinalprojectSubmission() throws Throwable {
+		waitForElementToBeVisibile(finalProjectSubmisionLink);
+		waitForElementToBeClickable(finalProjectSubmisionLink);
+		return this;
+	}
+	
+	ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+        public Boolean apply(WebDriver driver) {
+            return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+        }};
+        WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+ 
+	public FacilitationManagerDashboardPage verifyNoNegativeGrade() throws Throwable {
+		int index=10;
+		WebElement grdHeading=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th[" + index + "]"));
+		waitForElementToBeVisibile(grdHeading);
+		if(grdHeading.getText().equalsIgnoreCase("Grade"))
+		{
+			WebElement grade=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td[" + index + "]"));
+			System.out.println("text is "+ grade.getText());
+			if(grade.getText().equalsIgnoreCase("")) {
+				Assert.assertEquals(true, true);
+			}
+			else
+				Assert.assertEquals(true, false, "grading is different");
+			
+		}
+		
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage verifyDashboardErrorReading() throws Throwable {
 		waitForElementToBeVisibile(lastButton);
@@ -282,10 +332,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage verifyRubricGrading() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-        public Boolean apply(WebDriver driver) {
-        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"); }};
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+		
         //Code starts from here
         Thread.sleep(2000);
         String currentWindow = BrowserFactory.getDriver().getWindowHandle();
@@ -309,9 +356,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	public FacilitationManagerDashboardPage getDashboardAssignmentCount() throws Throwable {
 		
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-        public Boolean apply(WebDriver driver) {return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete"); }};
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
         count=0;
 		List<WebElement> Page= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr"));
 		count=Page.size();
@@ -355,12 +399,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeClickable(fetchDataButton);
 		fetchDataButton.click();
 		Thread.sleep(2000);
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-            
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
             wait.until(expectation);
 		return this;
 	}*/
@@ -400,6 +438,31 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage verifyResubmitedAssignment() throws Throwable {
 		waitForElementToBeVisibile(resubmitedAssignment);
 		waitForElementToBeClickable(resubmitedAssignment);
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyResubmitedAssignmentDateSubmitted() throws Throwable {
+		int dateSubmitted;
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date date = new Date();
+		String Expected=dateFormat.format(date);
+		
+		waitForElementToBeVisibile(resubmitedAssignment);
+		waitForElementToBeClickable(resubmitedAssignment);
+		
+		List <WebElement> ele= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead/tr//th"));
+		for(int i=1;i<ele.size();i++){
+			String res=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead/tr//th["+i+"]")).getText();
+			if(res.equalsIgnoreCase("Date Submitted")){
+				dateSubmitted=i;
+				String actualDate=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tr//td["+dateSubmitted+"]")).getText();
+				Assert.assertEquals(Expected, actualDate, "date is different");
+			
+			}
+			
+			
+			
+		}	
 		return this;
 	}
 	
@@ -482,6 +545,28 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		resetButton.click();
 		return this;
 	}
+	String gradedCount1;
+	public FacilitationManagerDashboardPage verifyMFD371_1(String facilitator1) throws Throwable {
+		Thread.sleep(2000);
+		enterFacilitatorName(facilitator1);
+		gradedCount1=assignmentCount.getText();
+		clickResetButton();
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyMFD371_2(String facilitator2) throws Throwable {
+		Thread.sleep(2000);
+		enterFacilitatorName(facilitator2);
+		String gradedCount2=assignmentCount.getText();
+		clickResetButton();
+		int gradedCount1Int=Integer.parseInt(gradedCount1); 
+		int gradedCount2Int=Integer.parseInt(gradedCount2); 
+		if(gradedCount2Int>=gradedCount1Int) {
+			Assert.assertEquals(true, true);
+		}
+		
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage enterFacilitatorName(String facilitatorname) throws Throwable {
 		waitForElementToBeVisibile(facilitatorNameDropDown);
@@ -562,14 +647,10 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	/*public FacilitationManagerDashboardPage getDashboardFetchDataTimeStamp() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
+		
 		waitForElementToBeVisibile(tableData);
 		long start=System.currentTimeMillis();
 		fetchDataButton.click();
-		WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
 		wait.until(expectation);
 		long finish=System.currentTimeMillis();
 		long totalTime=finish- start;
@@ -578,14 +659,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}*/
 	
 	public FacilitationManagerDashboardPage getDashboardRefreshTimeStamp() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
 		waitForElementToBeVisibile(tableData);
 		long start=System.currentTimeMillis();
 		BrowserFactory.getDriver().navigate().refresh();
-		WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
 		wait.until(expectation);
 		long finish=System.currentTimeMillis();
 		long totalTime=finish- start;
@@ -594,10 +670,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage getGradedFilterTimeStamp() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
+		
         waitForElementToBeVisibile(filterButton);
         waitForElementToBeClickable(filterButton);
 		long start=System.currentTimeMillis();
@@ -612,26 +685,17 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage waitforPageLoad() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
             wait.until(expectation);
 		return this;
 	}
 	
 	public FacilitationManagerDashboardPage getDashboardLoadingTimeStamp() throws Throwable {
 		
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-          }};
 		waitForElementToBeVisibile(facilitationManagerDashboardLink);
 		waitForElementToBeClickable(facilitationManagerDashboardLink);
 		long start=System.currentTimeMillis();
 		facilitationManagerDashboardLink.click();
-		WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+	
         wait.until(expectation);
 		long finish=System.currentTimeMillis();
 		long totalTime=finish- start;
@@ -641,11 +705,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage openAssigmentsLink(CreateBackupData createBackupData, int Count) throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-        public Boolean apply(WebDriver driver) {
-        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+		
         wait.until(expectation);
 		waitForElementToBeVisibile(table);
 		waitForElementToBeClickable(table);
@@ -682,16 +742,47 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	  String currentWindow = BrowserFactory.getDriver().getWindowHandle();
 		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
 			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
-				   ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-			            public Boolean apply(WebDriver driver) {
-			                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-			            }};
-
-			WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
 					wait.until(expectation);
 				   gradeAssignment2();
 				   Thread.sleep(3000);
 			   }}  
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+	    
+	   return this;
+	}
+	
+	public FacilitationManagerDashboardPage openAssigmentsLink2_1() throws Throwable {
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+	  BrowserFactory.getDriver().findElement(By.xpath("//a[text()='Module 2 Project Checkpoint']")).click();
+	  Thread.sleep(2000);
+	  String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
+					wait.until(expectation);
+					gradeAssignment2_1();
+				   Thread.sleep(3000);
+				   
+			   }}  
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+	    
+	   return this;
+	}
+	
+	public FacilitationManagerDashboardPage openAssigmentsLink3_1() throws Throwable {
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+	  BrowserFactory.getDriver().findElement(By.xpath("//a[text()='Module 3 Project Checkpoint']")).click();
+	  Thread.sleep(2000);
+	  String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
+					wait.until(expectation);
+					gradeAssignment2_1();
+				   Thread.sleep(3000);
+				   
+			   }} 
+		
 		BrowserFactory.getDriver().switchTo().window(currentWindow);
 	    
 	   return this;
@@ -713,6 +804,22 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage verifyTableIspresent() throws Throwable {
 		waitForElementToBeVisibile(table);
 		waitForElementToBeClickable(table);
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyStudentNameInTable(String studentName) throws Throwable {
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+		List<WebElement> studName = BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr//td[1]"));
+		for (int i=0;i<=studName.size();i++)
+		{
+			if (studName.get(i).getText().equalsIgnoreCase(studentName)) {
+				Assert.assertEquals(true, true);
+			}
+			else
+				Assert.assertEquals(false, true);
+		}
+		
 		return this;
 	}
 	
@@ -783,12 +890,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		String currentWindow = BrowserFactory.getDriver().getWindowHandle();
 		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
 			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
-				   ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-			            public Boolean apply(WebDriver driver) {
-			                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-			            }};
-
-			WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+				   
 					wait.until(expectation);
 					Thread.sleep(3000);
 				  clickOneOfTheGrade();
@@ -823,11 +925,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage gradeAssignment2() throws Throwable {
-		 ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-	            public Boolean apply(WebDriver driver) {
-	                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-	            }};
-	     WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+		 
 	     wait.until(expectation);
 	     Thread.sleep(3000);
 		 clicksaveChangesButton();
@@ -850,16 +948,38 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
+	public FacilitationManagerDashboardPage gradeAssignment2_1() throws Throwable {
+		 
+	     wait.until(expectation);
+	     Thread.sleep(3000);
+	     clickOneOfTheGrade();
+		 clicksaveChangesButton();
+		 wait.until(expectation);
+		  try{  
+			  Thread.sleep(3000);
+			  waitForElementToBeVisibile(gradedText);
+		  }
+		  catch(Exception e){ 
+			  clicksaveChangesButton();
+			  waitForElementToBePresent(By.cssSelector("input[value='Ok']"));
+			  waitForElementToBeClickable(By.cssSelector("input[value='Ok']"));
+			  WebElement ele=BrowserFactory.getDriver().findElement(By.cssSelector("input[value='Ok']"));
+			  ele.click();
+			  
+		  }
+		  Thread.sleep(3000);
+		  waitForElementToBeVisibile(gradedText);
+		  BrowserFactory.getDriver().close();
+		  Thread.sleep(1000);
+		return this;
+	}
+	
+	
 	public FacilitationManagerDashboardPage clickOneOfTheGrade() throws Throwable {
 		waitForElementToBeVisibile(gradeMaximiseButton);
 		waitForElementToBeClickable(gradeMaximiseButton);
 		gradeMaximiseButton.click();
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+		
 		wait.until(expectation);
 		waitForElementToBePresent(By.cssSelector("tr[role='radiogroup']"));
 		waitForElementToBeClickable(By.cssSelector("tr[role='radiogroup']"));
@@ -914,6 +1034,14 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
+	public FacilitationManagerDashboardPage checkIfGradedNew() throws Throwable {
+		waitForElementToBeVisibile(gradedTextEndPage);
+		waitForElementToBeClickable(gradedTextEndPage);
+		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])"));
+		
+		return this;
+	}
+	
 	public FacilitationManagerDashboardPage clickOnSignOffButton() throws Throwable {
 		Thread.sleep(3000);
 		waitForElementToBeVisibile(signOffButton);
@@ -927,12 +1055,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage verifyUserSignedOff() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-            
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
     		wait.until(expectation);
     		Thread.sleep(4000);
     		
@@ -943,6 +1065,26 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		WebElement ele=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td[contains(text(),'Signed-off')]/following-sibling::td[contains(text(),'" + dateFormat.format(date) + "')]"));
 		waitForElementToBeVisibile(ele);
 		return this;
+	}
+	
+	public FacilitationManagerDashboardPage giveFinalAssignmentFeedback(CreateBackupData createBackupData) throws Throwable {
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+	  BrowserFactory.getDriver().findElement(By.xpath("//a[text()='Final Project Submission']")).click();
+	  Thread.sleep(2000);
+	  String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
+			
+					wait.until(expectation);
+					Thread.sleep(4000);
+					addFeedBack(createBackupData.getFeedbackComment());
+					 clicksaveChangesButton();
+				  Thread.sleep(3000);
+			   }}  
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+	    
+	   return this;
 	}
 
 }

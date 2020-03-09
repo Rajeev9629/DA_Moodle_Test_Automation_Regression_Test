@@ -41,6 +41,9 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "(//span[text()='Participants'])[2]")
 	private WebElement participantsLink;
 	
+	@FindBy(xpath = "(//span[text()='Participants'])")
+	private WebElement participantsLink1;
+	
 	@FindBy(xpath = "//span[text()='Participants' and @class='media-body font-weight-bold']")
 	private WebElement participantsLinkOnly;
 	
@@ -116,17 +119,16 @@ public class RightNavBar extends BasePage {
 		waitForElementToBeVisibile(goButton);
 		waitForElementToBeClickable(goButton);
 		goButton.click();
-		/*waitForElementToBePresent(By.xpath("//span[contains(text(),'" + courseName + "')]"));
-		waitForElementToBeClickable(By.xpath("//span[contains(text(),'" + courseName + "')]"));
-		BrowserFactory.getDriver().findElement(By.xpath("//span[contains(text(),'" + courseName + "')]")).click();*/
 		
 		waitForElementToBePresent(By.xpath("//a//*[contains(text(),'Automation')]"));
 		waitForElementToBeClickable(By.xpath("//a//*[contains(text(),'Automation')]"));
 		BrowserFactory.getDriver().findElement(By.xpath("//a//*[contains(text(),'Automation')]")).click();
 		waitForElementToBeVisibile(generalLink);
+		Thread.sleep(2000);
 		String url=BrowserFactory.getDriver().getCurrentUrl();
 		String[] split = url.split("id=");
 		courseID = split[1];
+		System.out.println("COURSEID: "+courseID);
 		
 		return this;
 	}
@@ -214,18 +216,24 @@ public class RightNavBar extends BasePage {
 	}
 	
 	public RightNavBar clickOnParticipants() throws Throwable {
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
-    		wait.until(expectation);
+		Thread.sleep(2000);
 		waitForElementToBeVisibile(participantsLink);
 		waitForElementToBeClickable(participantsLink);
 		JavascriptExecutor js = (JavascriptExecutor)BrowserFactory.getDriver();
 		 js.executeScript("arguments[0].click();", participantsLink);
 		return this;
 	}
+	
+	public RightNavBar clickOnParticipants1() throws Throwable {
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(participantsLink1);
+		waitForElementToBeClickable(participantsLink1);
+		JavascriptExecutor js = (JavascriptExecutor)BrowserFactory.getDriver();
+		 js.executeScript("arguments[0].click();", participantsLink1);
+		return this;
+	}
+	
+	
 	
 	public RightNavBar clickOnParticipantsOnly() throws Throwable {
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {

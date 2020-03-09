@@ -9,8 +9,12 @@ import com.netsuite.tlh.pages.RightNavBar;
 public class BackUpPageOperations extends BaseOperations {
 
 	public BackUpPageOperations DoTheBackup() throws DriverNotInitializedException, Throwable {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheBackup");
-		NetsuiteTLHPageFactory.getPage(BackUpPage.class).removeEnrolledUser().clickOnJumpToFinalStep().clickOncontinueButton();
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheBackup");
+		NetsuiteTLHPageFactory.getPage(BackUpPage.class).removeEnrolledUser().clickOnJumpToFinalStep().clickOncontinueButton();}
+		catch(Exception e) {
+			System.out.println("gotoBackUpPage failed");
+			e.printStackTrace();
+		}
 		return this;
 		
 	}

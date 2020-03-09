@@ -17,7 +17,7 @@ import com.netsuite.tlh.testdata.Database;
 public class DatabaseOperations extends BaseOperations {
 	
 	public DatabaseOperations verifyCreditTypeColumnFunctionality(Database databaseData) throws DriverNotInitializedException, Throwable {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DatabaseOperationsverifyCreditTypeColumnFunctionality");
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DatabaseOperationsverifyCreditTypeColumnFunctionality");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class).verifyCreditTypeColumnFunctionality(databaseData.getId1(),databaseData.getCreditType1())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId2(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId3(),databaseData.getCreditType2())
@@ -25,9 +25,12 @@ public class DatabaseOperations extends BaseOperations {
 		.verifyCreditTypeColumnFunctionality(databaseData.getId5(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId6(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId7(),databaseData.getCreditType3())
-		
 		;
-		
+		}
+		catch(Exception e) {
+			System.out.println("verifyCreditTypeColumnFunctionality failed");
+			e.printStackTrace();
+		}
 		return this;	
 	}
 

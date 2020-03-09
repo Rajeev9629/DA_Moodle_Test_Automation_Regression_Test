@@ -18,7 +18,7 @@ public class Regression_TCS9 extends BaseTest {
 		System.out.println("9");
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1());
+		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
 		rightNavOperations.getQuizzesPage();
 		Navigator.GetCoursePageOperations().completeParticipationAcknowledgement2();
 		menuBarOperations.doLogOutAndLogin();
