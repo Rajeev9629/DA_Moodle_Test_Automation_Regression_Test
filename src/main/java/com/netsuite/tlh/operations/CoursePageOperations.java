@@ -24,6 +24,19 @@ public class CoursePageOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public CoursePageOperations submitQuiz() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteRespectiveCourse");
+		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickquizzesLink()
+		
+		;
+		logger.pass("submitAssignment completed");}
+		catch(Exception e) {
+			System.out.println("submitAssignment failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
 
 	public CoursePageOperations deleteRespectiveApostophieCourse() throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteRespectiveApostophieCourse");
@@ -107,6 +120,19 @@ public class CoursePageOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public CoursePageOperations changeParticipationAcknowledgementName() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("changeParticipationAcknowledgementName");
+		NetsuiteTLHPageFactory.getPage(CoursePage.class).changeParticipationAcknowledgementName().clicksaveAndReturnCourseButton()
+		;
+		
+		}
+		catch(Exception e) {
+			System.out.println("changeParticipationAcknowledgementName failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
 	public CoursePageOperations doParticipationAcknowledgement(String Module,CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doParticipationAcknowledgement");
 		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickOnEditLinkforCourse(Module).
@@ -149,7 +175,8 @@ public class CoursePageOperations extends BaseOperations {
 		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickParticipationAcknowledgementLink().clickattemptQuizNowButton()
 		.clickQuizAnswerOption().clickfinishAttemptButton().clicksubmitAllAndFinishButton().clickfinishReviewLink()
 		;
-		logger.pass("ParticipationAcknowledgement2 has been completed");}
+		//logger.pass("ParticipationAcknowledgement2 has been completed");
+		}
 		catch(Exception e) {
 			System.out.println("completeParticipationAcknowledgement2 failed");
 			e.printStackTrace();

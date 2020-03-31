@@ -1,8 +1,9 @@
-package com.moodle.tlh.tests;
+package com.moodle.modularisePerformance;
 
 import java.util.LinkedHashMap;
 import org.testng.annotations.Test;
 import com.framework.utils.Utility;
+import com.moodle.tlh.tests.BaseTest;
 import com.netsuite.tlh.operations.MenuBarOperations;
 import com.netsuite.tlh.operations.Navigator;
 import com.netsuite.tlh.testdata.CreateBackupData;
@@ -16,7 +17,7 @@ public class FullPerformanceTest extends BaseTest{
 		System.out.println("FullPerformanceTest");
 		System.out.println("1");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		rightNavOperations.acceptSitePolicyAgreement();
+		//rightNavOperations.acceptSitePolicyAgreement();
 		rightNavOperations.getRestoreCoursePage();
 		Navigator.doRestore(createBackupData);	
 		logger.info("MFD-221 ::MFD-222 ::Create a backup and Restore for the course Passed" );

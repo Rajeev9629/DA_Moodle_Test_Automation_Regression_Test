@@ -11,8 +11,8 @@ public class RestorePageOperations extends BaseOperations {
 
 	public RestorePageOperations DoTheRestore(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DoTheRestore");
-		NetsuiteTLHPageFactory.getPage(RestorePage.class).clickOnRestoreLink().clickOnBottomContinueButton()
-		.clickOnMiscellaneousOption().clickOnContinueButton().clickOnNextButton().enterCourseName(createBackupData.getCourseName())
+		NetsuiteTLHPageFactory.getPage(RestorePage.class).clickOnRestoreLink().clickbackupPageRestore()
+		.clickOnBottomContinueButton().clickOnMiscellaneousOption().clickOnContinueButton().clickOnNextButton().enterCourseName(createBackupData.getCourseName())
 		.enterCourseShortName(createBackupData.getCourseShortName()).clickOnNextButton().clickOnPerformRestore().clickOnBottomContinueButton();
 		}
 		catch(Exception e) {
@@ -30,9 +30,6 @@ public class RestorePageOperations extends BaseOperations {
 		.clickOnNextButton().enterCourseName(createBackupData.getCourseName()).enterCourseShortName(createBackupData.getCourseShortName())
 		.clickOnNextButton().clickOnPerformRestore().clickOnBottomContinueButton().verifyCourseIsNotEmpty()
 		;
-		
-		
-		
 		}
 		catch(Exception e) {
 			System.out.println("DoTheRestore2 failed");

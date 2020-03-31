@@ -6,9 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.Screen;
 import org.testng.Assert;
 
-
+import java.io.IOException;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
@@ -201,14 +202,76 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(id = "cgraded")
 	private WebElement assignmentCount;
 	
+	@FindBy(id = "downloadCsv")
+	private WebElement downloadButton;
+	
 	Boolean stat= true;
 	static int count;
 	
+	public FacilitationManagerDashboardPage clickDownloadButton() throws Throwable {
+		
+		waitForElementToBeVisibile(downloadButton);
+		waitForElementToBeClickable(downloadButton);
+		downloadButton.click();
+		Thread.sleep(2000);
+		String download_folder = System.getProperty("user.dir")+"\\src\\test\\resources\\testdata";
+		Screen s = new Screen();
+		org.sikuli.script.Pattern SaveButton = new org.sikuli.script.Pattern(download_folder+"\\SaveButtonImage.png");
+		org.sikuli.script.Pattern YesButton = new org.sikuli.script.Pattern(download_folder+"\\YesButtonImage.png");
+		org.sikuli.script.Pattern CrossButton = new org.sikuli.script.Pattern(download_folder+"\\CrossImage.png");
+		s.click(SaveButton);
+		s.wait(YesButton, 20);
+	    s.click(YesButton);   
+	    Thread.sleep(2000);
+	    s.wait(CrossButton, 20);
+	    s.click(CrossButton); 
+	    
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyParticipationAgreement() throws Throwable {
+		
+        wait.until(expectation);
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+		Thread.sleep(1000);
+		wait.until(expectation);
+		WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//td[@class='text-danger bold']/ancestor::tr//td[3]//a"));
+		waitForElementToBeClickable(element);
+		element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
+		Thread.sleep(2000);
+		String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+		if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) 
+		{
+		wait.until(expectation);
+		Thread.sleep(4000);
+		verifyparticipationAgreementName();
+		 BrowserFactory.getDriver().close();
+		} 
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+		
+		}
+		wait.until(expectation);
+		 
+		 
+	    
+	   return this;
+	}
+	
+	
+	public FacilitationManagerDashboardPage verifyparticipationAgreementName() throws Throwable {
+		WebElement participationAgreementName=BrowserFactory.getDriver().findElement(By.xpath("//td[text()='Required: Participation Agreement']"));
+		waitForElementToBeVisibile(participationAgreementName);
+		waitForElementToBeClickable(participationAgreementName);
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage verifyCourseName(String courseName) throws Throwable {
-		WebElement CourseDashboard=BrowserFactory.getDriver().findElement(By.xpath("//td[text()='" + courseName + "']"));
-		waitForElementToBeVisibile(CourseDashboard);
-		waitForElementToBeClickable(CourseDashboard);
+		Thread.sleep(2000);
+		
+		waitForElementToBeVisibile(BrowserFactory.getDriver().findElement(By.xpath("//td[text()='" + courseName + "']")));
+		waitForElementToBeClickable(BrowserFactory.getDriver().findElement(By.xpath("//td[text()='" + courseName + "']")));
 		return this;
 	}
 	
@@ -236,10 +299,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 				Assert.assertEquals(true, true);
 			}
 			else
-				Assert.assertEquals(true, false, "grading is different");
-			
-		}
-		
+				Assert.assertEquals(true, false, "grading is different");}
 		return this;
 	}
 	
@@ -455,13 +515,11 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			String res=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead/tr//th["+i+"]")).getText();
 			if(res.equalsIgnoreCase("Date Submitted")){
 				dateSubmitted=i;
-				String actualDate=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tr//td["+dateSubmitted+"]")).getText();
+				String actualDate=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tr//td["+dateSubmitted+"]")).getText().substring(0,10).trim();
+				System.out.println("EXPECTED: "+Expected);
+				System.out.println("ACTUAL: "+actualDate);
 				Assert.assertEquals(Expected, actualDate, "date is different");
-			
-			}
-			
-			
-			
+			}	
 		}	
 		return this;
 	}
@@ -811,7 +869,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeVisibile(table);
 		waitForElementToBeClickable(table);
 		List<WebElement> studName = BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr//td[1]"));
-		for (int i=0;i<=studName.size();i++)
+		for (int i=0;i<=studName.size()-1;i++)
 		{
 			if (studName.get(i).getText().equalsIgnoreCase(studentName)) {
 				Assert.assertEquals(true, true);
@@ -959,12 +1017,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			  Thread.sleep(3000);
 			  waitForElementToBeVisibile(gradedText);
 		  }
-		  catch(Exception e){ 
+		  catch(Exception e){
+			  Thread.sleep(3000);
 			  clicksaveChangesButton();
-			  waitForElementToBePresent(By.cssSelector("input[value='Ok']"));
-			  waitForElementToBeClickable(By.cssSelector("input[value='Ok']"));
-			  WebElement ele=BrowserFactory.getDriver().findElement(By.cssSelector("input[value='Ok']"));
-			  ele.click();
 			  
 		  }
 		  Thread.sleep(3000);
@@ -981,16 +1036,18 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		gradeMaximiseButton.click();
 		
 		wait.until(expectation);
+		Thread.sleep(3000);
 		waitForElementToBePresent(By.cssSelector("tr[role='radiogroup']"));
 		waitForElementToBeClickable(By.cssSelector("tr[role='radiogroup']"));
 		List <WebElement> elements=BrowserFactory.getDriver().findElements(By.cssSelector("tr[role='radiogroup']"));
 		for(int i=1;i<=elements.size();i++){	
-			Thread.sleep(3000);
+			Thread.sleep(4000);
 			waitForElementToBePresent(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
 			waitForElementToBeClickable(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
 			BrowserFactory.getDriver().findElement(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]")).sendKeys(Keys.ENTER);
-			Thread.sleep(3000);
-		}	
+			Thread.sleep(4000);
+		}
+		Thread.sleep(3000);
 		return this;
 	}
 	
@@ -1019,18 +1076,33 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage selectAssignmentStatus(String Status) throws Throwable {
+		
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(assignmentStatusDropdown);
 		waitForElementToBeClickable(assignmentStatusDropdown);
-		Select sel= new Select(assignmentStatusDropdown);
-		sel.selectByVisibleText(Status);
+		
+		try {
+			Thread.sleep(2000);
+			Select sel= new Select(assignmentStatusDropdown);
+			Thread.sleep(2000);
+			sel.selectByVisibleText(Status);
+		} catch (Exception e) {
+			
+			System.out.println("Assignment sttaus dropdown in catch ");
+		}
+		
+		
+		
+		Thread.sleep(6000);
+		
 		return this;
 	}
 	
 	public FacilitationManagerDashboardPage checkIfGraded() throws Throwable {
 		waitForElementToBeVisibile(gradedTextEndPage);
 		waitForElementToBeClickable(gradedTextEndPage);
-		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])[2]"));
-		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])[3]"));
+		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])"));
+		
 		return this;
 	}
 	
@@ -1046,7 +1118,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		Thread.sleep(3000);
 		waitForElementToBeVisibile(signOffButton);
 		waitForElementToBeClickable(signOffButton);
-		signOffButton.click();
+		signOffButton.sendKeys(Keys.ENTER);
 		Thread.sleep(2000);
 		Alert alert = BrowserFactory.getDriver().switchTo().alert();
 		Thread.sleep(1000);

@@ -24,7 +24,7 @@ public class RightNavBar extends BasePage {
 		super();
 	}
 	
-	static String courseID;
+	public static String courseID;
 
 	@FindBy(css = "a[title='Understanding Our Universe: An Introduction to Astronomy']")
 	private WebElement fitnessPovCourse;
@@ -104,6 +104,15 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "//a[text()='General']")
 	private WebElement generalLink;
 	
+	@FindBy(xpath = "//a[text()='Manage Configuration Values']")
+	private WebElement manageConfigurationValuePage;
+	
+	public RightNavBar clickOnManageConfigurationValuePage() throws Throwable {
+		waitForElementToBeVisibile(manageConfigurationValuePage);
+		manageConfigurationValuePage.click();
+		return this;
+		}
+	
 	public RightNavBar clickOnFacilitationSignOffReportLink() throws Throwable {
 		waitForElementToBeVisibile(facilitationSgnOffReportLink);
 		waitForElementToBeClickable(facilitationSgnOffReportLink);
@@ -115,6 +124,7 @@ public class RightNavBar extends BasePage {
 		
 		waitForElementToBeVisibile(searchCoursesInput);
 		waitForElementToBeClickable(searchCoursesInput);
+		Thread.sleep(3000);
 		searchCoursesInput.sendKeys(courseName);
 		waitForElementToBeVisibile(goButton);
 		waitForElementToBeClickable(goButton);
@@ -152,7 +162,7 @@ public class RightNavBar extends BasePage {
 		
 		waitForElementToBeVisibile(HomeLink);
 		waitForElementToBeClickable(HomeLink);
-		BrowserFactory.getDriver().navigate().to("https://advancementcourses-uat.learninghouse.com/user/policy.php");
+		BrowserFactory.getDriver().navigate().to(BrowserFactory.url);
 		waitForElementToBeVisibile(sitePolicuyYesButton);
 		waitForElementToBeClickable(sitePolicuyYesButton);
 		sitePolicuyYesButton.click();
@@ -178,6 +188,7 @@ public class RightNavBar extends BasePage {
 	
 	public RightNavBar clickcourseCompletionLink() throws Throwable {
 		BrowserFactory.getDriver().navigate().refresh();
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(courseCompletionLink);
 		waitForElementToBeClickable(courseCompletionLink);
 		courseCompletionLink.sendKeys(Keys.ENTER);
@@ -261,7 +272,7 @@ public class RightNavBar extends BasePage {
 	
 	public RightNavBar clickOnCourses() throws Throwable {
 		BrowserFactory.getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToBeVisibile(coursesLink);
 		waitForElementToBeClickable(coursesLink);
 		Actions act= new Actions(BrowserFactory.getDriver());

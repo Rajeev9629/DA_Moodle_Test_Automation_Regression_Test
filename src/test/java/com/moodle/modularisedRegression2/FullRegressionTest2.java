@@ -1,8 +1,9 @@
-package com.moodle.tlh.tests;
+package com.moodle.modularisedRegression2;
 
 import java.util.LinkedHashMap;
 import org.testng.annotations.Test;
 import com.framework.utils.Utility;
+import com.moodle.tlh.tests.BaseTest;
 import com.netsuite.tlh.operations.FacilitationDashboardOperations;
 import com.netsuite.tlh.operations.Navigator;
 import com.netsuite.tlh.testdata.CreateBackupData;
@@ -16,7 +17,7 @@ public class FullRegressionTest2 extends BaseTest{
 		System.out.println("FullRegressionTest2");
 		System.out.println("TCS 13");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		rightNavOperations.acceptSitePolicyAgreement();
+		//rightNavOperations.acceptSitePolicyAgreement();
 		rightNavOperations.getRestoreCoursePage();
 		Navigator.doRestore(createBackupData);	
 		logger.info("Sample-1 ::Create a backup and Restore for the course Passed" );
@@ -159,14 +160,20 @@ public class FullRegressionTest2 extends BaseTest{
 			
 		}
 		
-		@Test(priority=19,description = "MFD-495::Sign-off button doesn't populate when assignments graded out of order", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		@Test(priority=19,description = "MFD-495::MFD-498::Sign-off button doesn't populate when assignments graded out of order, ParticipationAgreement", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void SignOffButtonNotPopulateWhenAssignmentsgradedoutOfOrder(LinkedHashMap<String, ?> testData) throws Throwable {
 			logger=extent.createTest("19.MFD-495::Sign-off button doesn't populate when assignments graded out of order");
 			System.out.println("TCS 19");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().gradeFinalAsignment(createBackupData).gradeAssigment3_1(createBackupData)
-			.gradeAssigment2_1(createBackupData).verifySignOfButtonMFD_495(createBackupData)
+			.gradeAssigment2_1(createBackupData).verifySignOfButtonMFD_495(createBackupData);
+			
+			//participationAgreement
+			rightNavOperations.getApostopheCoursesPage();
+			Navigator.GetCoursePageOperations().clickTurnEditingOn().changeParticipationAcknowledgementName().clickTurnEditingOff();
+			rightNavOperations.getFacilitationManagerDashboard();
+			Navigator.FacilitationManagerDashboardOperations().verifyParticipationAgreement(createBackupData)
 			;
 			logger.info("MFD-495::SignOffButtonNotPopulateWhenAssignmentsgradedoutOfOrder Passed" );
 			
@@ -181,8 +188,6 @@ public class FullRegressionTest2 extends BaseTest{
 		rightNavOperations.clickHome();
 		rightNavOperations.clickAllCoursesLink();
 		Navigator.GetCoursePageOperations().deleteRespectiveApostophieCourse();
-		
-		
 		logger.info("MFD-227 :: Deleting the respective course Passed" );
 		
 	}

@@ -18,12 +18,13 @@
 			<class name="com.moodle.modularisedRegression1.Regression_TCS5_1"></class>
 			<class name="com.moodle.modularisedRegression1.Regression_TCS6"></class>
 			<class name="com.moodle.modularisedRegression1.Regression_TCS7"></class>
-			<!-- <class name="com.moodle.modularisedRegression1.Regression_TCS8"></class>
+			 
+			 <class name="com.moodle.modularisedRegression1.Regression_TCS8"></class>
 			<class name="com.moodle.modularisedRegression1.Regression_TCS8_1"></class>
 			<class name="com.moodle.modularisedRegression1.Regression_TCS9"></class>
 			<class name="com.moodle.modularisedRegression1.Regression_TCS9_1"></class>
-			 <class name="com.moodle.modularisedRegression1.Regression_TCS10"></class>
-			<class name="com.moodle.modularisedRegression1.Regression_TCS11"></class> -->
+			<class name="com.moodle.modularisedRegression1.Regression_TCS10"></class>
+			<class name="com.moodle.modularisedRegression1.Regression_TCS11"></class> 
 			
 		</classes>
 	</test>

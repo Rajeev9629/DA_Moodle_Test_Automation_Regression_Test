@@ -15,6 +15,8 @@ import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.utils.SystemConfigurations;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
+import com.netsuite.tlh.operations.Navigator;
+import com.netsuite.tlh.operations.RightNavOperations;
 
 
 public class RestorePage extends BasePage {
@@ -23,7 +25,7 @@ public class RestorePage extends BasePage {
 		super();
 	}
 
-	@FindBy(xpath = "(//a[contains(text(),'Restore')])[3]")
+	@FindBy(xpath = "//p[@role=\"treeitem\"]//following::*[contains(text(),'Restore')]")
 	private WebElement restoreLink;
 	
 	@FindBy(css = "button[type='submit']")
@@ -71,9 +73,26 @@ public class RestorePage extends BasePage {
 	@FindBy(xpath = "//span[text()='Module 2 Project Checkpoint']")
 	private WebElement module2Checkpoint;
 	
+	@FindBy(xpath = "//td//a[text()='Restore']")
+	private WebElement backupPageRestore;
+	
+	
+	public RestorePage clickbackupPageRestore() throws Throwable {
+		waitForElementToBeClickable(backupPageRestore);
+		waitForElementToBeVisibile(backupPageRestore);
+		Thread.sleep(2000);
+		backupPageRestore.click();
+		return this;
+	}
+	
 	public RestorePage verifyCourseIsNotEmpty() throws Throwable {
 		waitForElementToBeClickable(module2Checkpoint);
 		waitForElementToBeVisibile(module2Checkpoint);
+		if(module2Checkpoint.isDisplayed()==false) {
+			OperationFactory.getOperation(RightNavOperations.class).clickHome().clickAllCoursesLink();
+			Navigator.GetCoursePageOperations().deleteRespectiveApostophieCourse();
+			BrowserFactory.getDriver().quit();
+		}
 		
 		return this;
 	}
@@ -128,6 +147,7 @@ public class RestorePage extends BasePage {
 	public RestorePage clickOnRestoreLink() throws Throwable {
 		waitForElementToBeClickable(restoreLink);
 		waitForElementToBeVisibile(restoreLink);
+		Thread.sleep(2000);
 		restoreLink.click();
 		return this;
 	}

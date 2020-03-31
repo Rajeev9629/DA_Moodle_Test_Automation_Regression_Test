@@ -27,6 +27,17 @@ public class Navigator extends BaseOperations {
 		return OperationFactory.getOperation(RestorePageOperations.class).DoTheRestore2(createBackupData);
 	}
 	
+	public static RestorePageOperations doRestore2(CreateBackupData createBackupData) throws Throwable {
+		try {
+	
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doRestore");}
+		catch(Exception e) {
+			System.out.println("doRestore failed");
+			e.printStackTrace();
+		}
+		return OperationFactory.getOperation(RestorePageOperations.class).DoTheRestore(createBackupData);
+	}
+	
 	public static ParticipantsPageOperations GetParticipationOperationsPage() throws Throwable {
 		try {
 	

@@ -18,7 +18,7 @@ public class ParticipantsPageOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("enrollStudent");
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnEnrolUsers().selectUsers(Username)
 		.selectRoles(createBackupData.getRole1()).clickOnEnrolUsersSaveButton();
-		logger.pass("Student has been Enrolled");}
+		}
 		catch(Exception e) {
 			System.out.println("enrollStudent failed");
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class ParticipantsPageOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("enrollFacilitator");
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnEnrolUsers().selectUsers(Username)
 		.selectRoles(createBackupData.getRole2()).clickOnEnrolUsersSaveButton();
-		logger.pass("Facilitator has been Enrolled");}
+		}
 		catch(Exception e) {
 			System.out.println("enrollFacilitator failed");
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class ParticipantsPageOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("enrollFacilitationManager");
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnEnrolUsers().selectUsers(Username)
 		.selectRoles(createBackupData.getRole3()).clickOnEnrolUsersSaveButton();
-		logger.pass("Facilitation Manager has been Enrolled");}
+		}
 		catch(Exception e) {
 			System.out.println("enrollFacilitationManager failed");
 			e.printStackTrace();
@@ -69,11 +69,15 @@ public class ParticipantsPageOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("loginAsRespectiveUser");
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnRespectiveUser(Role,Username)
 		.clickOnLoginAs().clickContinue();
-		if (Role.equalsIgnoreCase("Student") && coursecode.equalsIgnoreCase("moodlecourse")) {
+		if (Role.equalsIgnoreCase("Student") && coursecode.equalsIgnoreCase(coursecode)) {
 			Thread.sleep(3000);
-			BrowserFactory.getDriver().findElement(By.xpath("//span[text()='moodlecourse']")).click();
+			OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
+			Thread.sleep(3000);
+		
+			BrowserFactory.getDriver().findElement(By.xpath("//span[text()='" + coursecode + "']")).click();
+			Thread.sleep(3000);
 		}
-		logger.pass("loginAsRespectiveUser Sucess");}
+		}
 		catch(Exception e) {
 			System.out.println("loginAsRespectiveUser failed");
 			e.printStackTrace();
@@ -87,7 +91,7 @@ public class ParticipantsPageOperations extends BaseOperations {
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnRespectiveApostopheUser(Role,Count)
 		.clickOnLoginAs().clickContinue();
 		
-		logger.pass("loginAsRespectiveApostopheUser Sucess");}
+		}
 		catch(Exception e) {
 			System.out.println("loginAsRespectiveApostopheUser failed");
 			e.printStackTrace();

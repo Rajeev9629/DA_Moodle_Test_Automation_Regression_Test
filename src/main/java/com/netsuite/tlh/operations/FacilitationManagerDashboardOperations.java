@@ -12,6 +12,30 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	ExtentTest logger=FullRegressionTest.logger;
 	
+	public FacilitationManagerDashboardOperations verifyMFD_536() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_536");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickDownloadButton().clickFilterButton()
+		.verifyTableIspresent()
+		;
+		logger.pass("verifyMFD_536 passed");}
+		catch(Exception e) {
+			System.out.println("verifyMFD_536 failed");
+			e.printStackTrace();}
+		return this;	
+	}
+	
+	public FacilitationManagerDashboardOperations verifyParticipationAgreement(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyParticipationAgreement");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
+		.verifyParticipationAgreement()
+		;
+		logger.pass("verifyParticipationAgreement passed");}
+		catch(Exception e) {
+			System.out.println("verifyParticipationAgreement failed");
+			e.printStackTrace();}
+		return this;	
+	}
+	
 	
 	public FacilitationManagerDashboardOperations verifySignOfButtonMFD_495(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOfButtonMFD_495");
@@ -133,7 +157,23 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink(createBackupData,3)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded().verifyGradedUngradedFilters();
-		logger.pass("Assignment has been graded");}
+		//logger.pass("Assignment has been graded");
+		}
+		catch(Exception e) {
+			System.out.println("gradeAssigment failed");
+			e.printStackTrace();
+		}
+		
+		return this;	
+	}
+	
+	public FacilitationManagerDashboardOperations gradeAssigmentRegression4(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
+		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
+		.openAssigmentsLink(createBackupData,3)
+		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded();
+		}
 		catch(Exception e) {
 			System.out.println("gradeAssigment failed");
 			e.printStackTrace();
@@ -254,7 +294,8 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.enterStudentName(createBackupData.getUserName1())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
 		;
-		logger.pass("User has been signed Off");}
+		//logger.pass("User has been signed Off");
+		}
 		catch(Exception e) {
 			System.out.println("signOff failed");
 			e.printStackTrace();
@@ -296,7 +337,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	public FacilitationManagerDashboardOperations verifyResubmittedAssignment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyResubmittedAssignment");
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
 		.verifyResubmitedAssignment().verifyResubmitedAssignmentDateSubmitted()
 		;

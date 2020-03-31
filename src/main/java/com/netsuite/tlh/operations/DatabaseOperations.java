@@ -33,6 +33,46 @@ public class DatabaseOperations extends BaseOperations {
 		}
 		return this;	
 	}
+	
+	public DatabaseOperations VerifyRecordsToMdl_assignment_typeTable(Database databaseData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyRecordsToMdl_assignment_typeTable");
+		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
+		.VerifyRecordsToMdl_assignment_typeTable(databaseData)
+		;
+		}
+		catch(Exception e) {
+			System.out.println("VerifyRecordsToMdl_assignment_typeTable failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
+	public DatabaseOperations verifymdl_dashboard_data(Database databaseData, String courseID) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifymdl_dashboard_data");
+		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
+		.verifymdl_dashboard_data(databaseData,courseID)
+		;
+		}
+		catch(Exception e) {
+			System.out.println("verifymdl_dashboard_data failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+
+	public DatabaseOperations verifymdl_assigned_facilitators(Database databaseData, String courseID) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifymdl_assigned_facilitators");
+		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
+		.verifymdl_assigned_facilitators(databaseData,courseID)
+		;
+		
+		}
+		catch(Exception e) {
+			System.out.println("verifymdl_assigned_facilitators failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
 
 
 

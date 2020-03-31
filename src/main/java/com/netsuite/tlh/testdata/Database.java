@@ -19,8 +19,108 @@ public class Database implements ITestData {
 	private String creditType1;
 	private String creditType2;
 	private String creditType3;
+	private String typeName1;
+	private String typeName2;
+	private String typeName3;
+	private String typeName4;
+	private String typeName5;
+	private String typeName6;
+	private String typeName7;
+	private String typeNameValue1;
+	private String typeNameValue2;
+	private String typeNameValue3;
+	private String typeNameValue4;
+	private String typeNameValue5;
+	private String typeNameValue6;
+	private String typeNameValue7;
 	
 	
+	
+	
+	public String getTypeName1() {
+		return typeName1;
+	}
+	public void setTypeName1(String typeName1) {
+		this.typeName1 = typeName1;
+	}
+	public String getTypeName2() {
+		return typeName2;
+	}
+	public void setTypeName2(String typeName2) {
+		this.typeName2 = typeName2;
+	}
+	public String getTypeName3() {
+		return typeName3;
+	}
+	public void setTypeName3(String typeName3) {
+		this.typeName3 = typeName3;
+	}
+	public String getTypeName4() {
+		return typeName4;
+	}
+	public void setTypeName4(String typeName4) {
+		this.typeName4 = typeName4;
+	}
+	public String getTypeName5() {
+		return typeName5;
+	}
+	public void setTypeName5(String typeName5) {
+		this.typeName5 = typeName5;
+	}
+	public String getTypeName6() {
+		return typeName6;
+	}
+	public void setTypeName6(String typeName6) {
+		this.typeName6 = typeName6;
+	}
+	public String getTypeName7() {
+		return typeName7;
+	}
+	public void setTypeName7(String typeName7) {
+		this.typeName7 = typeName7;
+	}
+	public String getTypeNameValue1() {
+		return typeNameValue1;
+	}
+	public void setTypeNameValue1(String typeNameValue1) {
+		this.typeNameValue1 = typeNameValue1;
+	}
+	public String getTypeNameValue2() {
+		return typeNameValue2;
+	}
+	public void setTypeNameValue2(String typeNameValue2) {
+		this.typeNameValue2 = typeNameValue2;
+	}
+	public String getTypeNameValue3() {
+		return typeNameValue3;
+	}
+	public void setTypeNameValue3(String typeNameValue3) {
+		this.typeNameValue3 = typeNameValue3;
+	}
+	public String getTypeNameValue4() {
+		return typeNameValue4;
+	}
+	public void setTypeNameValue4(String typeNameValue4) {
+		this.typeNameValue4 = typeNameValue4;
+	}
+	public String getTypeNameValue5() {
+		return typeNameValue5;
+	}
+	public void setTypeNameValue5(String typeNameValue5) {
+		this.typeNameValue5 = typeNameValue5;
+	}
+	public String getTypeNameValue6() {
+		return typeNameValue6;
+	}
+	public void setTypeNameValue6(String typeNameValue6) {
+		this.typeNameValue6 = typeNameValue6;
+	}
+	public String getTypeNameValue7() {
+		return typeNameValue7;
+	}
+	public void setTypeNameValue7(String typeNameValue7) {
+		this.typeNameValue7 = typeNameValue7;
+	}
 	public String getHostName() {
 		return hostName;
 	}

@@ -102,6 +102,7 @@ public class ParticipantsPage extends BasePage {
 	}
 	
 	public ParticipantsPage clickOnEnrolUsersSaveButton() throws Throwable {
+		Thread.sleep(2000);
 		waitForElementToBeVisibile(enrollUsersSaveButton);
 		waitForElementToBeClickable(enrollUsersSaveButton);
 		enrollUsersSaveButton.click();

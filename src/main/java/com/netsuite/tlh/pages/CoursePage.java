@@ -145,6 +145,50 @@ public class CoursePage extends MenuBarPage {
 	
 	
 	
+	@FindBy(css = "a[title='Actions']")
+	private WebElement participationAcknowledgementEdit;
+	
+	@FindBy(xpath = "//a[text()='Edit settings']")
+	private WebElement editSettings;
+	
+	@FindBy(id = "id_name")
+	private WebElement participationAcknowledgementNameInput;
+	
+	@FindBy(xpath = "//*[text()='Quizzes']")
+	private WebElement quizzesLink;
+	
+	public CoursePage clickquizzesLink() throws Throwable {
+		waitForElementToBeVisibile(quizzesLink);
+		waitForElementToBeClickable(quizzesLink);
+		quizzesLink.click();
+		return this;
+	}
+	
+	
+	public CoursePage changeParticipationAcknowledgementName() throws Throwable {
+		waitForElementToBeVisibile(participationAcknowledgementLink);
+		waitForElementToBeClickable(participationAcknowledgementLink);
+		participationAcknowledgementLink.click();
+		Thread.sleep(3000);
+		waitForElementToBeVisibile(participationAcknowledgementEdit);
+		waitForElementToBeClickable(participationAcknowledgementEdit);
+		participationAcknowledgementEdit.click();
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(editSettings);
+		waitForElementToBeClickable(editSettings);
+		editSettings.click();
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(participationAcknowledgementNameInput);
+		waitForElementToBeClickable(participationAcknowledgementNameInput);
+		participationAcknowledgementNameInput.clear();
+		participationAcknowledgementNameInput.sendKeys("Required: Participation Agreement");
+		
+		
+		return this;
+	}
+	
+	
+	
 	public CoursePage clickCoursesLink() throws Throwable {
 		waitForElementToBeVisibile(CoursesLink);
 		waitForElementToBeClickable(CoursesLink);
@@ -352,6 +396,7 @@ public class CoursePage extends MenuBarPage {
             }};
             WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
     		wait.until(expectation);
+    		Thread.sleep(3000);
 		turnEditingOffLink.sendKeys(Keys.ENTER);
 		return this;
 	}

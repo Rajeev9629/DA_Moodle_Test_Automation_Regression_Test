@@ -49,7 +49,7 @@ public class BaseTestDatabase {
 	public static ExtentReports extent;
 	public static ExtentTest logger;
 	
-
+	
 	@BeforeSuite
 	public void init() throws DriverNotInitializedException, Throwable {
 		loginDataMap = BaseDataProvider.getDataAsMap(LOGINDETAILS_FILENAME);
@@ -57,10 +57,7 @@ public class BaseTestDatabase {
 		passWord = (String) loginDataMap.get("passWord");
 		ExtentHtmlReporter reporter=new ExtentHtmlReporter("./Reports/Report.html");
 		extent = new ExtentReports();
-	    extent.attachReporter(reporter);
-	   
-	    
-	    
+	    extent.attachReporter(reporter);   
 	}
 
 	@BeforeClass
@@ -75,6 +72,7 @@ public class BaseTestDatabase {
 		loginOperations.doLogin(userName, passWord).verifyUserLoggedInSuccessfully();
 		
 	}
+	
 	
 	@BeforeMethod
 	public void doMoodleLogin() {}
@@ -104,9 +102,9 @@ public class BaseTestDatabase {
 	}
 	@AfterClass
 	public void tearDown() throws DriverNotInitializedException, Throwable {
+		menuBarOperations.doLogOut().navigateToMainloginScreen();
 		
-		
-		BrowserFactory.quitDriver();
+		//BrowserFactory.quitDriver();
 	}
 	
 

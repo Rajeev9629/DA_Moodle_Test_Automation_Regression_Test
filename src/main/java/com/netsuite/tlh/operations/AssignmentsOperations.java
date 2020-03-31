@@ -14,7 +14,7 @@ public class AssignmentsOperations extends BaseOperations {
 	public AssignmentsOperations completeAssingments() throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("completeAssingments");
 		NetsuiteTLHPageFactory.getPage(AssignmentsPage.class).openAssigmentsLink()/*.completeAssignment()*/.refreshPage();
-		logger.pass("Assignment Submission is Completed");}
+		}
 		catch(Exception e) {
 			System.out.println("completeAssingments failed");
 			e.printStackTrace();

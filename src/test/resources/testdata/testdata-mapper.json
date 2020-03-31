@@ -1,5 +1,7 @@
 {
 	"MFD-221": "src/test/resources/testdata/create-backup-for-course.json",
+	"MFD-266": "src/test/resources/testdata/create-backup-for-course.json",
+	
 	"MFD-223": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-357": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-227": "src/test/resources/testdata/enrollUsers.json",
@@ -7,7 +9,6 @@
 	"MFD-244": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-225": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-226": "src/test/resources/testdata/enrollUsers.json",
-	"MFD-266": "src/test/resources/testdata/create-backup-for-course.json",
 	"MFD-246": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-258": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-269": "src/test/resources/testdata/enrollUsers.json",
@@ -28,5 +29,9 @@
 	"MFD-290": "src/test/resources/testdata/apostopheTest.json",
 	
 	
-	"MFD-444":"src/test/resources/testdata/database.json"
+	"MFD-444":"src/test/resources/testdata/database.json",
+	"MFD-503":"src/test/resources/testdata/database.json",
+	
+	"MFD-505": "src/test/resources/testdata/regression3.json",
+	"MFD-531": "src/test/resources/testdata/regression3.json"
 }

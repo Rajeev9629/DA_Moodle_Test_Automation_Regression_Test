@@ -16,13 +16,20 @@ public class Regression_TCS10 extends BaseTest{
 		loggingStartReport("TCS10:MFD-319::VerifyRubricView");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("10");
-		//Facilitation Manager
-		rightNavOperations.getFacilitationManagerDashboard().verifyRubricGrades(createBackupData);
+		
+		//Facilitation Manager ( after 8)
+				
+				rightNavOperations.getFacilitationManagerDashboard().gradeAssigment2(createBackupData).verifyRubricGrades(createBackupData);
+		
 		//Facilitator
+				
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole2(), createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyRubricGrades(createBackupData);
+		
+		
+		
 		
 			
 	}

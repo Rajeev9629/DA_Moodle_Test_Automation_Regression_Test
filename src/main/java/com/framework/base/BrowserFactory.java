@@ -5,10 +5,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -39,6 +42,8 @@ public class BrowserFactory {
 			case chrome:
 				/* System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")
 				 + "/src/test/resources/chromedriver.exe");*/
+				 System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+				
 				WebDriverManager.chromedriver().setup();
 				Map<String, Object> prefs = new HashMap<String, Object>();
 				String download_folder = "src/test/resources/testdata/downloads";
@@ -46,9 +51,14 @@ public class BrowserFactory {
 				prefs.put("profile.password_manager_enabled", false);
 				prefs.put("profile.default_content_settings.popups", 0);
 				prefs.put("download.default_directory", System.getProperty("user.dir") + "/" + download_folder);
+				
 				ChromeOptions options = new ChromeOptions();
 				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("disable-infobars");
+				options.addArguments("enable-automation");
+				options.addArguments("--disable-extensions");
+				options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+				
 				Driver = new ChromeDriver(options);
 				
 				/*DesiredCapabilities caps = new DesiredCapabilities();

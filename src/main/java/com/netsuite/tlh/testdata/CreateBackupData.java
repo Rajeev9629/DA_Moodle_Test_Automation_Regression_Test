@@ -37,10 +37,16 @@ public class CreateBackupData implements ITestData {
 	private String userName2Short;
 	private String userName7;
 	private String feedbackComment;
+	private String courseSearch;
 	
 	
 	
-	
+	public String getCourseSearch() {
+		return courseSearch;
+	}
+	public void setCourseSearch(String courseSearch) {
+		this.courseSearch = courseSearch;
+	}
 	public String getFeedbackComment() {
 		return feedbackComment;
 	}

@@ -117,6 +117,18 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public RightNavOperations searchForCourse(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getCoursePage");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnCourse(createBackupData.getCourseSearch());
+		}
+		catch(Exception e) {
+			System.out.println("getCoursePage failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
 	public RightNavOperations getCoursePage(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getCoursePage");
@@ -285,7 +297,7 @@ public class RightNavOperations extends BaseOperations {
 	
 	public FacilitationSignOffReportOperations getSignOffPage() throws DriverNotInitializedException, Throwable {
 		try {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getFacilitationManagerDashboard");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getSignOffPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnFacilitationSignOffReportLink()
 		;
 		}
@@ -294,6 +306,19 @@ public class RightNavOperations extends BaseOperations {
 			e.printStackTrace();
 		}
 		return OperationFactory.getOperation(FacilitationSignOffReportOperations.class);	
+	}
+	
+	public RightNavOperations getManageConfigurationValuePage() throws DriverNotInitializedException, Throwable {
+		try {
+	
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getManageConfigurationValuePage");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnManageConfigurationValuePage();
+		}
+		catch(Exception e) {
+			System.out.println("getManageConfigurationValuePage failed");
+			e.printStackTrace();
+		}
+		return this;	
 	}
 	
 }
