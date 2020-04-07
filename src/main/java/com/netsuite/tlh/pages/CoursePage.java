@@ -157,6 +157,17 @@ public class CoursePage extends MenuBarPage {
 	@FindBy(xpath = "//*[text()='Quizzes']")
 	private WebElement quizzesLink;
 	
+	@FindBy(xpath = "//a[text()='Required: Participation Agreement']")
+	private WebElement ParticipationAgreementLink;
+	
+	public CoursePage clickParticipationAgreementLink() throws Throwable {
+		waitForElementToBeVisibile(ParticipationAgreementLink);
+		waitForElementToBeClickable(ParticipationAgreementLink);
+		Thread.sleep(2000);
+		ParticipationAgreementLink.click();
+		return this;
+	}
+	
 	public CoursePage clickquizzesLink() throws Throwable {
 		waitForElementToBeVisibile(quizzesLink);
 		waitForElementToBeClickable(quizzesLink);

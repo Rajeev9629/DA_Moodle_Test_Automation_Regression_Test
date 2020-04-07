@@ -99,7 +99,9 @@ public class RestorePage extends BasePage {
 	
 	public RestorePage clickOnRestoreButton() throws Throwable {
 		waitForElementToBeVisibile(loadingSign);
-		waitForElementToBeInVisibile(loadingSign);
+		Thread.sleep(2000);
+        waitForElementToBeInVisibile(loadingSign);
+
 		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
         public Boolean apply(WebDriver driver) {
          return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
@@ -175,6 +177,7 @@ public class RestorePage extends BasePage {
 	}
 	
 	public RestorePage clickOnNextButton() throws Throwable {
+		Thread.sleep(3000);
 		waitForElementToBeClickable(nextButton);
 		waitForElementToBeVisibile(nextButton);
 		nextButton.click();

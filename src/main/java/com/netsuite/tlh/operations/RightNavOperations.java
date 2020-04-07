@@ -55,6 +55,19 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public RightNavOperations searchAndGetNewCoursePage(CreateBackupData createBackupData, String courseName) throws DriverNotInitializedException, Throwable {
+		try {
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("searchAndGetCoursePage");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnCourses().searchAndGoToCourse(courseName);
+		}
+		catch(Exception e) {
+			System.out.println("searchAndGetCoursePage failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
+	
 	public ParticipantsPageOperations getEnrollParticipantsPage1() throws DriverNotInitializedException, Throwable {
 		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsPage");
@@ -128,6 +141,7 @@ public class RightNavOperations extends BaseOperations {
 		}
 		return this;	
 	}
+	
 	
 	public RightNavOperations getCoursePage(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {

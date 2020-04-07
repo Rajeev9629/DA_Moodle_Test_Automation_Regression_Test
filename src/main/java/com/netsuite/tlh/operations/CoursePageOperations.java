@@ -184,4 +184,18 @@ public class CoursePageOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public CoursePageOperations completeParticipationAgreement() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("clickParticipationAgreementLink");
+		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickParticipationAgreementLink().clickattemptQuizNowButton()
+		.clickQuizAnswerOption().clickfinishAttemptButton().clicksubmitAllAndFinishButton().clickfinishReviewLink()
+		;
+		//logger.pass("ParticipationAcknowledgement2 has been completed");
+		}
+		catch(Exception e) {
+			System.out.println("clickParticipationAgreementLink failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
 }

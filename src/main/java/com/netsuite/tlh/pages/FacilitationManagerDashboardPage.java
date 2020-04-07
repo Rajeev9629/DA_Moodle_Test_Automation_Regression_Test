@@ -148,8 +148,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "//li//a[@aria-label='Next']")
 	private WebElement dashboardNextButton;
 	
-	@FindBy(xpath = "//td[text()='Required: Participation Acknowledgement']")
-	private WebElement participationAcknowledgementText;
+	@FindBy(xpath = "//td[text()='Required: Participation Agreement']")
+	private WebElement participationAgreementText;
 	
 	@FindBy(xpath = "//*[text()='Module 2 Project Checkpoint']")
 	private WebElement module2Checkpoint;
@@ -205,8 +205,76 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(id = "downloadCsv")
 	private WebElement downloadButton;
 	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[3]//td[2]")
+	private WebElement rubricGrade1;
+	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[5]//td[2]")
+	private WebElement rubricGrade2;
+	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[7]//td[2]")
+	private WebElement rubricGrade3;
+	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[9]//td[2]")
+	private WebElement rubricGrade4;
+	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[5]//td[3]")
+	private WebElement rubricGradedBy2;
+	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[7]//td[3]")
+	private WebElement rubricGradedBy3;
+	
+	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[9]//td[3]")
+	private WebElement rubricGradedBy4;
+	
 	Boolean stat= true;
 	static int count;
+	
+	public FacilitationManagerDashboardPage verifygrade_GradedBy() throws Throwable {
+		waitForElementToBeVisibile(rubricGrade1);
+		if(rubricGrade1.getText().equalsIgnoreCase("100.00%")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGrade1 failed");
+		
+		waitForElementToBeVisibile(rubricGrade2);
+		if(rubricGrade2.getText().equalsIgnoreCase("100%")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGrade2 failed");
+		
+		waitForElementToBeVisibile(rubricGrade3);
+		if(rubricGrade3.getText().equalsIgnoreCase("100%")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGrade3 failed");
+		
+		waitForElementToBeVisibile(rubricGrade4);
+		if(rubricGrade4.getText().equalsIgnoreCase("100%")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGrade4 failed");
+		
+		waitForElementToBeVisibile(rubricGradedBy2);
+		if(rubricGradedBy2.getText().equalsIgnoreCase("Admin User")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGradedBy2 failed");
+		
+		waitForElementToBeVisibile(rubricGradedBy3);
+		if(rubricGradedBy3.getText().equalsIgnoreCase("Admin User")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGradedBy3 failed");
+		
+		waitForElementToBeVisibile(rubricGradedBy4);
+		if(rubricGradedBy4.getText().equalsIgnoreCase("Admin User")) {
+			Assert.assertEquals(true, true);
+		}
+		else Assert.assertEquals(false, true,"rubricGradedBy4 failed");
+		
+		
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage clickDownloadButton() throws Throwable {
 		
@@ -379,14 +447,16 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage verifyRubricGradingMain() throws Throwable {
 		waitForElementToBeVisibile(previoudGrades);
 		waitForElementToBeVisibile(previoudGradesTable);
-		waitForElementToBeVisibile(participationAcknowledgementText);
-		Assert.assertEquals(participationAcknowledgementText.isDisplayed(), true);
+		waitForElementToBeVisibile(participationAgreementText);
+		Assert.assertEquals(participationAgreementText.isDisplayed(), true);
 		waitForElementToBeVisibile(module2Checkpoint);
 		Assert.assertEquals(module2Checkpoint.isDisplayed(), true);
 		waitForElementToBeVisibile(module3Checkpoint);
 		Assert.assertEquals(module3Checkpoint.isDisplayed(), true);
 		waitForElementToBeVisibile(finalProjectSubmision);
 		Assert.assertEquals(finalProjectSubmision.isDisplayed(), true);
+		
+		verifygrade_GradedBy();
 		
 		return this;
 	}
@@ -404,6 +474,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		 if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
 		wait.until(expectation);
 		verifyRubricGradingMain();
+		System.out.println("Done");
 		 BrowserFactory.getDriver().close();
 		 break;
 			   } 
@@ -601,6 +672,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeVisibile(resetButton);
 		waitForElementToBeClickable(resetButton);
 		resetButton.click();
+		Thread.sleep(4000);
 		return this;
 	}
 	String gradedCount1;
@@ -679,9 +751,11 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	
 	public FacilitationManagerDashboardPage clickFilterButton() throws Throwable {
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(filterButton);
 		waitForElementToBeClickable(filterButton);
-		filterButton.click();
+		filterButton.sendKeys(Keys.ENTER);
+		Thread.sleep(3000);
 		return this;
 	}
 	

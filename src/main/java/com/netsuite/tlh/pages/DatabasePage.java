@@ -20,7 +20,7 @@ import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.utils.SystemConfigurations;
 import com.framework.utils.Utility;
-import com.moodle.modulariseDatabase.DatabaseTest;
+import com.moodle.DatabaseTest.DatabaseTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.testdata.Database;

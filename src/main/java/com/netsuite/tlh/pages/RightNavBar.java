@@ -143,7 +143,7 @@ public class RightNavBar extends BasePage {
 		return this;
 	}
 	
-	
+
 	public RightNavBar clickOnHamburgerItem() throws Throwable {
 		
 		waitForElementToBeVisibile(HamburgerItem);

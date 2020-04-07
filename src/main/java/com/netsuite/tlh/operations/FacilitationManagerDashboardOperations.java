@@ -56,7 +56,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeFinalAsignment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.enterAssignmentName(createBackupData.getFinalProjectSubmission()).enterCourseCode(createBackupData.getCourseShortName())
-		.clickFilterButton().openAssigmentsLink(createBackupData,1)
+		.selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().openAssigmentsLink(createBackupData,1)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().clickResetButton()
 		;
 		logger.pass("gradeFinalAsignment passed");}
@@ -198,7 +198,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	public FacilitationManagerDashboardOperations gradeAssigment3_1(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3");
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().selectAssignmentStatus(createBackupData.getStatusUngraded())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink3_1()
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGradedNew()
@@ -242,7 +242,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	public FacilitationManagerDashboardOperations gradeAssigment2_1(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment2");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
-		.clickFilterButton().openAssigmentsLink2_1().selectAssignmentStatus(createBackupData.getStatus())
+		.selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().openAssigmentsLink2_1()
 		;
 		logger.pass("gradeAssigment2_1 has been verified");}
 		catch(Exception e) {
@@ -435,7 +435,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	public FacilitationManagerDashboardOperations verifyRubricGrades(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyRubricGrades");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
-		.selectAssignmentStatus(createBackupData.getStatusAll()).enterStudentName(createBackupData.getUserName1())
+		.selectAssignmentStatus(createBackupData.getStatusAll()).enterStudentName(createBackupData.getUserName4())
 		.clickFilterButton().verifyTableIspresent()
 		.verifyRubricGrading()
 		;
