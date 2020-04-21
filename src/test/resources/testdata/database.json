@@ -43,8 +43,13 @@
 			"typeName6":"Final Project: Implementation Plan Submission",
 			"typeNameValue6":"6",
 			"typeName7":"Final Project: Implementation and Assessment Submission",
-			"typeNameValue7":"7"
-			
+			"typeNameValue7":"7",
+			"nameText":"AutomationName",
+			"valueText":"AutomationValue",
+			"moduleText":"AutomationModule",
+			"nameTextNew":"AutomationNameNew",
+			"valueTextNew":"AutomationValueNew",
+			"moduleTextNew":"AutomationModuleNew"
 							
 			
 		}

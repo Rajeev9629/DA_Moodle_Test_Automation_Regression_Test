@@ -16,7 +16,7 @@ public class Regression_TCS2 extends BaseTest  {
 		loggingStartReport("MFD-531::Manage Configuration Values");
 		System.out.println("2");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		rightNavOperations.getManageConfigurationValuePage();
+		rightNavOperations.getManageConfigurationValuePage().verifyManageConfigPage();
 		
 		
 	}

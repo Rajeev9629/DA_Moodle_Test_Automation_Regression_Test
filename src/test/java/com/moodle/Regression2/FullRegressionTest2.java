@@ -17,7 +17,7 @@ public class FullRegressionTest2 extends BaseTest{
 		System.out.println("FullRegressionTest2");
 		System.out.println("TCS 13");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		//rightNavOperations.acceptSitePolicyAgreement();
+	//	rightNavOperations.acceptSitePolicyAgreement();
 		rightNavOperations.getRestoreCoursePage();
 		Navigator.doRestore(createBackupData);	
 		logger.info("Sample-1 ::Create a backup and Restore for the course Passed" );

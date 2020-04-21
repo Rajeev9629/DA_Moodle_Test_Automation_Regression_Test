@@ -33,10 +33,52 @@ public class Database implements ITestData {
 	private String typeNameValue5;
 	private String typeNameValue6;
 	private String typeNameValue7;
+	private String nameText;
+	private String valueText;
+	private String moduleText;
+	private String nameTextNew;
+	private String valueTextNew;
+	private String moduleTextNew;
+	
+	public String getNameTextNew() {
+		return nameTextNew;
+	}
+	public void setNameTextNew(String nameTextNew) {
+		this.nameTextNew = nameTextNew;
+	}
+	public String getValueTextNew() {
+		return valueTextNew;
+	}
+	public void setValueTextNew(String valueTextNew) {
+		this.valueTextNew = valueTextNew;
+	}
+	public String getModuleTextNew() {
+		return moduleTextNew;
+	}
+	public void setModuleTextNew(String moduleTextNew) {
+		this.moduleTextNew = moduleTextNew;
+	}
 	
 	
 	
-	
+	public String getNameText() {
+		return nameText;
+	}
+	public void setNameText(String nameText) {
+		this.nameText = nameText;
+	}
+	public String getValueText() {
+		return valueText;
+	}
+	public void setValueText(String valueText) {
+		this.valueText = valueText;
+	}
+	public String getModuleText() {
+		return moduleText;
+	}
+	public void setModuleText(String moduleText) {
+		this.moduleText = moduleText;
+	}
 	public String getTypeName1() {
 		return typeName1;
 	}

@@ -27,7 +27,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.utils.FileUtils;
-import com.moodle.tlh.tests.FullRegressionTest;
+import com.moodle.Regression1.FullRegressionTest;
 
 
 public class FacilitationManagerReportPage extends MenuBarPage {

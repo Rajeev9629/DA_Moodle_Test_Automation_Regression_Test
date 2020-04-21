@@ -322,7 +322,7 @@ public class RightNavOperations extends BaseOperations {
 		return OperationFactory.getOperation(FacilitationSignOffReportOperations.class);	
 	}
 	
-	public RightNavOperations getManageConfigurationValuePage() throws DriverNotInitializedException, Throwable {
+	public ManageConfigValueOperations getManageConfigurationValuePage() throws DriverNotInitializedException, Throwable {
 		try {
 	
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getManageConfigurationValuePage");
@@ -332,7 +332,7 @@ public class RightNavOperations extends BaseOperations {
 			System.out.println("getManageConfigurationValuePage failed");
 			e.printStackTrace();
 		}
-		return this;	
+		return OperationFactory.getOperation(ManageConfigValueOperations.class);	
 	}
 	
 }

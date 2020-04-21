@@ -27,7 +27,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
-import com.moodle.tlh.tests.FullRegressionTest;
+import com.moodle.Regression1.FullRegressionTest;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FacilitationManagerDashboardPage extends MenuBarPage {

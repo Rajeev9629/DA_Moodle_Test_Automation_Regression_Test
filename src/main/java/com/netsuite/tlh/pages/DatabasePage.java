@@ -21,6 +21,7 @@ import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.utils.SystemConfigurations;
 import com.framework.utils.Utility;
 import com.moodle.DatabaseTest.DatabaseTest;
+import com.moodle.DatabaseTest.TCS3;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.testdata.Database;
@@ -30,6 +31,34 @@ public class DatabasePage extends BasePage {
 
 	public DatabasePage() throws DriverNotInitializedException {
 		super();
+	}
+	
+public DatabasePage verifyConfigurationValue(String name,String value ,String module) throws Throwable {
+		
+		Class.forName("com.mysql.jdbc.Driver");
+	    Connection con=DriverManager.getConnection(TCS3.DB_URL,TCS3.user,TCS3.password); 
+	    Statement statement = con.createStatement();
+	    String query = "SELECT name FROM mdl_configuration_values where name =" + "\"" + name + "\"";
+	    ResultSet resultSet = statement.executeQuery(query);
+	    resultSet.next();
+	    String nameDB=resultSet.getString(1);
+	    Assert.assertEquals(name, nameDB,"Config value Name failed");
+	     
+	    Statement statement2 = con.createStatement();
+	    String query2 = "SELECT value FROM mdl_configuration_values where name =" + "\"" + name + "\"";
+	    ResultSet resultSet2 = statement2.executeQuery(query2);
+	    resultSet2.next();
+	    String valueDB=resultSet2.getString(1);
+	    Assert.assertEquals(value, valueDB,"Config value value failed");
+	    
+	    Statement statement3 = con.createStatement();
+	    String query3 = "SELECT module FROM mdl_configuration_values where name =" + "\"" + name + "\"";
+	    ResultSet resultSet3 = statement3.executeQuery(query3);
+	    resultSet3.next();
+	    String moduleDB=resultSet3.getString(1);
+	    Assert.assertEquals(module, moduleDB,"Config value module failed");
+	  
+		return this;
 	}
 	
 	public DatabasePage verifyCreditTypeColumnFunctionality(String id, String expectedCreditType) throws Throwable {
@@ -224,6 +253,37 @@ public DatabasePage verifymdl_assigned_facilitators(Database databaseData, Strin
     
 	
 	return this;
+}
+
+public DatabasePage verifyConfigurationValueDeleted(String name,String value ,String module) throws Throwable {
+	
+	Class.forName("com.mysql.jdbc.Driver");
+    Connection con=DriverManager.getConnection(TCS3.DB_URL,TCS3.user,TCS3.password); 
+    Statement statement = con.createStatement();
+    String query = "SELECT name FROM mdl_configuration_values where name =" + "\"" + name + "\"";
+    ResultSet resultSet = statement.executeQuery(query);
+    if (!resultSet.isBeforeFirst() ) {    
+        Assert.assertEquals(true, true); 
+    } 
+    else {Assert.assertEquals(false, true, "Delete Name Failed");}
+    
+    
+    Statement statement2 = con.createStatement();
+    String query2 = "SELECT value FROM mdl_configuration_values where name =" + "\"" + name + "\"";
+    ResultSet resultSet2 = statement2.executeQuery(query2);
+    if (!resultSet2.isBeforeFirst() ) {    
+        Assert.assertEquals(true, true); 
+    } 
+    else {Assert.assertEquals(false, true, "Delete Value Failed");}
+    
+    Statement statement3 = con.createStatement();
+    String query3 = "SELECT module FROM mdl_configuration_values where name =" + "\"" + name + "\"";
+    ResultSet resultSet3 = statement3.executeQuery(query3);
+    if (!resultSet3.isBeforeFirst() ) {    
+        Assert.assertEquals(true, true); 
+    } 
+    else {Assert.assertEquals(false, true, "Delete Module Failed");}
+   	return this;
 }
 
 }

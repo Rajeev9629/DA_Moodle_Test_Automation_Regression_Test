@@ -27,7 +27,7 @@ public class TCS8 extends BaseTest {
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().gradeAssigment3(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
-		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName5())
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName5())
 		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyAssignmentIsGraded(createBackupData);

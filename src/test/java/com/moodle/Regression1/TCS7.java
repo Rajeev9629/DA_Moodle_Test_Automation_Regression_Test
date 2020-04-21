@@ -25,7 +25,7 @@ public class TCS7 extends BaseTest {
 		menuBarOperations.doLogOutAndLogin();
 		
 		//Login as Facilitation Manager
-		rightNavOperations.getCoursePage(createBackupData).getEnrollParticipantsPage()
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole3(),createBackupData.getUserName6(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationManagerDashboard()
 		.verifyDateGradedFilter(createBackupData).verifyFilters(createBackupData)

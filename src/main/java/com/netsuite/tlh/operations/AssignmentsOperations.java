@@ -2,7 +2,7 @@ package com.netsuite.tlh.operations;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.framework.exceptions.DriverNotInitializedException;
-import com.moodle.tlh.tests.FullRegressionTest;
+import com.moodle.Regression1.FullRegressionTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.pages.AssignmentsPage;

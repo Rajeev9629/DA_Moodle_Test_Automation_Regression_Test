@@ -73,6 +73,34 @@ public class DatabaseOperations extends BaseOperations {
 		}
 		return this;	
 	}
+	
+	public DatabaseOperations verifyConfigurationValue(String name, String value, String module) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyConfigurationValue");
+		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
+		.verifyConfigurationValue(name,value , module)
+		;
+		
+		}
+		catch(Exception e) {
+			System.out.println("verifyConfigurationValue failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
+	public DatabaseOperations deleteConfigValue(String name, String value, String module) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteConfigValue");
+		NetsuiteTLHPageFactory.getPage(DatabasePage.class).verifyConfigurationValueDeleted(name, value, module)
+		
+		;
+		
+		}
+		catch(Exception e) {
+			System.out.println("deleteConfigValue failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
 
 
 

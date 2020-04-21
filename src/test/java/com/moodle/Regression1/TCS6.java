@@ -21,7 +21,7 @@ public class TCS6 extends BaseTest{
 		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
 		Navigator.GetCoursePageOperations().verifyCheckPoints();
 		menuBarOperations.doLogOutAndLogin();
-		rightNavOperations.getEnrollParticipantsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
 		Navigator.FacilitationManagerDashboardOperations().verifyResubmittedAssignment(createBackupData).gradeAssigment2(createBackupData);
 		menuBarOperations.doLogOutAndLogin();

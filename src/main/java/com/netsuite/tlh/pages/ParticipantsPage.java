@@ -80,10 +80,6 @@ public class ParticipantsPage extends BasePage {
 		waitForElementToBeVisibile(header);
 		header.click();
 		Thread.sleep(3000);
-		/*Eric Rodrigo
-		Salvatore Ajami
-		Admin User
-		anne babcock*/
 		return this;
 	}
 	
@@ -93,9 +89,6 @@ public class ParticipantsPage extends BasePage {
 		Thread.sleep(2000);
 		Select sel= new Select(roleBox);
 		sel.selectByVisibleText(Role);
-		/*Student
-		Facilitator
-		Facilitation Manager*/
 		Thread.sleep(1000);
 		usersInputBox.sendKeys(Keys.ENTER);
 		return this;

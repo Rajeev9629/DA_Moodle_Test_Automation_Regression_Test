@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
-import com.moodle.tlh.tests.FullRegressionTest;
+import com.moodle.Regression1.FullRegressionTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.pages.ParticipantsPage;
