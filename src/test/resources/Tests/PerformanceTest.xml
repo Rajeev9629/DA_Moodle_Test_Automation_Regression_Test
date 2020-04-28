@@ -3,11 +3,12 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="com.moodle.PerformanceTest.TCS5"/>
-      <class name="com.moodle.PerformanceTest.TCS3"/>
-      <class name="com.moodle.PerformanceTest.TCS4"/>
       <class name="com.moodle.PerformanceTest.TCS1"/>
       <class name="com.moodle.PerformanceTest.TCS2"/>
+      <class name="com.moodle.PerformanceTest.TCS3"/>
+      <class name="com.moodle.PerformanceTest.TCS4"/>
+      <class name="com.moodle.PerformanceTest.TCS5"/>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

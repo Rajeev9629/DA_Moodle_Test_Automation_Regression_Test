@@ -157,8 +157,17 @@ public class CoursePage extends MenuBarPage {
 	@FindBy(xpath = "//*[text()='Quizzes']")
 	private WebElement quizzesLink;
 	
-	@FindBy(xpath = "//a[text()='Required: Participation Agreement']")
+	@FindBy(xpath = "//a[contains(text(),'Required: Participation')]")
 	private WebElement ParticipationAgreementLink;
+	
+	public CoursePage getManageCoursePage() throws Throwable {
+		Thread.sleep(2000);
+		String ManageURL=BrowserFactory.url+"course/management.php";
+		BrowserFactory.getDriver().navigate().to(ManageURL);
+		Thread.sleep(3000);
+		
+		return this;
+	}
 	
 	public CoursePage clickParticipationAgreementLink() throws Throwable {
 		waitForElementToBeVisibile(ParticipationAgreementLink);
@@ -412,9 +421,12 @@ public class CoursePage extends MenuBarPage {
 		return this;
 	}
 	
-	public CoursePage clickDeleteCourseButton() throws Throwable {
-		waitForElementToBeVisibile(deleteCourseButton);
-		deleteCourseButton.click();
+	public CoursePage clickDeleteCourseButton(String courseName) throws Throwable {
+		
+		Thread.sleep(2000);
+		WebElement ele= BrowserFactory.getDriver().findElement(By.xpath("//a[text()='" + courseName + "']/following-sibling::div[@class='float-right']//a//i[@title='Delete']"));
+		waitForElementToBeVisibile(ele);
+		ele.click();
 		return this;
 	}
 	

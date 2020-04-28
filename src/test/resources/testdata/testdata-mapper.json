@@ -17,6 +17,7 @@
 	"MFD-432":"src/test/resources/testdata/enrollUsers.json",
 	"MFD-433":"src/test/resources/testdata/enrollUsers.json",
 	"MFD-389":"src/test/resources/testdata/enrollUsers.json",
+	"MFD-p_0": "src/test/resources/testdata/enrollUsers.json",
 	
 	
 	"MFD-495":"src/test/resources/testdata/apostopheTest.json",
@@ -33,5 +34,6 @@
 	"MFD-453":"src/test/resources/testdata/database.json",
 	
 	"MFD-505": "src/test/resources/testdata/regression3.json",
-	"MFD-531": "src/test/resources/testdata/regression3.json"
+	"MFD-531": "src/test/resources/testdata/regression3.json",
+	"MFD-3_0": "src/test/resources/testdata/regression3.json"
 }

@@ -18,7 +18,7 @@ public class TCS5_1 extends BaseTest{
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
-		rightNavOperations.acceptSitePolicyAgreement().searchAndGetCoursePage(createBackupData)
+		rightNavOperations.searchAndGetCoursePage(createBackupData)
 		.getAssignmentsPage().verifyAssignment3Feedback(createBackupData);
 		
 		

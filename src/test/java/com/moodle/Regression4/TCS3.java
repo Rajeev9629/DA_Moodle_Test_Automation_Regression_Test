@@ -1,4 +1,4 @@
-package com.moodle.PerformanceTest;
+package com.moodle.Regression4;
 
 import java.util.LinkedHashMap;
 import org.testng.annotations.Test;

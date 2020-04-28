@@ -62,8 +62,6 @@ public class DatabaseTest extends BaseTestDatabase {
 		loginOperations.doSecondLogin(userName, passWord);
 		rightNavOperations.getFacilitationManagerDashboard().gradeAssigment(createBackupData);
 		rightNavOperations.searchAndGetCoursePage(createBackupData);
-		/*rightNavOperations.getQuizzesPage();
-		Navigator.GetCoursePageOperations().completeParticipationAcknowledgement2();*/
 		rightNavOperations.getFacilitationManagerDashboard().signOff(createBackupData);
 
 		String courseID=RightNavBar.courseID;

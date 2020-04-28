@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Netsuite_TLH_Suite" verbose="10">
-	<listeners>
-		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-		<listener class-name="com.framework.listeners.Listener" />
-	</listeners>
+	
 
 	<test name="Moodle_TLH_Regression_1">
 		<classes>
@@ -18,10 +14,8 @@
 			<class name="com.moodle.Regression1.TCS6"></class>
 			<class name="com.moodle.Regression1.TCS7"></class>
 			<class name="com.moodle.Regression1.TCS8"></class>
-			
 			<class name="com.moodle.Regression1.TCS9"></class>
 			<class name="com.moodle.Regression1.TCS9_1"></class>
-			<class name="com.moodle.Regression1.TCS10"></class>
 			<class name="com.moodle.Regression1.TCS11"></class> 
 			
 		</classes>

@@ -138,7 +138,7 @@ public class RightNavBar extends BasePage {
 		String url=BrowserFactory.getDriver().getCurrentUrl();
 		String[] split = url.split("id=");
 		courseID = split[1];
-		System.out.println("COURSEID: "+courseID);
+		//System.out.println("COURSEID: "+courseID);
 		
 		return this;
 	}
@@ -158,7 +158,7 @@ public class RightNavBar extends BasePage {
 	}
 	
 	
-	public RightNavBar acceptSitePolicyAgreement() throws Throwable {
+	/*public RightNavBar acceptSitePolicyAgreement() throws Throwable {
 		
 		waitForElementToBeVisibile(HomeLink);
 		waitForElementToBeClickable(HomeLink);
@@ -168,7 +168,7 @@ public class RightNavBar extends BasePage {
 		sitePolicuyYesButton.click();
 		
 		return this;
-	}
+	}*/
 	
 	public RightNavBar clickOnHomeLink() throws Throwable {
 		Thread.sleep(2000);

@@ -12,9 +12,10 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 public class CoursePageOperations extends BaseOperations {
 	ExtentTest logger=FullRegressionTest.logger;
 	
-	public CoursePageOperations deleteRespectiveCourse() throws DriverNotInitializedException, Throwable {
+	public CoursePageOperations deleteRespectiveCourse(String courseName) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteRespectiveCourse");
-		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickManageCourseButton().clickDeleteCourseButton().clickDeleteButton()
+		NetsuiteTLHPageFactory.getPage(CoursePage.class).getManageCoursePage()
+		.clickDeleteCourseButton(courseName).clickDeleteButton()
 		.clickContinueButton();
 		logger.pass("Course has been deleted");}
 		catch(Exception e) {
@@ -23,7 +24,17 @@ public class CoursePageOperations extends BaseOperations {
 		}
 		return this;	
 	}
-	
+	public CoursePageOperations deleteRespectiveApostophieCourse() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteRespectiveApostophieCourse");
+		NetsuiteTLHPageFactory.getPage(CoursePage.class).getManageCoursePage().clickDeleteApostropheCourseButton().clickDeleteButton()
+		.clickContinueButton();
+		logger.pass("Course has been deleted");}
+		catch(Exception e) {
+			System.out.println("deleteRespectiveApostophieCourse failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
 	public CoursePageOperations submitQuiz() throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteRespectiveCourse");
 		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickquizzesLink()
@@ -32,19 +43,6 @@ public class CoursePageOperations extends BaseOperations {
 		logger.pass("submitAssignment completed");}
 		catch(Exception e) {
 			System.out.println("submitAssignment failed");
-			e.printStackTrace();
-		}
-		return this;	
-	}
-	
-
-	public CoursePageOperations deleteRespectiveApostophieCourse() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteRespectiveApostophieCourse");
-		NetsuiteTLHPageFactory.getPage(CoursePage.class).clickManageCourseButton().clickDeleteApostropheCourseButton().clickDeleteButton()
-		.clickContinueButton();
-		logger.pass("Course has been deleted");}
-		catch(Exception e) {
-			System.out.println("deleteRespectiveApostophieCourse failed");
 			e.printStackTrace();
 		}
 		return this;	

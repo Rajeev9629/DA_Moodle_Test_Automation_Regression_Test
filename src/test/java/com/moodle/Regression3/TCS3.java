@@ -1,4 +1,4 @@
-package com.moodle.PerformanceTest;
+package com.moodle.Regression3;
 
 import java.util.LinkedHashMap;
 import org.testng.annotations.Test;
@@ -9,12 +9,12 @@ import com.netsuite.tlh.operations.Navigator;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 
-public class TCS5 extends BaseTest{
+public class TCS3 extends BaseTest{
 	
-	@Test(priority=6,description = "MFD-p_0 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(priority=6,description = "MFD-3_0 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
-		logger=extent.createTest("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance");
-		System.out.println("5");
+		logger=extent.createTest("MFD-3_0 :: Deleting the respective course");
+		System.out.println("3");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		Navigator.GetCoursePageOperations().deleteRespectiveCourse(createBackupData.getCourseName());
 		logger.info("MFD-227 :: Deleting the respective course passed");

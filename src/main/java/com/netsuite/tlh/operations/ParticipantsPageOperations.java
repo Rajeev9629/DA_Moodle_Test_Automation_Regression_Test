@@ -9,6 +9,7 @@ import com.moodle.Regression1.FullRegressionTest;
 import com.netsuite.tlh.factory.NetsuiteTLHPageFactory;
 import com.netsuite.tlh.factory.OperationFactory;
 import com.netsuite.tlh.pages.ParticipantsPage;
+import com.netsuite.tlh.pages.RestorePage;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class ParticipantsPageOperations extends BaseOperations {
@@ -69,12 +70,14 @@ public class ParticipantsPageOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("loginAsRespectiveUser");
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnRespectiveUser(Role,Username)
 		.clickOnLoginAs().clickContinue();
-		if (Role.equalsIgnoreCase("Student") && coursecode.equalsIgnoreCase(coursecode)) {
+		Thread.sleep(3000);
+		if (Role.equalsIgnoreCase("Student") /*&& coursecode.equalsIgnoreCase(coursecode)*/) {
 			Thread.sleep(3000);
-			OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
+			//OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
 			Thread.sleep(3000);
-		
-			BrowserFactory.getDriver().findElement(By.xpath("//span[text()='" + coursecode + "']")).click();
+			String courseID=RestorePage.courseID;
+			String courseURL=BrowserFactory.url+"course/view.php?id="+courseID;
+			BrowserFactory.getDriver().navigate().to(courseURL);
 			Thread.sleep(3000);
 		}
 		}

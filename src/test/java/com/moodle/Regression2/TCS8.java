@@ -15,11 +15,12 @@ public class TCS8 extends BaseTest{
 	public void VerifyRubricView(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-319::VerifyRubricView");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		System.out.println("8");
+		System.out.println("TCS 8");
 		//complete Quiz
 		rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().loginAsRespectiveApostopheUser(createBackupData.getRole1(),"2");
 		rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getQuizzesPage();
-		Navigator.GetCoursePageOperations().completeParticipationAgreement();
+		Navigator.GetCoursePageOperations()
+		.completeParticipationAgreement();
 		menuBarOperations.doLogOutAndLogin();
 		
 		//Facilitation Manager

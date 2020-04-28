@@ -11,12 +11,14 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class TCS9 extends BaseTest{
 	
-	//@Test(description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	  public void DeletingTheCourse(LinkedHashMap<String, ?> testData) throws Throwable {
 		logger=extent.createTest("MFD-227 :: Deleting the respective course");
+		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		System.out.println("TCS 8");
-		rightNavOperations.clickHome().clickAllCoursesLink();
+		
 		Navigator.GetCoursePageOperations().deleteRespectiveApostophieCourse();
+		
 		logger.info("MFD-227 :: Deleting the respective course Passed" );
 		
 	}

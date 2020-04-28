@@ -9,7 +9,7 @@ import com.moodle.tlh.tests.BaseTest;
 import com.netsuite.tlh.operations.Navigator;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
-public class Regression_TCS1 extends BaseTest  {
+public class TCS1 extends BaseTest  {
 	
 	@Test(description = "MFD-505::Issue with grades not saving to the dashboard", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void IssueWithGradesNotSavingToDashboard(LinkedHashMap<String, ?> testData) throws Throwable {

@@ -17,7 +17,7 @@ public class FullRegressionTest extends BaseTest{
 		System.out.println("FullRegressionTest1");
 		System.out.println("TCS 1");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		rightNavOperations.acceptSitePolicyAgreement();
+		
 		
 		rightNavOperations.getFacilitationManagerReportPage();
 		Navigator.FacilitationManagerReportOperations().verifyFilters(createBackupData);
@@ -84,7 +84,7 @@ public class FullRegressionTest extends BaseTest{
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getEnrollParticipantsPage();
 		Navigator.GetParticipationOperationsPage().loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
-		rightNavOperations.acceptSitePolicyAgreement().getCoursePage(createBackupData).getAssignmentsPage();
+		rightNavOperations.getCoursePage(createBackupData).getAssignmentsPage();
 		Navigator.GetAssignmentsOperations().completeAssingments();
 		rightNavOperations.getCoursePage(createBackupData);
 		menuBarOperations.doLogOutAndLogin().acceptSitePolicy();

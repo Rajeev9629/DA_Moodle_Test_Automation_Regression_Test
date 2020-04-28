@@ -11,19 +11,19 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class TCS4 extends BaseTest{
 	
-	@Test(description = "MFD-389 ::VerifyNoNegativeGradesDashboard ", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
-	public void VerifyNoNegativeGradesDashboard(LinkedHashMap<String, ?> testData) throws Throwable {
-		logger=extent.createTest("MFD-389 ::VerifyNoNegativeGradesDashboard");
+
+	@Test(description = "MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		public void DashboardPerformanceTestScript(LinkedHashMap<String, ?> testData) throws Throwable {
+		logger=extent.createTest("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance");
 		System.out.println("4");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
-		rightNavOperations.getFacilitationManagerDashboard()
-		.gradeAssigment2_1(createBackupData)
-		.gradeAssigment3_1(createBackupData)
-		.provideFeedbackOnFinalAssignment(createBackupData)
-		;
-		
-		logger.info("MFD-389 ::VerifyNoNegativeGradesDashboard passed");
-	}
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().loginAsRespectiveUser(createBackupData.getRole3(),createBackupData.getPerformanceUserName(),createBackupData.getCourseShortName());
+		rightNavOperations.getFacilitationManagerDashboard().getLoadingDashboardPerformance()
+		.getRefreshDashboardPerformance()
+		.getGradedFilterDashboardPerformance(createBackupData)
+			;	
+		logger.info("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance passed");
+		}
 
 }

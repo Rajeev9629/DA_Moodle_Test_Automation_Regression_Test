@@ -70,8 +70,11 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "select[name='assignmentStatus']")
 	private WebElement assignmentStatusDropdown;
 	
-	@FindBy(css = "a[class='btn btn-primary signoff-button']")
+	@FindBy(linkText = "Sign Off")
 	private WebElement signOffButton;
+	
+	@FindBy(css = "a[class='btn btn-primary signoff-button']")
+	private WebElement signOffButton2;
 	
 	@FindBy(xpath = "//label[contains(text(),'Grade:')]/ancestor::div[@class='col-md-3']//a//i")
 	private WebElement gradeMaximiseButton;
@@ -178,7 +181,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "div[class='fp-content']")
 	private WebElement submissionBox;
 	
-	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[6]")
+	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[7]")
 	private WebElement gradedDateField;
 	
 	@FindBy(id = "id_assignfeedbackcomments_editoreditable")
@@ -289,7 +292,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		org.sikuli.script.Pattern CrossButton = new org.sikuli.script.Pattern(download_folder+"\\CrossImage.png");
 		s.click(SaveButton);
 		s.wait(YesButton, 20);
-	    s.click(YesButton);   
+	    s.click(YesButton);  
 	    Thread.sleep(2000);
 	    s.wait(CrossButton, 20);
 	    s.click(CrossButton); 
@@ -356,7 +359,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
  
 	public FacilitationManagerDashboardPage verifyNoNegativeGrade() throws Throwable {
-		int index=10;
+		int index=11;
 		WebElement grdHeading=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th[" + index + "]"));
 		waitForElementToBeVisibile(grdHeading);
 		if(grdHeading.getText().equalsIgnoreCase("Grade"))
@@ -396,8 +399,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage verifyCreatedUpdatedDate() throws Throwable {
-		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-3]"));
-		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-2]"));
+		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-2]"));
+		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-1]"));
 		String createdNew = created.getText().substring(0, created.getText().length()-9);
 		System.out.println(createdNew);
 		String updatedNew = updated.getText().substring(0, updated.getText().length()-9);
@@ -844,7 +847,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		Thread.sleep(1000);
 	  for(int i=1;i<=Count;i++){
 		  wait.until(expectation);
-		  WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//td[@class='text-danger bold']/ancestor::tr//td[3]//a"));
+		  WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//td[@class='text-danger bold']/ancestor::tr//td[4]//a"));
 		  waitForElementToBeClickable(element);
 		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
 		  if(i==2){
@@ -1194,6 +1197,11 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeClickable(signOffButton);
 		signOffButton.sendKeys(Keys.ENTER);
 		Thread.sleep(2000);
+		waitForElementToBeVisibile(signOffButton2);
+		waitForElementToBeClickable(signOffButton2);
+		signOffButton2.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		
 		Alert alert = BrowserFactory.getDriver().switchTo().alert();
 		Thread.sleep(1000);
 		alert.accept();
@@ -1219,12 +1227,12 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	  BrowserFactory.getDriver().findElement(By.xpath("//a[text()='Final Project Submission']")).click();
 	  Thread.sleep(2000);
 	  String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+	  Thread.sleep(4000);
 		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
 			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
 			
-					wait.until(expectation);
-					Thread.sleep(4000);
-					addFeedBack(createBackupData.getFeedbackComment());
+					wait.until(expectation);Thread.sleep(4000);
+					addFeedBack(createBackupData.getFeedbackComment());Thread.sleep(3000);
 					 clicksaveChangesButton();
 				  Thread.sleep(3000);
 			   }}  

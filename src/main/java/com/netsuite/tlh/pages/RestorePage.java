@@ -34,7 +34,7 @@ public class RestorePage extends BasePage {
 	@FindBy(css = "input[value='Continue']")
 	private WebElement continueButton;
 	
-	@FindBy(css = "tr[class='rcs-course dimmed']>td>input[name='targetid'][value='1']")
+	@FindBy(css = "input[name='targetid'][value='1']")
 	private WebElement miscellaneousOption;
 	
 	@FindBy(css = "input[id='id_submitbutton']")
@@ -76,6 +76,8 @@ public class RestorePage extends BasePage {
 	@FindBy(xpath = "//td//a[text()='Restore']")
 	private WebElement backupPageRestore;
 	
+	public static String courseID;
+	
 	
 	public RestorePage clickbackupPageRestore() throws Throwable {
 		waitForElementToBeClickable(backupPageRestore);
@@ -88,6 +90,10 @@ public class RestorePage extends BasePage {
 	public RestorePage verifyCourseIsNotEmpty() throws Throwable {
 		waitForElementToBeClickable(module2Checkpoint);
 		waitForElementToBeVisibile(module2Checkpoint);
+		Thread.sleep(3000);
+		String url=BrowserFactory.getDriver().getCurrentUrl();
+		String[] split = url.split("id=");
+		courseID = split[1];
 		if(module2Checkpoint.isDisplayed()==false) {
 			OperationFactory.getOperation(RightNavOperations.class).clickHome().clickAllCoursesLink();
 			Navigator.GetCoursePageOperations().deleteRespectiveApostophieCourse();

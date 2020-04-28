@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Netsuite_TLH_Suite" verbose="10">
-	<listeners>
-		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-		<listener class-name="com.framework.listeners.Listener" />
-	</listeners>
+	
 
-	<test name="Moodle_Dashboard_Test">
+	<test name="Moodle_Database_Test">
 		<classes>
-			<class name="com.moodle.DashboardTest.TCS1"></class>
-			<class name="com.moodle.DashboardTest.TCS2"></class>
-			<class name="com.moodle.DashboardTest.TCS3"></class>
-			<class name="com.moodle.DashboardTest.TCS4"></class>
-			<class name="com.moodle.DashboardTest.TCS5"></class>
-			<class name="com.moodle.DashboardTest.TCS6"></class>
-			<class name="com.moodle.DashboardTest.TCS7"></class>
+		<class name="com.moodle.DashboardTest.TCS1"></class>
+		<class name="com.moodle.DashboardTest.TCS2"></class>
+		<class name="com.moodle.DashboardTest.TCS3"></class>
+		<class name="com.moodle.DashboardTest.TCS4"></class>
+		<class name="com.moodle.DashboardTest.TCS5"></class>
+		<class name="com.moodle.DashboardTest.TCS6"></class>
+		<class name="com.moodle.DashboardTest.TCS7"></class>
 			
 		</classes>
 	</test>

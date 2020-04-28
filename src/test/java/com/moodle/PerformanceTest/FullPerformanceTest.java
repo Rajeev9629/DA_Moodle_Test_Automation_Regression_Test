@@ -44,7 +44,7 @@ public class FullPerformanceTest extends BaseTest{
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
-		rightNavOperations.acceptSitePolicyAgreement().searchAndGetCoursePage(createBackupData)
+		rightNavOperations.searchAndGetCoursePage(createBackupData)
 		.getAssignmentsPage().completeAssingments();
 		menuBarOperations.doLogOut();
 		loginOperations.doSecondLogin(userName, passWord);
@@ -81,15 +81,6 @@ public class FullPerformanceTest extends BaseTest{
 		logger.info("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance passed");
 		}
 	
-	//@Test(priority=6,description = "MFD-227 :: Deleting the respective course", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
-	public void DeletingTheRespectiveCourse(LinkedHashMap<String, ?> testData) throws Throwable {
-		logger=extent.createTest("MFD-258 ::MFD-299::MFD-320::MFD-321:: Dashboard performance test script, Fetch Datat button functionality and its performance");
-		System.out.println("6");
-		rightNavOperations.clickHamburgerItem().clickHome();
-		rightNavOperations.clickAllCoursesLink();
-		Navigator.GetCoursePageOperations().deleteRespectiveCourse();
-		logger.info("MFD-227 :: Deleting the respective course passed");
-		
-	}
+	
 
 }
