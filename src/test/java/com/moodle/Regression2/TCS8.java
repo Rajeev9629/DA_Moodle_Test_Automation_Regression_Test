@@ -11,7 +11,7 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class TCS8 extends BaseTest{
 	
-	@Test(description = "MFD-319::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-319::MFD-516::VerifyRubricView", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyRubricView(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-319::VerifyRubricView");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
@@ -24,14 +24,14 @@ public class TCS8 extends BaseTest{
 		menuBarOperations.doLogOutAndLogin();
 		
 		//Facilitation Manager
-		rightNavOperations.getFacilitationManagerDashboard().verifyRubricGrades(createBackupData);
+		rightNavOperations.getFacilitationManagerDashboard().verifyRubricGradesAnd516(createBackupData);
 		
 		//Facilitator
 				
 		rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage()
 		.loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
 		rightNavOperations.getFacilitationDashboard();
-		Navigator.FacilitationManagerDashboardOperations().verifyRubricGrades(createBackupData);
+		Navigator.FacilitationManagerDashboardOperations().verifyRubricGradesAnd516(createBackupData);
 		
 		
 		

@@ -17,11 +17,8 @@ public class TCS4 extends BaseTest{
 		System.out.println("4");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
-		rightNavOperations.getFacilitationManagerDashboard()
-		/*.gradeAssigment2_1(createBackupData)
-		.gradeAssigment3_1(createBackupData)*/
-		.provideFeedbackOnFinalAssignment(createBackupData)
-		;
+		rightNavOperations.getFacilitationManagerDashboard().gradeAssigment2_1(createBackupData).gradeAssigment3_1(createBackupData)
+		.provideFeedbackOnFinalAssignment(createBackupData);
 		
 		logger.info("MFD-389 ::VerifyNoNegativeGradesDashboard passed");
 	}

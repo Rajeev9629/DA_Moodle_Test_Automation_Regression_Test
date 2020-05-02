@@ -229,12 +229,77 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[9]//td[3]")
 	private WebElement rubricGradedBy4;
 	
+	@FindBy(xpath = "//table[@class='table']//tbody//tr[1]//td[4]//a")
+	private WebElement assignmentLink1;
+	
+	@FindBy(xpath = "//table[@class='table']//tbody//tr[2]//td[4]//a")
+	private WebElement assignmentLink2;
+	
+	@FindBy(xpath = "//table[@class='table']//tbody//tr[3]//td[4]//a")
+	private WebElement assignmentLink3;
+	
 	Boolean stat= true;
 	static int count;
 	
+	public FacilitationManagerDashboardPage verifyMFD516(String module2, String module3, String FinalModule) throws Throwable {
+        Thread.sleep(2000);
+        String assignment1=assignmentLink1.getText();
+        String assignment2=assignmentLink2.getText();
+        String assignment3=assignmentLink3.getText();
+        
+        if(assignment1.equalsIgnoreCase(module2)) {Assert.assertEquals(true, true);}else {Assert.assertEquals(true, false,"Module 2 is not present");}
+        if(assignment2.equalsIgnoreCase(module3)) {Assert.assertEquals(true, true);}else {Assert.assertEquals(true, false,"Module 3 is not present");}
+        if(assignment3.equalsIgnoreCase(FinalModule)) {Assert.assertEquals(true, true);}else {Assert.assertEquals(true, false,"Final Module is not present");}
+        return this;  
+	}
+	
+	public FacilitationManagerDashboardPage verifyMFD517() throws Throwable {
+		Thread.sleep(2000);
+        String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[4]//a"));
+		  waitForElementToBeClickable(element);
+		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
+		
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+		 if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
+		wait.until(expectation);
+		List <WebElement> ele= BrowserFactory.getDriver().findElements(By.cssSelector("button[name='savechanges']"));
+		if(ele.size()==0) {
+			Assert.assertEquals(true, true);}
+		else 
+		{Assert.assertEquals(true, false, "Save Button is visible");}
+		System.out.println("Done");
+		 BrowserFactory.getDriver().close();
+		 break;
+			   } 
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+		}
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+		
+		
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyRubricGradingMain() throws Throwable {
+		waitForElementToBeVisibile(previoudGrades);
+		waitForElementToBeVisibile(previoudGradesTable);
+		waitForElementToBeVisibile(participationAgreementText);
+		Assert.assertEquals(participationAgreementText.isDisplayed(), true);
+		waitForElementToBeVisibile(module2Checkpoint);
+		Assert.assertEquals(module2Checkpoint.isDisplayed(), true);
+		waitForElementToBeVisibile(module3Checkpoint);
+		Assert.assertEquals(module3Checkpoint.isDisplayed(), true);
+		waitForElementToBeVisibile(finalProjectSubmision);
+		Assert.assertEquals(finalProjectSubmision.isDisplayed(), true);
+		
+		verifygrade_GradedBy();
+		
+		return this;
+	}
+	
 	public FacilitationManagerDashboardPage verifygrade_GradedBy() throws Throwable {
 		waitForElementToBeVisibile(rubricGrade1);
-		if(rubricGrade1.getText().equalsIgnoreCase("100.00%")) {
+		if(rubricGrade1.getText().equalsIgnoreCase("100%")) {
 			Assert.assertEquals(true, true);
 		}
 		else Assert.assertEquals(false, true,"rubricGrade1 failed");
@@ -447,29 +512,12 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		return this;
 	}
 	
-	public FacilitationManagerDashboardPage verifyRubricGradingMain() throws Throwable {
-		waitForElementToBeVisibile(previoudGrades);
-		waitForElementToBeVisibile(previoudGradesTable);
-		waitForElementToBeVisibile(participationAgreementText);
-		Assert.assertEquals(participationAgreementText.isDisplayed(), true);
-		waitForElementToBeVisibile(module2Checkpoint);
-		Assert.assertEquals(module2Checkpoint.isDisplayed(), true);
-		waitForElementToBeVisibile(module3Checkpoint);
-		Assert.assertEquals(module3Checkpoint.isDisplayed(), true);
-		waitForElementToBeVisibile(finalProjectSubmision);
-		Assert.assertEquals(finalProjectSubmision.isDisplayed(), true);
-		
-		verifygrade_GradedBy();
-		
-		return this;
-	}
+	
 	
 	public FacilitationManagerDashboardPage verifyRubricGrading() throws Throwable {
-		
-        //Code starts from here
         Thread.sleep(2000);
         String currentWindow = BrowserFactory.getDriver().getWindowHandle();
-        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[3]//a"));
+        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[4]//a"));
 		  waitForElementToBeClickable(element);
 		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
 		

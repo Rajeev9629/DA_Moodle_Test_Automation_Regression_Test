@@ -281,7 +281,7 @@ public class RightNavOperations extends BaseOperations {
 		return this;	
 	}
 	
-	/*public RightNavOperations acceptSitePolicyAgreement() throws DriverNotInitializedException, Throwable {
+	public RightNavOperations acceptSitePolicyAgreement() throws DriverNotInitializedException, Throwable {
 		try {
 	
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("acceptSitePolicyAgreement");
@@ -294,7 +294,7 @@ public class RightNavOperations extends BaseOperations {
 		}
 		return this;	
 	}
-	*/
+	
 	public RightNavOperations getRestoreCoursePage() throws DriverNotInitializedException, Throwable {
 		try {
 	

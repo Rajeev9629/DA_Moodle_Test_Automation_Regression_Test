@@ -24,6 +24,19 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationManagerDashboardOperations verifyMFD_517(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_517");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()
+		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus())
+		.enterStudentName(createBackupData.getUserName1()).clickFilterButton().verifyMFD517()
+		;
+		logger.pass("verifyMFD_517 passed");}
+		catch(Exception e) {
+			System.out.println("verifyMFD_517 failed");
+			e.printStackTrace();}
+		return this;	
+	}
+	
 	public FacilitationManagerDashboardOperations verifyParticipationAgreement(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyParticipationAgreement");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
@@ -432,11 +445,12 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
-	public FacilitationManagerDashboardOperations verifyRubricGrades(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+	public FacilitationManagerDashboardOperations verifyRubricGradesAnd516(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyRubricGrades");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusAll()).enterStudentName(createBackupData.getUserName4())
 		.clickFilterButton().verifyTableIspresent()
+		.verifyMFD516(createBackupData.getModule2(),createBackupData.getModule3(),createBackupData.getFinalProjectSubmission())
 		.verifyRubricGrading()
 		;
 		logger.pass("RubricGrades has been verified");}

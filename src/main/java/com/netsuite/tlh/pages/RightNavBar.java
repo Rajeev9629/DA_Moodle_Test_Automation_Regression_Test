@@ -107,6 +107,9 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "//a[text()='Manage Configuration Values']")
 	private WebElement manageConfigurationValuePage;
 	
+	@FindBy(xpath = "//span[text()='Dashboard']/following::span[text()='Facilitation Manager Dashboard']")
+	private WebElement FMDLinkLeftNav515;
+	
 	public RightNavBar clickOnManageConfigurationValuePage() throws Throwable {
 		waitForElementToBeVisibile(manageConfigurationValuePage);
 		manageConfigurationValuePage.click();
@@ -158,7 +161,7 @@ public class RightNavBar extends BasePage {
 	}
 	
 	
-	/*public RightNavBar acceptSitePolicyAgreement() throws Throwable {
+	public RightNavBar acceptSitePolicyAgreement() throws Throwable {
 		
 		waitForElementToBeVisibile(HomeLink);
 		waitForElementToBeClickable(HomeLink);
@@ -168,7 +171,7 @@ public class RightNavBar extends BasePage {
 		sitePolicuyYesButton.click();
 		
 		return this;
-	}*/
+	}
 	
 	public RightNavBar clickOnHomeLink() throws Throwable {
 		Thread.sleep(2000);
@@ -325,6 +328,9 @@ public class RightNavBar extends BasePage {
 		
 		waitForElementToBeVisibile(FMDLinkLeftNav);
 		waitForElementToBeClickable(FMDLinkLeftNav);
+		//given functionality will check tha fm dashboard comes after dashboard in left nav
+		waitForElementToBeVisibile(FMDLinkLeftNav515);
+		waitForElementToBeClickable(FMDLinkLeftNav515);
 		
 		return this;
 	}

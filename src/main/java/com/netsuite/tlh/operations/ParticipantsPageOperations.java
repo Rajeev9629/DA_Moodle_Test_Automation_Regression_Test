@@ -71,9 +71,9 @@ public class ParticipantsPageOperations extends BaseOperations {
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnRespectiveUser(Role,Username)
 		.clickOnLoginAs().clickContinue();
 		Thread.sleep(3000);
-		if (Role.equalsIgnoreCase("Student") /*&& coursecode.equalsIgnoreCase(coursecode)*/) {
+		if (Role.equalsIgnoreCase("Student")) {
 			Thread.sleep(3000);
-			//OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
+			OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
 			Thread.sleep(3000);
 			String courseID=RestorePage.courseID;
 			String courseURL=BrowserFactory.url+"course/view.php?id="+courseID;
