@@ -303,6 +303,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("signOff");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded()
+		.verifyMFD_527()
 		.clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
 		.enterStudentName(createBackupData.getUserName1())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()

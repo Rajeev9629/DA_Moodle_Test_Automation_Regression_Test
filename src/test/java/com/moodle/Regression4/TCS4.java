@@ -11,16 +11,16 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class TCS4 extends BaseTest{
 	
-	@Test(description = "MFD-389 ::VerifyNoNegativeGradesDashboard ", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-487::VerifyNoNegativeGradesDashboard", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void VerifyNoNegativeGradesDashboard(LinkedHashMap<String, ?> testData) throws Throwable {
-		logger=extent.createTest("MFD-389 ::VerifyNoNegativeGradesDashboard");
+		logger=extent.createTest("MFD-487::VerifyNoNegativeGradesDashboard");
 		System.out.println("4");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		
 		rightNavOperations.getFacilitationManagerDashboard().gradeAssigment2_1(createBackupData).gradeAssigment3_1(createBackupData)
 		.provideFeedbackOnFinalAssignment(createBackupData);
 		
-		logger.info("MFD-389 ::VerifyNoNegativeGradesDashboard passed");
+		logger.info("MFD-487 ::VerifyNoNegativeGradesDashboard passed");
 	}
 
 }

@@ -238,6 +238,10 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "//table[@class='table']//tbody//tr[3]//td[4]//a")
 	private WebElement assignmentLink3;
 	
+	@FindBy(xpath = "//a[text()='Close']")
+	private WebElement SignOffClose;
+	
+	
 	Boolean stat= true;
 	static int count;
 	
@@ -1235,6 +1239,29 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeVisibile(gradedTextEndPage);
 		waitForElementToBeClickable(gradedTextEndPage);
 		waitForElementToBePresent(By.xpath("(//table//tbody//tr//td[contains(text(),'Graded')])"));
+		
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage verifyMFD_527() throws Throwable {
+		Thread.sleep(3000);
+		waitForElementToBeVisibile(signOffButton);
+		waitForElementToBeClickable(signOffButton);
+		signOffButton.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(signOffButton2);
+		waitForElementToBeClickable(signOffButton2);
+		signOffButton2.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		
+		Alert alert = BrowserFactory.getDriver().switchTo().alert();
+		Thread.sleep(2000);
+		alert.dismiss();
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(SignOffClose);
+		waitForElementToBeClickable(SignOffClose);
+		SignOffClose.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
 		
 		return this;
 	}

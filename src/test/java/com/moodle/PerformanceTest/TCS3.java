@@ -19,7 +19,7 @@ public class TCS3 extends BaseTest{
 		
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
 		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
-		rightNavOperations.searchAndGetCoursePage(createBackupData)
+		rightNavOperations
 		.getAssignmentsPage().completeAssingments();
 		
 		logger.info("MFD-224 ::Login as student and Complete the assignment passed");

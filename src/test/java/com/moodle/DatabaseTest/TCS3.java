@@ -24,9 +24,9 @@ public class TCS3 extends BaseTestDatabase {
 	public static String user;
 	public static String password;
 	
-	@Test(description = "MFD-453::AddEditDelete functionality on Manage Configuration Values", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-533::AddEditDelete functionality on Manage Configuration Values", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void AddEditDeleteFunctionalityManageConfigurationValues(LinkedHashMap<String, ?> testData) throws Throwable {
-		logger=extent.createTest("MFD-453::AddEditDelete functionality on Manage Configuration Values");
+		logger=extent.createTest("MFD-533::AddEditDelete functionality on Manage Configuration Values");
 		System.out.println("3");
 		Database databaseData = Utility.getDataPojo(testData.get("Form"), Database.class);
 		
@@ -43,7 +43,7 @@ public class TCS3 extends BaseTestDatabase {
 		rightNavOperations.getManageConfigurationValuePage().deleteConfigValue();
 		databaseOperations.deleteConfigValue(databaseData.getNameTextNew(),databaseData.getValueTextNew(),databaseData.getModuleTextNew());
 		
-		logger.info("MFD-453::AddEditDelete functionality on Manage Configuration Values");
+		logger.info("MFD-533::AddEditDelete functionality on Manage Configuration Values");
 		
 	}
 	

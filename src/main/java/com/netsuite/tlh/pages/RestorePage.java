@@ -114,6 +114,7 @@ public class RestorePage extends BasePage {
             }};
             WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
     		wait.until(expectation);
+    		Thread.sleep(3000);
 		waitForElementToBeVisibile(restoreButton);
 		waitForElementToBeClickable(restoreButton);
 		
@@ -124,6 +125,7 @@ public class RestorePage extends BasePage {
 	public RestorePage clickOnchooseFileButton() throws Throwable {
 		waitForElementToBeClickable(chooseFileButton);
 		waitForElementToBeVisibile(chooseFileButton);
+		Thread.sleep(3000);
 		chooseFileButton.click();
 		return this;
 	}
@@ -132,11 +134,11 @@ public class RestorePage extends BasePage {
 		waitForElementToBeClickable(uploadFileLink);
 		waitForElementToBeVisibile(uploadFileLink);
 		uploadFileLink.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		waitForElementToBeClickable(uploadFileOption);
 		waitForElementToBeVisibile(uploadFileOption);
 		uploadFileOption.sendKeys(System.getProperty("user.dir")+"/src/test/resources/testdata/backup-moodle2-course-1401-thepsychofspor-ce-pov-20190107-1229.mbz");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		uploadFileOption.sendKeys(System.getProperty("user.dir")+"/src/test/resources/testdata/backup-moodle2-course-1401-thepsychofspor-ce-pov-20190107-1229.mbz");
 		
 		return this;
