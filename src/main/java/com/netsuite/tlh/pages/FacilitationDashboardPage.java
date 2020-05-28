@@ -66,29 +66,22 @@ public class FacilitationDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "(//span[@class='flatpickr-day today'])[3]")
 	private WebElement todaysDate3;
 	
-	
 	@FindBy(name = "signOffStatus")
 	private WebElement SignOffStatusDropdown;
 	
-	/*@FindBy(id = "fecthData")
-	private WebElement fetchDataButton;*/
-
+	@FindBy(linkText = "First")
+	private WebElement paginationFirst;
 	
+	@FindBy(linkText = "Last")
+	private WebElement paginationLast;
 	
-	/*public FacilitationDashboardPage clickOnFetchData() throws Throwable {
-		waitForElementToBeVisibile(fetchDataButton);
-		waitForElementToBeClickable(fetchDataButton);
-		fetchDataButton.click();
-		Thread.sleep(2000);
-		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-            }};
-            
-            WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
-            wait.until(expectation);
+	public FacilitationDashboardPage verifyPaginationDoesntBreak() throws Throwable {
+		waitForElementToBeVisibile(paginationFirst);
+		waitForElementToBeClickable(paginationFirst);
+		waitForElementToBeVisibile(paginationLast);
+		waitForElementToBeClickable(paginationLast);
 		return this;
-	}*/
+	}
 		
 	public FacilitationDashboardPage clickFilterButton() throws Throwable {
 		waitForElementToBeVisibile(filterButton);

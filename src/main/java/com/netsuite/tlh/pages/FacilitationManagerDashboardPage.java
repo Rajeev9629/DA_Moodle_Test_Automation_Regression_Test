@@ -52,9 +52,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "table[class='table']>tbody>tr")
 	private WebElement tableData;
 	
-	@FindBy(xpath = "(//tr[@role='radiogroup']//td)[4]")
-	private WebElement grade;
-	
 	@FindBy(css = "button[name='savechanges']")
 	private WebElement saveChangesButton;
 	
@@ -93,9 +90,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[contains(text(),'Signed-off')]")
 	private WebElement signedOffText;
-	
-	/*@FindBy(xpath = "//span[contains(text(),'Choose Facilitator...')]")
-	private WebElement facilitatorNameDropDown;*/
 	
 	@FindBy(css = "input[class='select2-search__field']")
 	private WebElement facilitatortextBox;
@@ -181,9 +175,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(css = "div[class='fp-content']")
 	private WebElement submissionBox;
 	
-	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[7]")
-	private WebElement gradedDateField;
-	
 	@FindBy(id = "id_assignfeedbackcomments_editoreditable")
 	private WebElement feedBackTextBox;
 	
@@ -192,9 +183,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	@FindBy(id = "select2-facilitatorName-container")
 	private WebElement facilitatorNameDropDown;
-	
-	@FindBy(xpath = "//table[@class='table']//tbody//tr//td[1]")
-	private WebElement studentColumn;
 	
 	@FindBy(name = "assignmentName")
 	private WebElement assignmentNameInput;
@@ -229,38 +217,56 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	@FindBy(xpath = "//table[@class='criteria']//tbody//tr[9]//td[3]")
 	private WebElement rubricGradedBy4;
 	
-	@FindBy(xpath = "//table[@class='table']//tbody//tr[1]//td[4]//a")
-	private WebElement assignmentLink1;
-	
-	@FindBy(xpath = "//table[@class='table']//tbody//tr[2]//td[4]//a")
-	private WebElement assignmentLink2;
-	
-	@FindBy(xpath = "//table[@class='table']//tbody//tr[3]//td[4]//a")
-	private WebElement assignmentLink3;
-	
 	@FindBy(xpath = "//a[text()='Close']")
 	private WebElement SignOffClose;
 	
+	@FindBy(linkText = "First")
+	private WebElement paginationFirst;
+	
+	@FindBy(linkText = "Last")
+	private WebElement paginationLast;
 	
 	Boolean stat= true;
 	static int count;
 	
+	public FacilitationManagerDashboardPage verifyPaginationDoesntBreak() throws Throwable {
+		waitForElementToBeVisibile(paginationFirst);
+		waitForElementToBeClickable(paginationFirst);
+		waitForElementToBeVisibile(paginationLast);
+		waitForElementToBeClickable(paginationLast);
+		return this;
+	}
+	
 	public FacilitationManagerDashboardPage verifyMFD516(String module2, String module3, String FinalModule) throws Throwable {
         Thread.sleep(2000);
+        List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+        for(int x=1;x<=li.size();x++) {
+        if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Assignment")) {
+        WebElement assignmentLink1=BrowserFactory.getDriver().findElement(By.xpath("(//table[@class='table']//tbody//tr//td["+x+"]//a)[1]"));
+        WebElement assignmentLink2=BrowserFactory.getDriver().findElement(By.xpath("(//table[@class='table']//tbody//tr//td["+x+"]//a)[2]"));
+        WebElement assignmentLink3=BrowserFactory.getDriver().findElement(By.xpath("(//table[@class='table']//tbody//tr//td["+x+"]//a)[3]"));
+        
         String assignment1=assignmentLink1.getText();
         String assignment2=assignmentLink2.getText();
         String assignment3=assignmentLink3.getText();
-        
         if(assignment1.equalsIgnoreCase(module2)) {Assert.assertEquals(true, true);}else {Assert.assertEquals(true, false,"Module 2 is not present");}
         if(assignment2.equalsIgnoreCase(module3)) {Assert.assertEquals(true, true);}else {Assert.assertEquals(true, false,"Module 3 is not present");}
         if(assignment3.equalsIgnoreCase(FinalModule)) {Assert.assertEquals(true, true);}else {Assert.assertEquals(true, false,"Final Module is not present");}
-        return this;  
+       }
+        		  }
+       return this;  
 	}
-	
+	static int ct=0;
 	public FacilitationManagerDashboardPage verifyMFD517() throws Throwable {
 		Thread.sleep(2000);
+		
+		List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+		for(int x=1;x<=li.size();x++) {
+		if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Assignment")) {
+		ct=x;}}
+		
         String currentWindow = BrowserFactory.getDriver().getWindowHandle();
-        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[4]//a"));
+        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+ct+"]//a"));
 		  waitForElementToBeClickable(element);
 		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
 		
@@ -360,6 +366,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		org.sikuli.script.Pattern YesButton = new org.sikuli.script.Pattern(download_folder+"\\YesButtonImage.png");
 		org.sikuli.script.Pattern CrossButton = new org.sikuli.script.Pattern(download_folder+"\\CrossImage.png");
 		s.click(SaveButton);
+		Thread.sleep(2000);
 		s.wait(YesButton, 20);
 	    s.click(YesButton);  
 	    Thread.sleep(2000);
@@ -426,20 +433,21 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
             return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
         }};
         WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
- 
+       
+   
 	public FacilitationManagerDashboardPage verifyNoNegativeGrade() throws Throwable {
-		int index=11;
-		WebElement grdHeading=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th[" + index + "]"));
-		waitForElementToBeVisibile(grdHeading);
-		if(grdHeading.getText().equalsIgnoreCase("Grade"))
-		{
-			WebElement grade=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td[" + index + "]"));
-			System.out.println("text is "+ grade.getText());
-			if(grade.getText().equalsIgnoreCase("")) {
-				Assert.assertEquals(true, true);
-			}
-			else
-				Assert.assertEquals(true, false, "grading is different");}
+		List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+		for(int x=1;x<=li.size();x++) {
+		if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Grade")) {
+		WebElement grade=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+x+"]//a"));
+		System.out.println("text is "+ grade.getText());
+		if(grade.getText().equalsIgnoreCase("")) {
+			Assert.assertEquals(true, true);
+		}
+		else
+			Assert.assertEquals(true, false, "grading is different");
+					  }
+				  }
 		return this;
 	}
 	
@@ -466,10 +474,20 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeVisibile(element);
 		return this;
 	}
-	
+	static int create=0;
+	static int update=0;
 	public FacilitationManagerDashboardPage verifyCreatedUpdatedDate() throws Throwable {
-		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-2]"));
-		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[last()-1]"));
+		List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+		for(int x=1;x<=li.size();x++) {
+		if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Created")) {
+			create=x;}}
+		
+		for(int y=1;y<=li.size();y++) {
+			if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+y+"]//a")).getText().equalsIgnoreCase("Updated")) {
+				update=y;}}
+		
+		WebElement created= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+create+"]//a"));
+		WebElement updated= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+update+"]//a"));
 		String createdNew = created.getText().substring(0, created.getText().length()-9);
 		System.out.println(createdNew);
 		String updatedNew = updated.getText().substring(0, updated.getText().length()-9);
@@ -517,11 +535,17 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	
-	
+	static int n=0;
 	public FacilitationManagerDashboardPage verifyRubricGrading() throws Throwable {
         Thread.sleep(2000);
+        List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+        for(int x=1;x<=li.size();x++) {
+        if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Assignment")) {
+        	n=x;
+        }}
+        
         String currentWindow = BrowserFactory.getDriver().getWindowHandle();
-        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//td[4]//a"));
+        WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+n+"]//a"));
 		  waitForElementToBeClickable(element);
 		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
 		
@@ -600,16 +624,20 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	public FacilitationManagerDashboardPage verifyDateGraded() throws Throwable {
 		waitForElementToBeVisibile(table);
 		waitForElementToBeClickable(table);
-		waitForElementToBeVisibile(gradedDateField);
-		String Actual= gradedDateField.getText();
-		String ActualNew = Actual.substring(0, Actual.length()-9);
 		
+		WebElement element;
+		List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+		for(int x=1;x<=li.size();x++) {
+		if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Graded")) {
+		element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+x+"]//a"));
+		String Actual= element.getText();
+		String ActualNew = Actual.substring(0, Actual.length()-9);
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date();
 		String Expected=dateFormat.format(date);
-		
 		Assert.assertEquals(ActualNew, Expected);
-
+		 }
+		}
 		return this;
 	}
 	
@@ -899,9 +927,16 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		Thread.sleep(1000);
 	  for(int i=1;i<=Count;i++){
 		  wait.until(expectation);
-		  WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//td[@class='text-danger bold']/ancestor::tr//td[4]//a"));
-		  waitForElementToBeClickable(element);
-		  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
+		  Thread.sleep(3000);
+		   List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+		  
+		  for(int x=1;x<=li.size();x++) {
+			  if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Assignment")) {
+				  WebElement element=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+x+"]//a"));
+				  waitForElementToBeClickable(element);
+				  element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
+			  }
+		  }
 		  if(i==2){
 			  Thread.sleep(2000);
 				String currentWindow = BrowserFactory.getDriver().getWindowHandle();
@@ -1035,11 +1070,17 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage verifyFacilitatorIsEnrolled() throws Throwable {
-		List<WebElement> ele= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//td[7]"));
+		
+		List <WebElement> li= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th"));
+		for(int x=1;x<=li.size();x++) {
+		if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]//a")).getText().equalsIgnoreCase("Facilitator")) {
+		List <WebElement> ele=BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//tbody//tr//td["+x+"]//a"));
+		
 		for(int i=0;i<ele.size();i++){
 			if(ele.get(i).getText().equalsIgnoreCase(null)){
 				Assert.assertEquals("Fail","Passed");
 			}}
+		}}
 		return this;
 	}
 	
@@ -1205,11 +1246,9 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage selectAssignmentStatus(String Status) throws Throwable {
-		
 		Thread.sleep(3000);
 		waitForElementToBeVisibile(assignmentStatusDropdown);
 		waitForElementToBeClickable(assignmentStatusDropdown);
-		
 		try {
 			Thread.sleep(2000);
 			Select sel= new Select(assignmentStatusDropdown);
@@ -1219,9 +1258,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			
 			System.out.println("Assignment sttaus dropdown in catch ");
 		}
-		
-		
-		
 		Thread.sleep(6000);
 		
 		return this;

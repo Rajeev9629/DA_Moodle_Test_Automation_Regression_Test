@@ -24,11 +24,12 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
-	public FacilitationManagerDashboardOperations verifyMFD_517(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+	public FacilitationManagerDashboardOperations verifyMFD_517_519(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_517");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()
 		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus())
-		.enterStudentName(createBackupData.getUserName1()).clickFilterButton().verifyMFD517()
+		.enterStudentName(createBackupData.getUserName1()).clickFilterButton()
+		.verifyPaginationDoesntBreak().verifyMFD517()
 		;
 		logger.pass("verifyMFD_517 passed");}
 		catch(Exception e) {

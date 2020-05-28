@@ -53,7 +53,7 @@ public class MenuBarPage extends BasePage {
 		Thread.sleep(2000);
 		if(BrowserFactory.getDriver().getTitle().equalsIgnoreCase("Advancement Courses: Log in to the site")) {
 			waitForElementToBeVisibile(loginPage2Heading);
-			System.out.println("XXXXXXXXX"+BrowserFactory.url);
+			//System.out.println("XXXXXXXXX"+BrowserFactory.url);
 			BrowserFactory.getDriver().get(BrowserFactory.url);
 		}
 		return this;
