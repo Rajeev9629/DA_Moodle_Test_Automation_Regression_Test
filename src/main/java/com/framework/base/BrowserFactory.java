@@ -57,6 +57,8 @@ public class BrowserFactory {
 				options.addArguments("disable-infobars");
 				options.addArguments("enable-automation");
 				options.addArguments("--disable-extensions");
+				options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
+
 				options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 				
 				Driver = new ChromeDriver(options);

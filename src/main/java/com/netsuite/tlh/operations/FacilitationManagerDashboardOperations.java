@@ -309,7 +309,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.enterStudentName(createBackupData.getUserName1())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
 		;
-		//logger.pass("User has been signed Off");
+		
 		}
 		catch(Exception e) {
 			System.out.println("signOff failed");

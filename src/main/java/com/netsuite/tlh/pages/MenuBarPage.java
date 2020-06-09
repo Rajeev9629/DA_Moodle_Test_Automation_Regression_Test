@@ -70,7 +70,7 @@ public class MenuBarPage extends BasePage {
             wait.until(expectation);
             Thread.sleep(3000);
 		waitForElementToBeVisibile(menuBarDropdown);
-		menuBarDropdown.click();
+		menuBarDropdown.click();Thread.sleep(3000);
 		return this;
 	}
 	

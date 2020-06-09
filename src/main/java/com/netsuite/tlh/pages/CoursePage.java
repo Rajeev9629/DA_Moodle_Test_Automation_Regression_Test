@@ -272,6 +272,7 @@ public class CoursePage extends MenuBarPage {
 		chooseFileOption.sendKeys(System.getProperty("user.dir")+"/src/test/resources/testdata/TLH2.txt");
 		waitForElementToBeVisibile(uploadThisFileButton);
 		waitForElementToBeClickable(uploadThisFileButton);
+		Thread.sleep(4000);
 		uploadThisFileButton.click();
 		clickSaveChangesButton();
 		return this;
