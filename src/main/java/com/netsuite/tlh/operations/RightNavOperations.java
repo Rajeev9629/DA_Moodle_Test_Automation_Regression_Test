@@ -335,4 +335,17 @@ public class RightNavOperations extends BaseOperations {
 		return OperationFactory.getOperation(ManageConfigValueOperations.class);	
 	}
 	
+	public DashboardOperations getDashboardPage() throws DriverNotInitializedException, Throwable {
+		try {
+	
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getDashboardPage");
+		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickdashboardLink();
+		}
+		catch(Exception e) {
+			System.out.println("getDashboardPage failed");
+			e.printStackTrace();
+		}
+		return OperationFactory.getOperation(DashboardOperations.class);	
+	}
+	
 }

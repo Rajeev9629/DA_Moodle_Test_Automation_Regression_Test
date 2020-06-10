@@ -110,6 +110,15 @@ public class RightNavBar extends BasePage {
 	@FindBy(xpath = "//span[text()='Dashboard']/following::span[text()='Facilitation Manager Dashboard']")
 	private WebElement FMDLinkLeftNav515;
 	
+	@FindBy(xpath = "//span[text()='Dashboard' and @class='media-body ']")
+	private WebElement dashboardLink;
+	
+	public RightNavBar clickdashboardLink() throws Throwable {
+		waitForElementToBeVisibile(dashboardLink);
+		dashboardLink.click();
+		return this;
+		}
+	
 	public RightNavBar clickOnManageConfigurationValuePage() throws Throwable {
 		waitForElementToBeVisibile(manageConfigurationValuePage);
 		manageConfigurationValuePage.click();

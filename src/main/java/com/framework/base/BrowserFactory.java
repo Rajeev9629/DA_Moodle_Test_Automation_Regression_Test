@@ -47,20 +47,13 @@ public class BrowserFactory {
 				WebDriverManager.chromedriver().setup();
 				Map<String, Object> prefs = new HashMap<String, Object>();
 				String download_folder = "src/test/resources/testdata/downloads";
-				prefs.put("credentials_enable_service", false);
-				prefs.put("profile.password_manager_enabled", false);
-				prefs.put("profile.default_content_settings.popups", 0);
 				prefs.put("download.default_directory", System.getProperty("user.dir") + "/" + download_folder);
-				
 				ChromeOptions options = new ChromeOptions();
 				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("disable-infobars");
 				options.addArguments("enable-automation");
 				options.addArguments("--disable-extensions");
 				options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
-
-				options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-				
 				Driver = new ChromeDriver(options);
 				
 				/*DesiredCapabilities caps = new DesiredCapabilities();
