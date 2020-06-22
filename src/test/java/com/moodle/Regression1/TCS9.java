@@ -22,7 +22,9 @@ public class TCS9 extends BaseTest {
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getQuizzesPage();
 		Navigator.GetCoursePageOperations().completeParticipationAcknowledgement2();
 		menuBarOperations.doLogOutAndLogin();
-		rightNavOperations.getFacilitationManagerDashboard().verifySignOffFunctionality().verifySignOffBehaviour(createBackupData).signOff(createBackupData).verifyMFD_517_519(createBackupData);
+		rightNavOperations.getFacilitationManagerDashboard()
+		.verifySignOffFunctionality().verifySignOffBehaviour(createBackupData)
+		.signOff(createBackupData).verifyMFD_517_519(createBackupData);
 		
 	}
 

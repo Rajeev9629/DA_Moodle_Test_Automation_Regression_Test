@@ -273,14 +273,17 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
 		 if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
 		wait.until(expectation);
-		List <WebElement> ele= BrowserFactory.getDriver().findElements(By.cssSelector("button[name='savechanges']"));
-		if(ele.size()==0) {
-			Assert.assertEquals(true, true);}
+		Thread.sleep(4000);
+		WebElement ele= BrowserFactory.getDriver().findElement(By.cssSelector("button[name='savechanges']"));
+		try{
+		if(ele.isDisplayed()) {
+			Assert.assertEquals(true, false, "Save Button is visible");}
 		else 
-		{Assert.assertEquals(true, false, "Save Button is visible");}
+		{Assert.assertEquals(true, true, "Save Button is not visible");}
 		System.out.println("Done");
 		 BrowserFactory.getDriver().close();
 		 break;
+		}catch(Exception e) {BrowserFactory.getDriver().switchTo().window(currentWindow);}
 			   } 
 		BrowserFactory.getDriver().switchTo().window(currentWindow);
 		}

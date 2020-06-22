@@ -170,14 +170,15 @@ public class RightNavBar extends BasePage {
 	
 	
 	public RightNavBar acceptSitePolicyAgreement() throws Throwable {
-		
-		waitForElementToBeVisibile(HomeLink);
-		waitForElementToBeClickable(HomeLink);
-		BrowserFactory.getDriver().navigate().to(BrowserFactory.url);
+		wait.until(expectation);
+		Thread.sleep(3000);
+		if(BrowserFactory.getDriver().getTitle().equalsIgnoreCase("Site policy agreement")) {
+
 		waitForElementToBeVisibile(sitePolicuyYesButton);
 		waitForElementToBeClickable(sitePolicuyYesButton);
 		sitePolicuyYesButton.click();
-		
+		Thread.sleep(3000);
+		}
 		return this;
 	}
 	
@@ -283,7 +284,7 @@ public class RightNavBar extends BasePage {
 	
 	public RightNavBar clickOnCourses() throws Throwable {
 		BrowserFactory.getDriver().navigate().refresh();
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		waitForElementToBeVisibile(coursesLink);
 		waitForElementToBeClickable(coursesLink);
 		Actions act= new Actions(BrowserFactory.getDriver());
@@ -325,7 +326,8 @@ public class RightNavBar extends BasePage {
 	}
 	
 	public RightNavBar clickOnFacilitationDashboardLink() throws Throwable {
-		
+		wait.until(expectation);
+		Thread.sleep(3000);
 		waitForElementToBeVisibile(facilitationDashboardLink);
 		waitForElementToBeClickable(facilitationDashboardLink);
 		facilitationDashboardLink.click();

@@ -318,6 +318,23 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationManagerDashboardOperations dashboardSignOff(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("dashboardSignOff");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
+		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
+		.clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
+		.enterStudentName(createBackupData.getUserName1())
+		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
+		;
+		
+		}
+		catch(Exception e) {
+			System.out.println("signOff failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
 	public FacilitationManagerDashboardOperations verifySignOffBehaviour(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffBehaviour");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted()

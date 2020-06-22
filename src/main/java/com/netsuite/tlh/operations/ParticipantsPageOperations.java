@@ -73,7 +73,7 @@ public class ParticipantsPageOperations extends BaseOperations {
 		Thread.sleep(3000);
 		if (Role.equalsIgnoreCase("Student")) {
 			Thread.sleep(3000);
-			//OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
+			OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
 			Thread.sleep(3000);
 			String courseID=RestorePage.courseID;
 			String courseURL=BrowserFactory.url+"course/view.php?id="+courseID;
@@ -93,6 +93,7 @@ public class ParticipantsPageOperations extends BaseOperations {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("loginAsRespectiveApostopheUser");
 		NetsuiteTLHPageFactory.getPage(ParticipantsPage.class).clickOnRespectiveApostopheUser(Role,Count)
 		.clickOnLoginAs().clickContinue();
+		OperationFactory.getOperation(RightNavOperations.class).acceptSitePolicyAgreement();
 		
 		}
 		catch(Exception e) {

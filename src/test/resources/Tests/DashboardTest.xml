@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Netsuite_TLH_Suite" verbose="10">
+<suite name="Netsuite_TLH_Suite">
 	
 
 	<test name="Moodle_Database_Test">

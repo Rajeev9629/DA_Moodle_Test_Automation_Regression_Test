@@ -25,6 +25,13 @@ public class BasePage implements BaseParams, INetsuiteTLHPage {
 				.executeScript("return document.readyState").equals("complete"));
 	}
 
+	ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+        public Boolean apply(WebDriver driver) {
+            return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+        }};
+        WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 40);
+	
+	
 	public void waitForElementToBeVisibile(WebElement element) throws Throwable {
 		try {
 			WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), maxTimeoutInSecs, sleepInMillisecs);

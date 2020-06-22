@@ -15,7 +15,7 @@ public class TCS6 extends BaseTest{
 		loggingStartReport("MFD-226 :: MFD-270::MFD-259:: Sign Off the assignment");
 			System.out.println("TCS 6");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-			rightNavOperations.getFacilitationManagerDashboard().verifySignOffFunctionality().signOff(createBackupData);		
+			rightNavOperations.getFacilitationManagerDashboard().verifySignOffFunctionality().dashboardSignOff(createBackupData);		
 		}
 
 }

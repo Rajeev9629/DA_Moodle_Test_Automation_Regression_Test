@@ -1,7 +1,7 @@
 [
 	{
 		"Form": {
-			"hostName": "uat-advc-2020-03-10-cluster.cluster-cjmvuggi5a3a.us-east-1.rds.amazonaws.com",
+			"hostName": "uat-advc-20200610-cluster.cluster-cjmvuggi5a3a.us-east-1.rds.amazonaws.com",
 			"port": "3306",
 			"databaseName": "advancementcourses_moodle",
 			"user": "advcourses",
