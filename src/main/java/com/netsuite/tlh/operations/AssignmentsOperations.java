@@ -22,6 +22,18 @@ public class AssignmentsOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public AssignmentsOperations resubmitAssignment() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("completeAssingments");
+		NetsuiteTLHPageFactory.getPage(AssignmentsPage.class).openAssigmentsLinkModule2_A().clickEdiSubmissionButton()
+		.clickAddButton().uploadAFile();
+		}
+		catch(Exception e) {
+			System.out.println("resubmitAssignment failed");
+			e.printStackTrace();
+		}
+		return this;	
+	}
+	
 	public AssignmentsOperations completeAssingmentModule2() throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("completeAssingmentModule2");
 		NetsuiteTLHPageFactory.getPage(AssignmentsPage.class).openAssigmentsLinkModule2().refreshPage();

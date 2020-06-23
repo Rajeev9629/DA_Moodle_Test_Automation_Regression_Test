@@ -24,6 +24,36 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationManagerDashboardOperations verifyMFD_552(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
+		.selectAssignmentStatus(createBackupData.getStatus()).enterOriginalGraderName(createBackupData.getUserName3().toLowerCase())
+		.clickFilterButton().verifyOriginalGrader(createBackupData.getUserName3()).clickResetButton()
+		.enterCourseCode(createBackupData.getCourseShortName())
+		.selectAssignmentStatus(createBackupData.getStatus()).enterOriginalGraderName(createBackupData.getUserName3().toUpperCase())
+		.clickFilterButton().verifyOriginalGrader(createBackupData.getUserName3())
+		;
+		logger.pass("verifyMFD_552 passed");}
+		catch(Exception e) {
+			System.out.println("verifyMFD_552 failed");
+			e.printStackTrace();}
+		return this;	
+	}
+	
+	public FacilitationManagerDashboardOperations verifyMFD_560(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
+		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton().openAssigmentsLink2_1().clickResetButton()
+		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus()).enterOriginalGraderName(createBackupData.getUserName3())
+		.enterAssignmentName("2").clickFilterButton().verifyOriginalGrader(createBackupData.getUserName3())
+		;
+		logger.pass("verifyMFD_560 passed");}
+		catch(Exception e) {
+			System.out.println("verifyMFD_560 failed");
+			e.printStackTrace();}
+		return this;	
+	}
+	
 	public FacilitationManagerDashboardOperations verifyMFD_517_519(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_517");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()

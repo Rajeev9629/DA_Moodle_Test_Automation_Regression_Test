@@ -87,6 +87,72 @@ public class AssignmentsPage extends MenuBarPage {
 	@FindBy(css = "i[title='View full']")
 	private WebElement expandFeedback;
 	
+	@FindBy(xpath = "//button[text()='Edit submission']")
+	private WebElement EdiSubmissionButton;
+	
+	@FindBy(css = "a[title='Add...']")
+	private WebElement AddButton;
+	
+	@FindBy(xpath = "//span[text()='Upload a file']")
+	private WebElement uploadAFileLink;
+	
+	@FindBy(css = "input[name='repo_upload_file']")
+	private WebElement chooseFileOption;
+	
+	@FindBy(css = "div[class='fp-content']")
+	private WebElement fileSubmissionBox;
+	
+	public AssignmentsPage uploadAFile() throws Throwable {
+		waitForElementToBeVisibile(uploadAFileLink);
+		waitForElementToBeClickable(uploadAFileLink);
+		uploadAFileLink.click();
+		waitForElementToBeVisibile(chooseFileOption);
+		waitForElementToBeClickable(chooseFileOption);
+		Thread.sleep(1000);
+		chooseFileOption.sendKeys(System.getProperty("user.dir")+"/src/test/resources/testdata/TLH2.txt");
+		waitForElementToBeVisibile(uploadThisFileButton);
+		waitForElementToBeClickable(uploadThisFileButton);
+		Thread.sleep(4000);
+		uploadThisFileButton.click();
+		clickSaveChangesButton();
+		return this;
+	}
+	
+	public AssignmentsPage clickSaveChangesButton() throws Throwable {
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+            	}};
+            	WebDriverWait wait = new WebDriverWait(BrowserFactory.getDriver(), 30);
+            	wait.until(expectation);
+            	
+            	waitForElementToBeVisibile(fileSubmissionBox);  	
+            	waitForElementToBeClickable(fileSubmissionBox);
+            	
+		waitForElementToBeVisibile(saveChangesButton);
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor)BrowserFactory.getDriver();
+		executor.executeScript("arguments[0].click();", saveChangesButton);
+		return this;
+	}
+	
+	public AssignmentsPage clickAddButton() throws Throwable {
+		wait.until(expectation);
+		Thread.sleep(4000);
+		waitForElementToBeVisibile(AddButton);
+		waitForElementToBeClickable(AddButton);
+		AddButton.click();
+		return this;
+	}
+	
+	public AssignmentsPage clickEdiSubmissionButton() throws Throwable {
+		wait.until(expectation);
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(EdiSubmissionButton);
+		EdiSubmissionButton.click();
+	   return this;
+	}
+	
 	public AssignmentsPage verifyAssigment3Feedback(String feedBack) throws Throwable {
 		waitForElementToBeVisibile(table);
 		String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
@@ -146,6 +212,17 @@ public class AssignmentsPage extends MenuBarPage {
 		String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
 		Module2Link.sendKeys(selectLinkOpeninNewTab);
 		completeAssignment(); 
+	   return this;
+	}
+	
+	public AssignmentsPage openAssigmentsLinkModule2_A() throws Throwable {
+		wait.until(expectation);
+		Thread.sleep(2000);
+		waitForElementToBeVisibile(Module2Link);
+		waitForElementToBeClickable(Module2Link);
+		Module2Link.click();
+		//String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
+		//Module2Link.sendKeys(selectLinkOpeninNewTab); 
 	   return this;
 	}
 	

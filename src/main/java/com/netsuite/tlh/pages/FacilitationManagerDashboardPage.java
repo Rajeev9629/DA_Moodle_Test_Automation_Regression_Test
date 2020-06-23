@@ -228,6 +228,28 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	Boolean stat= true;
 	static int count;
+	static int count2;
+	
+	public FacilitationManagerDashboardPage verifyOriginalGrader(String userName) throws Throwable {
+		Thread.sleep(3000);
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+		
+		List<WebElement> ele= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th//a"));
+		for(int i=0;i<=ele.size();i++) {
+			if(ele.get(i).getText().equalsIgnoreCase("Original Grader")) {
+				count2=i;
+				break;
+			}
+		}
+		WebElement elen= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+count2+"]"));
+		if(elen.getText().equalsIgnoreCase(userName)) {
+			Assert.assertEquals(true, true);
+		}
+		else {Assert.assertEquals(true, false,"original grader issue");}
+		
+		return this;
+	}
 	
 	public FacilitationManagerDashboardPage verifyPaginationDoesntBreak() throws Throwable {
 		waitForElementToBeVisibile(paginationFirst);
@@ -443,7 +465,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		for(int x=1;x<=li.size();x++) {
 		if(BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//thead//tr//th["+x+"]")).getText().equalsIgnoreCase("Grade")) {
 		WebElement grade=BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+x+"]"));
-		System.out.println("text is "+ grade.getText());
+		//System.out.println("text is "+ grade.getText());
 		if(grade.getText().equalsIgnoreCase("")) {
 			Assert.assertEquals(true, true);
 		}
@@ -730,6 +752,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage enterCourseCode(String code) throws Throwable {
+		wait.until(expectation);
+		Thread.sleep(2000);
 		waitForElementToBeVisibile(courseCodetextBox);
 		waitForElementToBeClickable(courseCodetextBox);
 		courseCodetextBox.clear();
