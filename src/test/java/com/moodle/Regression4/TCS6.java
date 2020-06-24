@@ -21,9 +21,12 @@ public class TCS6 extends BaseTest{
 		.loginAsRespectiveUser(createBackupData.getRole1(),createBackupData.getUserName1(),createBackupData.getCourseShortName());
 		rightNavOperations.getAssignmentsPage().resubmitAssignment();
 		menuBarOperations.doLogOutAndLogin();
-		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage()
-		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getPerformanceUserName(),createBackupData.getCourseShortName());
-		rightNavOperations.getFacilitationManagerDashboard().verifyMFD_560(createBackupData);
+		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().enrollFacilitator(createBackupData, createBackupData.getUserName2())
+		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
+		rightNavOperations.getFacilitationDashboard();
+		Navigator.FacilitationManagerDashboardOperations().verifyMFD_560(createBackupData);
+		menuBarOperations.doLogOutAndLogin();
+		rightNavOperations.getFacilitationManagerDashboard().verifyMFD_560_1(createBackupData);
 		
 		logger.info("MFD-560::IssueWithFilteringOriginalGrader");
 	}

@@ -228,7 +228,6 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	Boolean stat= true;
 	static int count;
-	static int count2;
 	
 	public FacilitationManagerDashboardPage verifyOriginalGrader(String userName) throws Throwable {
 		Thread.sleep(3000);
@@ -238,15 +237,16 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		List<WebElement> ele= BrowserFactory.getDriver().findElements(By.xpath("//table[@class='table']//thead//tr//th//a"));
 		for(int i=0;i<=ele.size();i++) {
 			if(ele.get(i).getText().equalsIgnoreCase("Original Grader")) {
-				count2=i;
+				//System.out.println("XXXXXX "+i);
+				i=i+1;
+				WebElement elen= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+i+"]"));
+				//System.out.println("XXXX   "+elen.getText());
+				if(elen.getText().equalsIgnoreCase(userName)) {Assert.assertEquals(true, true);}
+				else {Assert.assertEquals(true, false,"original grader issue");}
 				break;
 			}
 		}
-		WebElement elen= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td["+count2+"]"));
-		if(elen.getText().equalsIgnoreCase(userName)) {
-			Assert.assertEquals(true, true);
-		}
-		else {Assert.assertEquals(true, false,"original grader issue");}
+		
 		
 		return this;
 	}

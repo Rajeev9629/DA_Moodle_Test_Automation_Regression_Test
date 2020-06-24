@@ -7,6 +7,8 @@
       <class name="com.moodle.Regression4.TCS2"/>
       <class name="com.moodle.Regression4.TCS3"/>
       <class name="com.moodle.Regression4.TCS4"/>
+      <class name="com.moodle.Regression4.TCS5"/>
+      <class name="com.moodle.Regression4.TCS6"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
