@@ -102,7 +102,8 @@
 
 	<properties>
 		<!-- <appUrl>https://advancementcourses-sap.learninghouse.com/</appUrl> -->
-		 <appUrl>https://advancementcourses-uat.learninghouse.com/</appUrl>
+		 <appUrl>https://advancementcourses-uat.learninghouse.com/</appUrl> 
+		<!-- <appUrl>https://advc.test.edu.help/</appUrl>-->
 		<customerAppUrl>https://system.sandbox.netsuite.com/app/login/secure/privatelogin.nl?c=4493355</customerAppUrl>
 		<browser>chrome</browser>
 		<testngXml>testng.xml</testngXml>
@@ -142,7 +143,7 @@
 							</property>
 						</properties>
 						<suiteXmlFiles>
-							<suiteXmlFile>src/test/resources/testngRegression1.xml</suiteXmlFile>
+							<suiteXmlFile>src/test/resources/Tests/Regression1.xml</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
 					

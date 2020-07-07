@@ -4,8 +4,6 @@ import java.util.LinkedHashMap;
 import org.testng.annotations.Test;
 import com.framework.utils.Utility;
 import com.moodle.tlh.tests.BaseTest;
-import com.netsuite.tlh.operations.MenuBarOperations;
-import com.netsuite.tlh.operations.Navigator;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 

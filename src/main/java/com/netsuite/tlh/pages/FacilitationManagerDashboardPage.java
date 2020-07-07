@@ -495,7 +495,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	
 	public FacilitationManagerDashboardPage verifyFacilitatorDetails(String user) throws Throwable {
 		waitForElementToBeVisibile(table);
-		WebElement element= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td[text()='" + user + "']"));
+		WebElement element= BrowserFactory.getDriver().findElement(By.xpath("//table[@class='table']//tbody//tr//td[contains(text(),'"+user+"')]"));
 		waitForElementToBeVisibile(element);
 		return this;
 	}
@@ -818,7 +818,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		waitForElementToBeClickable(facilitatortextBox);
 		facilitatortextBox.sendKeys(facilitatorname);
 		Thread.sleep(2000);
-		BrowserFactory.getDriver().findElement(By.xpath("//li[text()='" + facilitatorname + "']")).click();
+		BrowserFactory.getDriver().findElement(By.xpath("//li[text()='"+facilitatorname+"']")).click();Thread.sleep(2000);
 		return this;
 	}
 
@@ -1010,9 +1010,10 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
 					wait.until(expectation);
 					gradeAssignment2_1();
-				   Thread.sleep(3000);
-				   
-			   }}  
+				   Thread.sleep(3000);   
+			   }
+			   }  
+	
 		BrowserFactory.getDriver().switchTo().window(currentWindow);
 	    
 	   return this;
@@ -1239,9 +1240,12 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		List <WebElement> elements=BrowserFactory.getDriver().findElements(By.cssSelector("tr[role='radiogroup']"));
 		for(int i=1;i<=elements.size();i++){	
 			Thread.sleep(4000);
-			waitForElementToBePresent(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
-			waitForElementToBeClickable(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]"));
-			BrowserFactory.getDriver().findElement(By.xpath("((//tr[@role='radiogroup'])[" + i + "]//td)[4]")).sendKeys(Keys.ENTER);
+			waitForElementToBePresent(By.xpath("((//tr[@role='radiogroup'])["+i+"]//td)[4]"));
+			waitForElementToBeClickable(By.xpath("((//tr[@role='radiogroup'])["+i+"]//td)[4]"));
+			WebElement ele=BrowserFactory.getDriver().findElement(By.xpath("((//tr[@role='radiogroup'])["+i+"]//td)[4]"));
+			 JavascriptExecutor js = (JavascriptExecutor)BrowserFactory.getDriver();
+			 js.executeScript("arguments[0].click();", ele);
+			
 			Thread.sleep(4000);
 		}
 		Thread.sleep(3000);
@@ -1283,7 +1287,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			sel.selectByVisibleText(Status);
 		} catch (Exception e) {
 			
-			System.out.println("Assignment sttaus dropdown in catch ");
+			System.out.println("Assignment staus dropdown in catch ");
 		}
 		Thread.sleep(6000);
 		

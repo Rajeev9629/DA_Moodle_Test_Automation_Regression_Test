@@ -24,6 +24,18 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		return this;	
 	}
 	
+	public FacilitationManagerDashboardOperations verifyFilterButton() throws DriverNotInitializedException, Throwable {
+		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilterButton");
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickFilterButton().clickFilterButton()
+		.verifyTableIspresent()
+		;
+		logger.pass("verifyFilterButton passed");}
+		catch(Exception e) {
+			System.out.println("verifyFilterButton failed");
+			e.printStackTrace();}
+		return this;	
+	}
+	
 	public FacilitationManagerDashboardOperations verifyMFD_552(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
@@ -164,9 +176,9 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	
 	public FacilitationManagerDashboardOperations VerificationOfUnenrolledFacilitatorNameFunctionality(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerificationOfUnenrolledFacilitatorNameFunctionality");
-		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterFacilitatorName(createBackupData.getUserName7())
+		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterFacilitatorName(createBackupData.getUserName8())
 		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus()).selectDateSubmitted()
-		.clickFilterButton().verifyTableIspresent().verifyFacilitatorDetails(createBackupData.getUserName7())
+		.clickFilterButton().verifyTableIspresent().verifyFacilitatorDetails(createBackupData.getUserName8())
 		;
 		logger.pass("VerificationOfUnenrolledFacilitatorNameFunctionality has been verified");}
 		catch(Exception e) {

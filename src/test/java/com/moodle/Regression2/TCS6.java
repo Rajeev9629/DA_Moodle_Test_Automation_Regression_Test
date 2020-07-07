@@ -16,26 +16,26 @@ public class TCS6 extends BaseTest{
 		public void VerificationOfUnenrolledFacilitatorNameFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
 			logger=extent.createTest("MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality");
 			System.out.println("TCS 6");
-			/*CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
+			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 			
 			//enroll eric rodrigo
-			rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().enrollStudent(createBackupData, createBackupData.getUserName7()).loginAsRespectiveApostopheUser(createBackupData.getRole1(),"1");
-			rightNavOperations.searchAndGetCoursePage(createBackupData).getApostopheCoursesPage().getAssignmentsPage().completeAssingments();
+			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().enrollFacilitator(createBackupData, createBackupData.getUserName8()).enrollStudent(createBackupData, createBackupData.getUserName7()).loginAsRespectiveApostopheUser(createBackupData.getRole1(),"1");
+			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getApostopheCoursesPage().getAssignmentsPage().completeAssingments();
 			//June Assignment completed
 			menuBarOperations.doLogOutAndLogin();
 			//login as eric and grade assignment
-			rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
+			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
 			rightNavOperations.getFacilitationDashboard();
 			Navigator.FacilitationDashboardOperations().filterStundentCourse(createBackupData);
 				
 			menuBarOperations.doLogOutAndLogin();
 			
-			rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName2());
+			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName8());
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().VerificationOfUnenrolledFacilitatorNameFunctionality(createBackupData);
 			
 
-			logger.info("MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality Passed" );*/
+			logger.info("MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality Passed" );
 			
 		}
 }

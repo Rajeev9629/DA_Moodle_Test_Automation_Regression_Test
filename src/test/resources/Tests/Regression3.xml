@@ -5,7 +5,7 @@
     <classes>
       <class name="com.moodle.Regression3.TCS1"/>
       <class name="com.moodle.Regression3.TCS2"/>
-      <class name="com.moodle.Regression3.TCS3"/>
+      <!-- <class name="com.moodle.Regression3.TCS3"/> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

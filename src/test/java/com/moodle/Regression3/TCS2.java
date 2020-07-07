@@ -11,12 +11,13 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class TCS2 extends BaseTest  {
 	
-	@Test(description = "MFD-531::Manage Configuration Values", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+	@Test(description = "MFD-531::MFD-561::Manage Configuration Values", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 	public void ManageConfigurationValues(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-531::Manage Configuration Values");
 		System.out.println("2");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
 		rightNavOperations.getManageConfigurationValuePage().verifyManageConfigPage();
+		rightNavOperations.getFacilitationManagerDashboard().verifyFilterButton();
 		
 		
 	}
