@@ -21,7 +21,7 @@ public class TCS6 extends BaseTest{
 			//enroll eric rodrigo
 			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().enrollFacilitator(createBackupData, createBackupData.getUserName8()).enrollStudent(createBackupData, createBackupData.getUserName7()).loginAsRespectiveApostopheUser(createBackupData.getRole1(),"1");
 			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getApostopheCoursesPage().getAssignmentsPage().completeAssingments();
-			//June Assignment completed
+			// Assignment completed
 			menuBarOperations.doLogOutAndLogin();
 			//login as eric and grade assignment
 			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
@@ -34,7 +34,7 @@ public class TCS6 extends BaseTest{
 			rightNavOperations.getFacilitationManagerDashboard();
 			Navigator.FacilitationManagerDashboardOperations().VerificationOfUnenrolledFacilitatorNameFunctionality(createBackupData);
 			
-
+			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().UnenrollUser(createBackupData.getUserName7());
 			logger.info("MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality Passed" );
 			
 		}

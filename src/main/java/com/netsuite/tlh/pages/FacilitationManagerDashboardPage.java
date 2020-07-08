@@ -333,6 +333,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	}
 	
 	public FacilitationManagerDashboardPage verifygrade_GradedBy() throws Throwable {
+		
 		waitForElementToBeVisibile(rubricGrade1);
 		if(rubricGrade1.getText().equalsIgnoreCase("100%")) {
 			Assert.assertEquals(true, true);

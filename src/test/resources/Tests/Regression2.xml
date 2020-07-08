@@ -9,9 +9,9 @@
       <class name="com.moodle.Regression2.TCS4"/>
       <class name="com.moodle.Regression2.TCS5"/>
        <class name="com.moodle.Regression2.TCS6"/>
-      <!--<class name="com.moodle.Regression2.TCS7"/>
+     <class name="com.moodle.Regression2.TCS7"/>
       <class name="com.moodle.Regression2.TCS8"/>
-     <class name="com.moodle.Regression2.TCS9"/> -->
+     <class name="com.moodle.Regression2.TCS9"/> 
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

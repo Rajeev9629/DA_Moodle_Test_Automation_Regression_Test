@@ -19,15 +19,13 @@ public class TCS8 extends BaseTest{
 		//complete Quiz
 		rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().loginAsRespectiveApostopheUser(createBackupData.getRole1(),"2");
 		rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getQuizzesPage();
-		Navigator.GetCoursePageOperations()
-		.completeParticipationAgreement();
+		Navigator.GetCoursePageOperations().completeParticipationAgreement();
 		menuBarOperations.doLogOutAndLogin();
 		
 		//Facilitation Manager
 		rightNavOperations.getFacilitationManagerDashboard().verifyRubricGradesAnd516(createBackupData);
 		
 		//Facilitator
-				
 		rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage()
 		.loginAsRespectiveApostopheUser(createBackupData.getRole2(),"1");
 		rightNavOperations.getFacilitationDashboard();
