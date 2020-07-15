@@ -10,14 +10,12 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 
 
 public class TCS6 extends BaseTest{
-		
-	//eric rodrigo as facilitator, june as student(defect) 
-	@Test(description = "MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
+		 
+	@Test(description = "MFD-406::MFD-572::VerificationOfUnenrolledFacilitatorNameFunctionality", dataProvider = "getData", dataProviderClass = com.netsuite.tlh.dataprovider.NetsuiteTLHTestDataProvider.class)
 		public void VerificationOfUnenrolledFacilitatorNameFunctionality(LinkedHashMap<String, ?> testData) throws Throwable {
 			logger=extent.createTest("MFD-406 :: VerificationOfUnenrolledFacilitatorNameFunctionality");
 			System.out.println("TCS 6");
 			CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-			
 			//enroll eric rodrigo
 			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getEnrollParticipantsPage().enrollFacilitator(createBackupData, createBackupData.getUserName8()).enrollStudent(createBackupData, createBackupData.getUserName7()).loginAsRespectiveApostopheUser(createBackupData.getRole1(),"1");
 			rightNavOperations.searchAndGetNewCoursePage(createBackupData,createBackupData.getCourseName2()).getApostopheCoursesPage().getAssignmentsPage().completeAssingments();
