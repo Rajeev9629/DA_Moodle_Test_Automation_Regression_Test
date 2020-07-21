@@ -29,8 +29,7 @@ public class TCS7 extends BaseTest {
 		.loginAsRespectiveUser(createBackupData.getRole3(),createBackupData.getUserName6(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationManagerDashboard()
 		.verifyDateGradedFilter(createBackupData).verifyFilters(createBackupData)
-		.verifyCaseSensitiveFilters(createBackupData)
-		;
+		.verifyCaseSensitiveFilters(createBackupData);
 		}	
 
 }

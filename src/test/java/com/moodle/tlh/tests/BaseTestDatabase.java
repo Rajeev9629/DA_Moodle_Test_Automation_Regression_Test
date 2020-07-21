@@ -55,7 +55,7 @@ public class BaseTestDatabase {
 		loginDataMap = BaseDataProvider.getDataAsMap(LOGINDETAILS_FILENAME);
 		userName = (String) loginDataMap.get("userName");
 		passWord = (String) loginDataMap.get("passWord");
-		ExtentHtmlReporter reporter=new ExtentHtmlReporter("./Reports/Report.html");
+		ExtentHtmlReporter reporter=new ExtentHtmlReporter(System.getProperty("user.dir") + "/src/test/resources/Reports/Report.html");
 		extent = new ExtentReports();
 	    extent.attachReporter(reporter);   
 	}
@@ -88,12 +88,11 @@ public class BaseTestDatabase {
 			String MethodName=OperationFactory.getOperation(MethodNameReportingOprations.class).getMethodName();
 			logger.fail( MethodName+" Failed, Reason: "+result.getThrowable().getMessage());
 			Robot r = new Robot(); 
-			String path = "./Reports/Shot.jpg";
-			Rectangle capture =  
-			new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()); 
+			String path = System.getProperty("user.dir") + "/src/test/resources/Reports/Shot.jpg";
+			Rectangle capture =  new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()); 
 			BufferedImage Image = r.createScreenCapture(capture); 
 			ImageIO.write(Image, "jpg", new File(path)); 
-			String dest = System.getProperty("user.dir") + "/Reports/Shot.jpg";
+			String dest = System.getProperty("user.dir") + "/src/test/resources/Reports/Shot.jpg";
 			logger.addScreenCaptureFromPath(dest);
 
 		}
