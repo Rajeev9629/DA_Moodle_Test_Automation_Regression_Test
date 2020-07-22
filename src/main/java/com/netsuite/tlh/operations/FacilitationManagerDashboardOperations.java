@@ -55,7 +55,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	public FacilitationManagerDashboardOperations verifyMFD_560(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
 		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
-		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton().openAssigmentsLink2_1()
+		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton().openAssigmentsLink2_1_1()
 		;
 		logger.pass("verifyMFD_560 passed");}
 		catch(Exception e) {

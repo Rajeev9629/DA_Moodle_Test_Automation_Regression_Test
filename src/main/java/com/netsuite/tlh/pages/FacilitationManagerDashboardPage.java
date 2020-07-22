@@ -1019,6 +1019,24 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 	    
 	   return this;
 	}
+	public FacilitationManagerDashboardPage openAssigmentsLink2_1_1() throws Throwable {
+		waitForElementToBeVisibile(table);
+		waitForElementToBeClickable(table);
+	  BrowserFactory.getDriver().findElement(By.xpath("//a[text()='Module 2 Project Checkpoint']")).click();
+	  Thread.sleep(2000);
+	  String currentWindow = BrowserFactory.getDriver().getWindowHandle();
+		for(String winHandle : BrowserFactory.getDriver().getWindowHandles()){
+			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
+					wait.until(expectation);
+					gradeAssignment2_1_1();
+				   Thread.sleep(3000);   
+			   }
+			   }  
+	
+		BrowserFactory.getDriver().switchTo().window(currentWindow);
+	    
+	   return this;
+	}
 	
 	public FacilitationManagerDashboardPage openAssigmentsLink3_1() throws Throwable {
 		waitForElementToBeVisibile(table);
@@ -1209,7 +1227,30 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		 
 	     wait.until(expectation);
 	     Thread.sleep(3000);
-	     clickOneOfTheGrade();
+	    clickOneOfTheGrade();
+		 clicksaveChangesButton();
+		 wait.until(expectation);
+		  try{  
+			  Thread.sleep(3000);
+			  waitForElementToBeVisibile(gradedText);
+		  }
+		  catch(Exception e){
+			  Thread.sleep(3000);
+			  clicksaveChangesButton();
+			  
+		  }
+		  Thread.sleep(3000);
+		  waitForElementToBeVisibile(gradedText);
+		  BrowserFactory.getDriver().close();
+		  Thread.sleep(1000);
+		return this;
+	}
+	
+	public FacilitationManagerDashboardPage gradeAssignment2_1_1() throws Throwable {
+		 
+	     wait.until(expectation);
+	     Thread.sleep(3000);
+	     //clickOneOfTheGrade();
 		 clicksaveChangesButton();
 		 wait.until(expectation);
 		  try{  

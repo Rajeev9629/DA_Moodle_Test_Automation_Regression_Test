@@ -21,7 +21,7 @@
 	"MFD-p_0": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-552": "src/test/resources/testdata/enrollUsers.json",
 	"MFD-560": "src/test/resources/testdata/enrollUsers.json",
-	
+	"MFD-4_0": "src/test/resources/testdata/enrollUsers.json",
 	
 	"MFD-495":"src/test/resources/testdata/apostopheTest.json",
 	"Sample-1": "src/test/resources/testdata/apostopheTest.json",
