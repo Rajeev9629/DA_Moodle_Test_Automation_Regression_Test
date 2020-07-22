@@ -15,8 +15,7 @@ public class Regression_TCS1 extends BaseTest  {
 		loggingStartReport("TCS1:MFD-357 ::MFD-358 ::MFD-390 ::MFD-400:: Moodle facilitator manager report feature");
 		System.out.println("1");
 		CreateBackupData createBackupData = Utility.getDataPojo(testData.get("Form"), CreateBackupData.class);
-		rightNavOperations.getFacilitationManagerReportPage()
-		.verifyFilters(createBackupData);
+		rightNavOperations.getFacilitationManagerReportPage().verifyFilters(createBackupData);
 		rightNavOperations.getFacilitationManagerDashboard().verifyMFD_536()
 		;
 		

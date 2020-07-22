@@ -143,9 +143,10 @@ public class FacilitationManagerReportPage extends MenuBarPage {
 		s.type(Key.BACKSPACE) ;
         s.type(download_folder+"\\Report.csv");
         s.click(SaveButton);
-        s.wait(YesButton, 20);
-        s.click(YesButton);
+        /*s.wait(YesButton, 20);
+        s.click(YesButton);*/
       //traversing fileText
+        Thread.sleep(5000);
 		String []fileText = FileUtils.ReadCsvFile();
 		System.out.println(Arrays.toString(fileText));
 		if (Arrays.equals(webText, fileText)) {

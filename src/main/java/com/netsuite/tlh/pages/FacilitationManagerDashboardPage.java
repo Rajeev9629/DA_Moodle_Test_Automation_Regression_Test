@@ -393,8 +393,8 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		org.sikuli.script.Pattern CrossButton = new org.sikuli.script.Pattern(download_folder+"\\CrossImage.png");
 		s.click(SaveButton);
 		Thread.sleep(2000);
-		s.wait(YesButton, 20);
-	    s.click(YesButton);  
+		//s.wait(YesButton, 20);
+	   // s.click(YesButton);  
 	    Thread.sleep(2000);
 	    s.wait(CrossButton, 20);
 	    s.click(CrossButton); 

@@ -11,7 +11,7 @@ public class SanityTest extends BaseTest{
 	public void VerifySiteLoadsAndlogin(LinkedHashMap<String, ?> testData) throws Throwable {
 		loggingStartReport("MFD-0000::SanityTest");
 		System.out.println("1");
-		rightNavOperations.getHome();
+		rightNavOperations.clickHome();
 			
 	}
 	
