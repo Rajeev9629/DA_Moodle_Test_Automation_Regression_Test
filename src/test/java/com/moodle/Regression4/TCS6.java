@@ -24,7 +24,8 @@ public class TCS6 extends BaseTest{
 		rightNavOperations.searchAndGetCoursePage(createBackupData).getEnrollParticipantsPage().enrollFacilitator(createBackupData, createBackupData.getUserName2())
 		.loginAsRespectiveUser(createBackupData.getRole2(),createBackupData.getUserName2(),createBackupData.getCourseShortName());
 		rightNavOperations.getFacilitationDashboard();
-		Navigator.FacilitationManagerDashboardOperations().verifyMFD_560(createBackupData);
+		Navigator.FacilitationManagerDashboardOperations()
+		.verifyMFD_560(createBackupData);
 		menuBarOperations.doLogOutAndLogin();
 		rightNavOperations.getFacilitationManagerDashboard().verifyMFD_560_1(createBackupData);
 		

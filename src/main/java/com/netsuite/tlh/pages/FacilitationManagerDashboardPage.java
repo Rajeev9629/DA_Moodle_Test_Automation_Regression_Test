@@ -1418,9 +1418,12 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			   if (BrowserFactory.getDriver().switchTo().window(winHandle).getTitle().contains("Assignment:")) {
 			
 					wait.until(expectation);Thread.sleep(4000);
-					addFeedBack(createBackupData.getFeedbackComment());Thread.sleep(3000);
+					addFeedBack(createBackupData.getFeedbackComment());
+					Thread.sleep(3000);
 					 clicksaveChangesButton();
 				  Thread.sleep(3000);
+				  BrowserFactory.getDriver().close();
+				  break;
 			   }}  
 		BrowserFactory.getDriver().switchTo().window(currentWindow);
 	    
