@@ -143,8 +143,6 @@ public class CoursePage extends MenuBarPage {
 	@FindBy(css = "div[class='fp-content']")
 	private WebElement fileSubmissionBox;
 	
-	
-	
 	@FindBy(css = "a[title='Actions']")
 	private WebElement participationAcknowledgementEdit;
 	
@@ -431,10 +429,14 @@ public class CoursePage extends MenuBarPage {
 		return this;
 	}
 	
-	public CoursePage clickDeleteApostropheCourseButton() throws Throwable {
+	public CoursePage getApostropheCourseDeletePage() throws Throwable {
 		Thread.sleep(3000);
-		waitForElementToBeVisibile(deleteApostropheCourseButton);
-		deleteApostropheCourseButton.click();
+		String courseID=RestorePage.courseID;
+		String url=BrowserFactory.url;
+		String deleteUrl=url+"course/delete.php?id="+courseID;
+		BrowserFactory.getDriver().navigate().to(deleteUrl);
+		wait.until(expectation);
+		Thread.sleep(2000);
 		return this;
 	}
 	

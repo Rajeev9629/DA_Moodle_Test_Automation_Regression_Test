@@ -57,9 +57,7 @@ public class BaseTest {
 		passWord = (String) loginDataMap.get("passWord");
 		ExtentHtmlReporter reporter=new ExtentHtmlReporter(System.getProperty("user.dir") + "/src/test/resources/Reports/Report.html");
 		extent = new ExtentReports();
-	    extent.attachReporter(reporter);
-	   
-	    
+	    extent.attachReporter(reporter);	    
 	    
 	}
 

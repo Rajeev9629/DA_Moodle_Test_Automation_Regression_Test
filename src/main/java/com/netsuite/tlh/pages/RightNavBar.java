@@ -327,10 +327,11 @@ public class RightNavBar extends BasePage {
 	
 	public RightNavBar clickOnFacilitationDashboardLink() throws Throwable {
 		wait.until(expectation);
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		waitForElementToBeVisibile(facilitationDashboardLink);
 		waitForElementToBeClickable(facilitationDashboardLink);
-		facilitationDashboardLink.click();
+		JavascriptExecutor js = (JavascriptExecutor)BrowserFactory.getDriver();
+		js.executeScript("arguments[0].click();", facilitationDashboardLink);
 		return this;
 	}
 	

@@ -40,8 +40,6 @@ public class BrowserFactory {
 				Driver = new FirefoxDriver();
 				break;
 			case chrome:
-				/* System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")
-				 + "/src/test/resources/chromedriver.exe");*/
 				 System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 				
 				WebDriverManager.chromedriver().setup();
