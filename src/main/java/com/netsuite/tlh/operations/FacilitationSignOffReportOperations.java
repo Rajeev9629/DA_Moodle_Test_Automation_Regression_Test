@@ -11,15 +11,11 @@ public class FacilitationSignOffReportOperations extends BaseOperations {
 	 
 	
 	public FacilitationSignOffReportOperations verifySignOffPageDetails() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyFilters");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffPageDetails");
 		
 		NetsuiteTLHPageFactory.getPage(FacilitationSignOffReportPage.class).verifyPageLabels().verifyFilters()
 		;
-	}
-	catch(Exception e) {
-		System.out.println("verifySignOffPageDetails failed");
-		e.printStackTrace();
-	}
+	
 		return this;	
 	}
 	

@@ -80,9 +80,9 @@ public class BaseTest {
 	@AfterMethod
 	public void tearDown(ITestResult result) throws IOException, InstantiationException, IllegalAccessException, AWTException
 	{
-		logger.pass(result.getMethod().getMethodName()+" done succesfully");
-		logger.info(result.getMethod().getMethodName()+" Passed");
+		logger.pass(result.getMethod().getMethodName()+" Completed");
 		
+	
 		if(result.getStatus()==ITestResult.FAILURE)
 		{
 			String MethodName=OperationFactory.getOperation(MethodNameReportingOprations.class).getMethodName();
@@ -96,6 +96,7 @@ public class BaseTest {
 			logger.addScreenCaptureFromPath(dest);
 
 		}
+		else {logger.info(result.getMethod().getMethodName()+" Passed");}
 		extent.flush();
 			
 	}

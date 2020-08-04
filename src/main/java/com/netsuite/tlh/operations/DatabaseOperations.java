@@ -17,88 +17,56 @@ import com.netsuite.tlh.testdata.Database;
 public class DatabaseOperations extends BaseOperations {
 	
 	public DatabaseOperations verifyCreditTypeColumnFunctionality(Database databaseData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("DatabaseOperationsverifyCreditTypeColumnFunctionality");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCreditTypeColumnFunctionality");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class).verifyCreditTypeColumnFunctionality(databaseData.getId1(),databaseData.getCreditType1())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId2(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId3(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId4(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId5(),databaseData.getCreditType2())
 		.verifyCreditTypeColumnFunctionality(databaseData.getId6(),databaseData.getCreditType2())
-		.verifyCreditTypeColumnFunctionality(databaseData.getId7(),databaseData.getCreditType3())
-		;
-		}
-		catch(Exception e) {
-			System.out.println("verifyCreditTypeColumnFunctionality failed");
-			e.printStackTrace();
-		}
+		.verifyCreditTypeColumnFunctionality(databaseData.getId7(),databaseData.getCreditType3());
+		
 		return this;	
 	}
 	
 	public DatabaseOperations VerifyRecordsToMdl_assignment_typeTable(Database databaseData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyRecordsToMdl_assignment_typeTable");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyRecordsToMdl_assignment_typeTable");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
-		.VerifyRecordsToMdl_assignment_typeTable(databaseData)
-		;
-		}
-		catch(Exception e) {
-			System.out.println("VerifyRecordsToMdl_assignment_typeTable failed");
-			e.printStackTrace();
-		}
+		.VerifyRecordsToMdl_assignment_typeTable(databaseData);
+		
 		return this;	
 	}
 	
 	public DatabaseOperations verifymdl_dashboard_data(Database databaseData, String courseID) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifymdl_dashboard_data");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifymdl_dashboard_data");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
 		.verifymdl_dashboard_data(databaseData,courseID)
 		;
-		}
-		catch(Exception e) {
-			System.out.println("verifymdl_dashboard_data failed");
-			e.printStackTrace();
-		}
+	
 		return this;	
 	}
 
 	public DatabaseOperations verifymdl_assigned_facilitators(Database databaseData, String courseID) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifymdl_assigned_facilitators");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifymdl_assigned_facilitators");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
 		.verifymdl_assigned_facilitators(databaseData,courseID)
 		;
-		
-		}
-		catch(Exception e) {
-			System.out.println("verifymdl_assigned_facilitators failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	
 	public DatabaseOperations verifyConfigurationValue(String name, String value, String module) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyConfigurationValue");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyConfigurationValue");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class)
 		.verifyConfigurationValue(name,value , module)
 		;
-		
-		}
-		catch(Exception e) {
-			System.out.println("verifyConfigurationValue failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	
 	public DatabaseOperations deleteConfigValue(String name, String value, String module) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteConfigValue");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("deleteConfigValue");
 		NetsuiteTLHPageFactory.getPage(DatabasePage.class).verifyConfigurationValueDeleted(name, value, module)
-		
 		;
 		
-		}
-		catch(Exception e) {
-			System.out.println("deleteConfigValue failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 

@@ -14,7 +14,7 @@ public class FacilitationDashboardOperations extends BaseOperations {
 	ExtentTest logger=FullRegressionTest.logger;
 	
 	public FacilitationDashboardOperations verifyFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilters");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilters");
 		NetsuiteTLHPageFactory.getPage(FacilitationDashboardPage.class)
 		
 		.enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
@@ -46,27 +46,17 @@ public class FacilitationDashboardOperations extends BaseOperations {
 		.expectedCompletionDateInput().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyTableIspresent().clickResetButton()
 		
 		;
-		logger.pass("Facilitation Dashboard Operations Filter has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyFilters failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	
 	public FacilitationDashboardOperations filterStundentCourse(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("filterStundentCourse");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("filterStundentCourse");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
 		.enterStudentName(createBackupData.getUserName7()).selectAssignmentStatus(createBackupData.getStatusUngraded())
-		.clickFilterButton().openAssigmentsLink(createBackupData,3)
+		.clickFilterButton().openAssigmentsLink(createBackupData,3);
 		
-		;
-		logger.pass("filterStundentCourse has been verified");}
-		catch(Exception e) {
-			System.out.println("filterStundentCourse failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	

@@ -9,111 +9,64 @@ import com.netsuite.tlh.testdata.CreateBackupData;
 public class RightNavOperations extends BaseOperations {
 
 	public FacilitationManagerReportOperations getFacilitationManagerReportPage() throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getFacilitationManagerReportPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnFacilitationManagerReportLink();
-		}
-		catch(Exception e) {
-			System.out.println("getFacilitationManagerReportPage failed");
-			e.printStackTrace();
-		}
+		
 		return OperationFactory.getOperation(FacilitationManagerReportOperations.class);	
 	}
 	
 	public RightNavOperations getFitnessPovCoursePage() throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getFitnessPovCoursePage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnFitnessPovCourse();
-		}
-		catch(Exception e) {
-			System.out.println("getFitnessPovCoursePage failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public RightNavOperations getBackUpPage() throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getBackUpPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnBackupLink().verifyUserIsOnBackupCoursePage();
-		}
-		catch(Exception e) {
-			System.out.println("getBackUpPage failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	public RightNavOperations searchAndGetCoursePage(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("searchAndGetCoursePage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnCourses().searchAndGoToCourse(createBackupData.getCourseName());
-		}
-		catch(Exception e) {
-			System.out.println("searchAndGetCoursePage failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public RightNavOperations searchAndGetNewCoursePage(CreateBackupData createBackupData, String courseName) throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("searchAndGetCoursePage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnCourses().searchAndGoToCourse(courseName);
-		}
-		catch(Exception e) {
-			System.out.println("searchAndGetCoursePage failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	
 	public ParticipantsPageOperations getEnrollParticipantsPage1() throws DriverNotInitializedException, Throwable {
-		try {
-		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsPage");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsPage1");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnParticipants1();
-		}
-		catch(Exception e) {
-			System.out.println("getEnrollParticipantsPage failed");
-			e.printStackTrace();
-		}
+		
 		return OperationFactory.getOperation(ParticipantsPageOperations.class);	
 	}
 	
 	
 	public ParticipantsPageOperations getEnrollParticipantsPage() throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnParticipants();
-		}
-		catch(Exception e) {
-			System.out.println("getEnrollParticipantsPage failed");
-			e.printStackTrace();
-		}
+		
 		return OperationFactory.getOperation(ParticipantsPageOperations.class);	
 	}
 	
 	public RightNavOperations getEnrollParticipantsOnlyPage() throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getEnrollParticipantsOnlyPage");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickOnParticipantsOnly();
-		}
-		catch(Exception e) {
-			System.out.println("getEnrollParticipantsOnlyPage failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	
 	public RightNavOperations clickCourseCompletion() throws DriverNotInitializedException, Throwable {
-		try {
 		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("clickCourseCompletion");
 		NetsuiteTLHPageFactory.getPage(RightNavBar.class).clickcourseCompletionLink();
-		}
-		catch(Exception e) {
-			System.out.println("clickCourseCompletion failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	

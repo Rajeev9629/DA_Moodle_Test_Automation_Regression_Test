@@ -13,31 +13,23 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 	ExtentTest logger=FullRegressionTest.logger;
 	
 	public FacilitationManagerDashboardOperations verifyMFD_536() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_536");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_536");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickDownloadButton().clickFilterButton()
 		.verifyTableIspresent()
 		;
-		logger.pass("verifyMFD_536 passed");}
-		catch(Exception e) {
-			System.out.println("verifyMFD_536 failed");
-			e.printStackTrace();}
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyFilterButton() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilterButton");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilterButton");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickFilterButton().clickFilterButton()
 		.verifyTableIspresent()
 		;
-		logger.pass("verifyFilterButton passed");}
-		catch(Exception e) {
-			System.out.println("verifyFilterButton failed");
-			e.printStackTrace();}
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyMFD_552(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatus()).enterOriginalGraderName(createBackupData.getUserName3().toLowerCase())
 		.clickFilterButton().verifyOriginalGrader(createBackupData.getUserName3()).clickResetButton()
@@ -45,316 +37,228 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.selectAssignmentStatus(createBackupData.getStatus()).enterOriginalGraderName(createBackupData.getUserName3().toUpperCase())
 		.clickFilterButton().verifyOriginalGrader(createBackupData.getUserName3())
 		;
-		logger.pass("verifyMFD_552 passed");}
-		catch(Exception e) {
-			System.out.println("verifyMFD_552 failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyMFD_560(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_552");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_560");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
 		.openAssigmentsLink2_1_1()
 		;
-		logger.pass("verifyMFD_560 passed");}
-		catch(Exception e) {
-			System.out.println("verifyMFD_560 failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyMFD_560_1(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_560_1");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_560_1");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus())
 		.enterAssignmentName("2").clickFilterButton().verifyOriginalGrader(createBackupData.getUserName3())
 		;
-		logger.pass("verifyMFD_560_1 passed");}
-		catch(Exception e) {
-			System.out.println("verifyMFD_560_1 failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyMFD_517_519(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_517");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyMFD_517_519");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()
 		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus())
 		.enterStudentName(createBackupData.getUserName1()).clickFilterButton()
 		.verifyPaginationDoesntBreak().verifyMFD517()
 		;
-		logger.pass("verifyMFD_517 passed");}
-		catch(Exception e) {
-			System.out.println("verifyMFD_517 failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyParticipationAgreement(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyParticipationAgreement");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyParticipationAgreement");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyParticipationAgreement()
 		;
-		logger.pass("verifyParticipationAgreement passed");}
-		catch(Exception e) {
-			System.out.println("verifyParticipationAgreement failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
 	
 	public FacilitationManagerDashboardOperations verifySignOfButtonMFD_495(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOfButtonMFD_495");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOfButtonMFD_495");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.enterAssignmentName(createBackupData.getFinalProjectSubmission()).enterCourseCode(createBackupData.getCourseShortName())
 		.enterStudentName(createBackupData.getUserName4()).selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
 		.verifySignOffButtonIsPresent()
 		;
-		logger.pass("verifySignOfButtonMFD_495 passed");}
-		catch(Exception e) {
-			System.out.println("verifySignOfButtonMFD_495 failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
-	
 	public FacilitationManagerDashboardOperations gradeFinalAsignment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeFinalAsignment");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeFinalAsignment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.enterAssignmentName(createBackupData.getFinalProjectSubmission()).enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().openAssigmentsLink(createBackupData,1)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().clickResetButton()
 		;
-		logger.pass("gradeFinalAsignment passed");}
-		catch(Exception e) {
-			System.out.println("gradeFinalAsignment failed");
-			e.printStackTrace();}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations provideFeedbackOnFinalAssignment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("provideFeedbackOnFinalAssignment");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("provideFeedbackOnFinalAssignment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.giveFinalAssignmentFeedback(createBackupData).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().verifyNoNegativeGrade()
 		;
-		logger.pass("provideFeedbackOnFinalAssignment has been verified");}
-		catch(Exception e) {
-			System.out.println("provideFeedbackOnFinalAssignment failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyStudentNameFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCreatedAndUpdatedDate");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyStudentNameFilter");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton()
 		.enterStudentName(createBackupData.getUserName1()).clickFilterButton()
 		.selectAssignmentStatus(createBackupData.getStatusAll())
 		.verifyTableIspresent().verifyStudentNameInTable(createBackupData.getUserName1())
 		;
-		logger.pass("StudentNameFilter has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyStudentNameFilter failed");
-			e.printStackTrace();
-		}
+		
 		
 		return this;	
 	}
 	public FacilitationManagerDashboardOperations verifyCreatedAndUpdatedDate() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCreatedAndUpdatedDate");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCreatedAndUpdatedDate");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyCreatedUpdatedDate();
-		logger.pass("Assignment created and updated date has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyCreatedAndUpdatedDate failed");
-			e.printStackTrace();
-		}
+	
 		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations VerificationOfUnenrolledFacilitatorNameFunctionality(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerificationOfUnenrolledFacilitatorNameFunctionality");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerificationOfUnenrolledFacilitatorNameFunctionality");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterFacilitatorName(createBackupData.getUserName8())
 		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatus()).selectDateSubmitted()
 		.clickFilterButton().verifyTableIspresent().verifyFacilitatorDetails(createBackupData.getUserName8())
 		;
-		logger.pass("VerificationOfUnenrolledFacilitatorNameFunctionality has been verified");}
-		catch(Exception e) {
-			System.out.println("VerificationOfUnenrolledFacilitatorNameFunctionality failed");
-			e.printStackTrace();
-		}
 		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations SmokeTest(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("SmokeTest");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("SmokeTest");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
 		.clickFilterButton().verifyTableIspresent()
 		.clickResetButton().selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().verifyTableIspresent()
-		;}
-		catch(Exception e) {
-			System.out.println("SmokeTest failed");
-			e.printStackTrace();
-		}
+		;
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyDeleteSubmissionButton(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDeleteSubmissionButton");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDeleteSubmissionButton");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().clickOnDeleteSubmissionButton()
 		;
-		logger.pass("DeleteSubmissionButton has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyDeleteSubmissionButton failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	
 	
 	public FacilitationManagerDashboardOperations gradeAssigment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink(createBackupData,3)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded().verifyGradedUngradedFilters();
-		//logger.pass("Assignment has been graded");
-		}
-		catch(Exception e) {
-			System.out.println("gradeAssigment failed");
-			e.printStackTrace();
-		}
+		
 		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigmentRegression4(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigmentRegression4");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink(createBackupData,3)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded();
-		}
-		catch(Exception e) {
-			System.out.println("gradeAssigment failed");
-			e.printStackTrace();
-		}
 		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigment3(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink( createBackupData,2)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded()
 		;
-		logger.pass("gradeAssigment3 has been verified");}
-		catch(Exception e) {
-			System.out.println("gradeAssigment3 failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigment3_1(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3_1");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().selectAssignmentStatus(createBackupData.getStatusUngraded())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink3_1()
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGradedNew()
 		;
-		logger.pass("gradeAssigment3 has been verified");}
-		catch(Exception e) {
-			System.out.println("gradeAssigment3 failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeOneAssigment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment3");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeOneAssigment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.openAssigmentsLink( createBackupData,2)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton()
 		;
-		logger.pass("gradeAssigment3 has been verified");}
-		catch(Exception e) {
-			System.out.println("gradeOneAssigment failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigment2(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment2");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment2");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
 		.openAssigmentsLink2().selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().checkIfGraded()
 		;
-		logger.pass("gradeAssigment2 has been verified");}
-		catch(Exception e) {
-			System.out.println("gradeAssigment2 failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations gradeAssigment2_1(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment2");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("gradeAssigment2_1");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().openAssigmentsLink2_1()
 		;
-		logger.pass("gradeAssigment2_1 has been verified");}
-		catch(Exception e) {
-			System.out.println("gradeAssigment2_1 failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations getRefreshDashboardPerformance() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getRefreshDashboardPerformance");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getRefreshDashboardPerformance");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).getDashboardRefreshTimeStamp();
-		logger.pass("getRefreshDashboardPerformance has been verified");}
-		catch(Exception e) {
-			System.out.println("getRefreshDashboardPerformance failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	
 	public FacilitationManagerDashboardOperations getGradedFilterDashboardPerformance(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getGradedFilterDashboardPerformance");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getGradedFilterDashboardPerformance");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
 		.getGradedFilterTimeStamp();
-		logger.pass("getGradedFilterDashboardPerformance has been verified");}
-		catch(Exception e) {
-			System.out.println("getGradedFilterDashboardPerformance failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations getLoadingDashboardPerformance() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getLoadingDashboardPerformance");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("getLoadingDashboardPerformance");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).getDashboardLoadingTimeStamp();
-		logger.pass("getLoadingDashboardPerformance has been verified");}
-		catch(Exception e) {
-			System.out.println("getLoadingDashboardPerformance failed");
-			e.printStackTrace();
-		}		return this;	
+		
+		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations signOff(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("signOff");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("signOff");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().checkIfGraded()
 		.verifyMFD_527()
@@ -363,16 +267,11 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
 		;
 		
-		}
-		catch(Exception e) {
-			System.out.println("signOff failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations dashboardSignOff(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("dashboardSignOff");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("dashboardSignOff");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatus())
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.clickOnSignOffButton().selectAssignmentStatus(createBackupData.getStatus())
@@ -380,16 +279,11 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyUserSignedOff()
 		;
 		
-		}
-		catch(Exception e) {
-			System.out.println("signOff failed");
-			e.printStackTrace();
-		}
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifySignOffBehaviour(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffBehaviour");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffBehaviour");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted()
 		
 		.selectAssignmentStatus(createBackupData.getStatus()).enterCourseCode(createBackupData.getCourseShortName())
@@ -401,140 +295,99 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.clickResetButton().enterCourseCode(createBackupData.getCourseShortName()).selectDateSubmitted().selectAssignmentStatus(createBackupData.getStatus())
 		.selectSignOffStatus(createBackupData.getSignOffStatusAll()).clickFilterButton().verifySignOffButtonIsPresent()
 		;
-		logger.pass("verifySignOffBehaviour has been verified");}
-		catch(Exception e) {
-			System.out.println("verifySignOffBehaviour failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifySignOffFunctionality() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffFunctionality");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifySignOffFunctionality");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifySignOffButtonIsNotPresent();
-		logger.pass("SignOffFunctionality has been verified");}
-		catch(Exception e) {
-			System.out.println("verifySignOffFunctionality failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyResubmittedAssignment(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyResubmittedAssignment");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyResubmittedAssignment");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).verifyTableIspresent().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusResubmitted()).clickFilterButton()
 		.verifyResubmitedAssignment().verifyResubmitedAssignmentDateSubmitted()
 		;
-		logger.pass("ResubmittedAssignment has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyResubmittedAssignment failed");
-			e.printStackTrace();
-		}
 		
 		return this;	
 	}
 	
 	
 	public FacilitationManagerDashboardOperations verifyDateGradedFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {	OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDateGradedFilter");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDateGradedFilter");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateGraded()
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton()
 		.verifyDateGraded()
 		;
-		logger.pass("DateGradedFilter has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyDateGradedFilter failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyAssignmentIsGraded(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyAssignmentIsGraded");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyAssignmentIsGraded");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectDateSubmitted().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
 		.verifyAssignmentIsGraded(createBackupData.getUserName4());
-		logger.pass("Assignment has been Graded");}
-		catch(Exception e) {
-			System.out.println("verifyAssignmentIsGraded failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyGrader(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyGrader");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyGrader");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton()
 		.verifyGrader(createBackupData.getUserName4(), createBackupData.getUserName5());
-		logger.pass("Grader has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyGrader failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyOriginalGraderFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyOriginalGraderFilter");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyOriginalGraderFilter");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).selectAssignmentStatus(createBackupData.getStatusAll())
 		.enterOriginalGraderName(createBackupData.getUserName3()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyOriginalGraderFilter(createBackupData.getStatus())
 		.verifyGradedUngradedFilters();
-		logger.pass("Original Grader has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyOriginalGraderFilter failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyCourseCodeFilter(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCourseCodeFilter");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCourseCodeFilter");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll())
 		.clickFilterButton().verifyTableIspresent().verifyCourseCodeValidations()
 		;
-		logger.pass("CourseCodeFilter has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyCourseCodeFilter failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyDashboardaAssignmentsCount(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDashboardaAssignmentsCount");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyDashboardaAssignmentsCount");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.selectAssignmentStatus(createBackupData.getStatus()).clickFilterButton().getDashboardAssignmentCount().getGradedAssignmentCount()
 		.clickResetButton().selectAssignmentStatus(createBackupData.getStatusUngraded()).clickFilterButton().getDashboardAssignmentCount()
 		.getUnGradedAssignmentCount().verifyDashboardErrorReading();
-		logger.pass("Dashboard AssignmentsCount has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyDashboardaAssignmentsCount failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyRubricGradesAnd516(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyRubricGrades");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyRubricGradesAnd516");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class).clickResetButton().enterCourseCode(createBackupData.getCourseShortName())
 		.selectAssignmentStatus(createBackupData.getStatusAll()).enterStudentName(createBackupData.getUserName4())
 		.clickFilterButton().verifyTableIspresent()
 		.verifyMFD516(createBackupData.getModule2(),createBackupData.getModule3(),createBackupData.getFinalProjectSubmission())
 		.verifyRubricGrading()
 		;
-		logger.pass("RubricGrades has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyRubricGrades failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyApostopheFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyApostopheFilters");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyApostopheFilters");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		
 		.enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
@@ -551,32 +404,23 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		
 		.enterStudentName(createBackupData.getUserName4()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyTableIspresent().clickResetButton()
-		
 		;
-		logger.pass("ApostopheFilters has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyApostopheFilters failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyApostopheFilters2(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyApostopheFilters2");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyApostopheFilters2");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		.enterCourseName(createBackupData.getCourseName2()).enterStudentName(createBackupData.getUserName1()).enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton()
 		.verifyTableIspresent().clickResetButton()
 		;
-		logger.pass("ApostopheFilters2 has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyApostopheFilters2 failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilters");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilters");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		
 		.enterFacilitatorName(createBackupData.getFacilitatorName()).enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll()).clickFilterButton()
@@ -620,17 +464,13 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.selectCourseStartDate().enterCourseCode(createBackupData.getCourseShortName()).clickFilterButton().verifyTableIspresent().clickResetButton()
 		
 		;
-		logger.pass("verifyFilters has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyFilters failed");
-			e.printStackTrace();
-		}
+		
 		
 		return this;	
 	}
 	
 	public FacilitationManagerDashboardOperations verifyCaseSensitiveFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyFilters");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("verifyCaseSensitiveFilters");
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerDashboardPage.class)
 		
 		.enterCourseCode(createBackupData.getCourseShortName()).selectAssignmentStatus(createBackupData.getStatusAll())
@@ -649,11 +489,7 @@ public class FacilitationManagerDashboardOperations extends BaseOperations {
 		.verifyMFD371_2(createBackupData.getUserName3())
 		
 		;
-		logger.pass("verifyCaseSensitiveFilters has been verified");}
-		catch(Exception e) {
-			System.out.println("verifyCaseSensitiveFilters failed");
-			e.printStackTrace();
-		}
+		
 		
 		return this;	
 	}

@@ -10,7 +10,7 @@ public class FacilitationManagerReportOperations extends BaseOperations {
 	 
 	
 	public FacilitationManagerReportOperations verifyFilters(CreateBackupData createBackupData) throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyFilters");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("VerifyFilters");
 		
 		NetsuiteTLHPageFactory.getPage(FacilitationManagerReportPage.class).verifyFiltersName().verifyTableHeadings()
 		.enterCourseIdFilter(createBackupData.getCourseId()).clickFilterButton().verifyCourseIdFilter(createBackupData.getCourseId())
@@ -19,11 +19,7 @@ public class FacilitationManagerReportOperations extends BaseOperations {
 		.enterfacilitatorTitleFilter(createBackupData.getCourseTitle()).clickFilterButton().verifyfacilitatorTitleFilter(createBackupData.getCourseTitle()).clickResetButton()
 		.entercategoryNameFilter(createBackupData.getCategoryName()).clickFilterButton().verifycategoryNameFilter(createBackupData.getCategoryName()).clickResetButton()
 		;
-		}
-		catch(Exception e) {
-			System.out.println("verifyFilters failed");
-			e.printStackTrace();
-		}
+		
 		return this;	
 	}
 	

@@ -10,48 +10,31 @@ import com.netsuite.tlh.pages.MenuBarPage;
 public class MenuBarOperations extends BaseOperations  {
 
 	public MenuBarOperations doLogOut() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogOut");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogOut");
 		NetsuiteTLHPageFactory.getPage(MenuBarPage.class).clickmenuBarDropDown().clicklogOut();
-	}
-	catch(Exception e) {
-		System.out.println("doLogOut failed");
-		e.printStackTrace();
-	}
 		return OperationFactory.getOperation(MenuBarOperations.class);
 			
 	}
 	public MenuBarOperations doLogOutAndLogin() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogOutAndLogin");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("doLogOutAndLogin");
 		NetsuiteTLHPageFactory.getPage(MenuBarPage.class).clickmenuBarDropDown().clicklogOut();
-		OperationFactory.getOperation(LoginOperations.class).doSecondLogin(BaseTest.userName,BaseTest.passWord);}
-	catch(Exception e) {
-		System.out.println("doLogOutAndLogin failed");
-		e.printStackTrace();
-	}
+		OperationFactory.getOperation(LoginOperations.class).doSecondLogin(BaseTest.userName,BaseTest.passWord);
 		return OperationFactory.getOperation(MenuBarOperations.class);
 			
 	}
 	
 	public MenuBarOperations navigateToMainloginScreen() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("navigateToMainloginScreen");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("navigateToMainloginScreen");
 		NetsuiteTLHPageFactory.getPage(MenuBarPage.class).checkLoginPage()
-		;}
-	catch(Exception e) {
-		System.out.println("navigateToMainloginScreen failed");
-		e.printStackTrace();
-	}
+		;
 		return OperationFactory.getOperation(MenuBarOperations.class);
 			
 	}
 	
 	public MenuBarOperations acceptSitePolicy() throws DriverNotInitializedException, Throwable {
-		try {OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("acceptSitePolicy");
+		OperationFactory.getOperation(MethodNameReportingOprations.class).setMethodName("acceptSitePolicy");
 		NetsuiteTLHPageFactory.getPage(MenuBarPage.class).acceptSitePolicy()
-		;}
-	catch(Exception e) {
-		System.out.println("acceptSitePolicy failed");
-		e.printStackTrace();
-	}
+		;
 		return OperationFactory.getOperation(MenuBarOperations.class);
 			
 	}
