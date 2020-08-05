@@ -28,6 +28,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.framework.base.BrowserFactory;
 import com.framework.exceptions.DriverNotInitializedException;
 import com.moodle.Regression1.FullRegressionTest;
+import com.moodle.tlh.tests.BaseTest;
 import com.netsuite.tlh.testdata.CreateBackupData;
 
 public class FacilitationManagerDashboardPage extends MenuBarPage {
@@ -1183,7 +1184,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 					  waitForElementToBeClickable(By.cssSelector("input[value='Ok']"));
 					  WebElement ele=BrowserFactory.getDriver().findElement(By.cssSelector("input[value='Ok']"));
 					  ele.click();
-					  
+					  BaseTest.logger.fail(e);
 				  }
 				  
 				  waitForElementToBeVisibile(gradedText);
@@ -1214,6 +1215,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 			  waitForElementToBeClickable(By.cssSelector("input[value='Ok']"));
 			  WebElement ele=BrowserFactory.getDriver().findElement(By.cssSelector("input[value='Ok']"));
 			  ele.click();
+			  BaseTest.logger.fail(e);
 			  
 		  }
 		  Thread.sleep(3000);
@@ -1237,7 +1239,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		  catch(Exception e){
 			  Thread.sleep(3000);
 			  clicksaveChangesButton();
-			  
+			  BaseTest.logger.fail(e); 
 		  }
 		  Thread.sleep(3000);
 		  waitForElementToBeVisibile(gradedText);
@@ -1260,7 +1262,7 @@ public class FacilitationManagerDashboardPage extends MenuBarPage {
 		  catch(Exception e){
 			  Thread.sleep(3000);
 			  clicksaveChangesButton();
-			  
+			  BaseTest.logger.fail(e);
 		  }
 		  Thread.sleep(3000);
 		  waitForElementToBeVisibile(gradedText);
