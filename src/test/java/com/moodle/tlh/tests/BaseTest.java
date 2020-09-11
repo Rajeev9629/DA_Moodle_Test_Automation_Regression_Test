@@ -90,6 +90,7 @@ public class BaseTest {
 			PrintWriter pw = new PrintWriter(sw);
 			result.getThrowable().printStackTrace(pw);
 			logger.fail( MethodName+" Failed, Reason: "+result.getThrowable().getMessage() + "<br><b>StackTrace:</b> <pre>" + sw.toString() + "</pre>");
+			
 			Robot r = new Robot(); 
 			String path = System.getProperty("user.dir") + "/src/test/resources/Reports/Shot.jpg";
 			Rectangle capture =  new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()); 
