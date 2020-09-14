@@ -86,7 +86,11 @@ public class BaseTest {
 		if(result.getStatus()==ITestResult.FAILURE)
 		{
 			String MethodName=OperationFactory.getOperation(MethodNameReportingOprations.class).getMethodName();
-			logger.fail( MethodName+" Failed, Reason: "+result.getThrowable().getMessage());
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			result.getThrowable().printStackTrace(pw);
+			logger.fail( MethodName+" Failed, Reason: "+result.getThrowable().getMessage() + "<br><b>StackTrace:</b> <pre>" + sw.toString() + "</pre>");
+			
 			Robot r = new Robot(); 
 			String path = System.getProperty("user.dir") + "/src/test/resources/Reports/Shot.jpg";
 			Rectangle capture =  new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()); 
